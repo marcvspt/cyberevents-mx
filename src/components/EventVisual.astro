@@ -1,0 +1,26 @@
+---
+import type { Event } from '@/lib/event.ts';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+interface Props { event: Event; detail?: boolean }
+const { event, detail = false } = Astro.props;
+const { data } = event;
+const year = data.startDate?.slice(0, 4);
+---
+
+<div class:list={['relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border border-border bg-background', detail && 'max-w-4xl']}>
+    {data.image ? <img src={data.image} alt={data.imageAlt ?? data.title} width="960" height="540" loading={detail ? 'eager' : 'lazy'} decoding="async" class="h-full w-full object-contain" /> : <div aria-hidden="true" class="absolute inset-0 bg-linear-to-br from-primary/12 via-surface to-secondary/20">
+        <svg viewBox="0 0 480 270" fill="none" class="h-full w-full" aria-hidden="true">
+            <g class="text-border" stroke="currentColor" stroke-width="1">
+                <path d="M0 54h480M0 108h480M0 162h480M0 216h480M80 0v270M160 0v270M240 0v270M320 0v270M400 0v270" />
+            </g>
+            <g class="text-primary" stroke="currentColor" stroke-width="2">
+                <path d="m240 59-64 25v54c0 33 64 70 64 70s64-37 64-70V84l-64-25Z" />
+                <path d="m215 114-17 17 17 17m50-34 17 17-17 17m-13-36-24 40" />
+                <path d="M176 108h-40v-24H80m224 78h40v24h56" class="text-secondary" />
+            </g>
+            <g class="fill-secondary"><circle cx="80" cy="84" r="4" /><circle cx="400" cy="186" r="4" /></g>
+        </svg>
+        <span class="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-muted">{TEXTS_GENERAL.event.categories[data.categories[0]]}</span>
+        {year && <span class="absolute right-4 top-4 font-mono text-xs text-secondary">{year}</span>}
+    </div>}
+</div>

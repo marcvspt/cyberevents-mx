@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_PAGES } from '@/lib/data.ts';
+export const prerender = true;
+const copy = TEXTS_GENERAL.about;
+---
+<BaseLayout title={SITE_PAGES.About.name} description={SITE_PAGES.About.description} canonical={SITE_PAGES.About.url}>
+    <div class="page-shell py-14 sm:py-20">
+        <header class="max-w-3xl">
+            <h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">{copy.title}<br /><span class="text-secondary">{copy.titleAccent}</span></h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{copy.description}</p>
+        </header>
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+            {copy.sections.map((section, index) => <section class="rounded-xl border border-border bg-surface p-6">
+                <p aria-hidden="true" class="font-mono text-sm text-primary">{String(index + 1).padStart(2, '0')} /</p>
+                <h2 class="mt-5 text-xl font-semibold tracking-tight">{section.title}</h2>
+                <p class="mt-4 text-sm leading-relaxed text-muted">{section.description}</p>
+            </section>)}
+        </div>
+        <aside class="mt-10 max-w-3xl border-l border-secondary/50 pl-5 text-sm leading-relaxed text-muted">{copy.note}</aside>
+        <a href={SITE_PAGES.Events.url} class="button-primary mt-8">{copy.action}<span aria-hidden="true">↗</span></a>
+    </div>
+</BaseLayout>

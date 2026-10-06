@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-background: #090d18;
+    --color-surface: #101625;
+    --color-surface-raised: #172036;
+    --color-border: #29334a;
+    --color-foreground: #ffffff;
+    --color-muted: #ffffff;
+    --color-primary: #86b8ff;
+    --color-secondary: #5eead4;
+    --color-danger: #ffa1b0;
+    --font-sans: 'Inter', 'Segoe UI', sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', monospace;
+}
+
+@layer base {
+    body {
+        background-image: radial-gradient(ellipse at 85% 0%, color-mix(in srgb, var(--color-secondary) 7%, transparent), transparent 40%), radial-gradient(ellipse at 10% 0%, color-mix(in srgb, var(--color-primary) 6%, transparent), transparent 35%);
+    }
+    a, button { @apply transition-colors; }
+    a:focus-visible, button:focus-visible {
+        @apply outline-2 outline-primary outline-offset-5;
+    }
+}
+
+@layer components {
+    .page-shell { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+    .text-link { @apply text-primary underline decoration-primary/35 underline-offset-4 hover:text-secondary hover:decoration-secondary; }
+    .button-primary { @apply inline-flex items-center justify-center gap-3 rounded-lg border border-primary bg-primary px-5 py-3 text-sm font-semibold text-background hover:border-secondary hover:bg-secondary; }
+    .button-secondary { @apply inline-flex items-center justify-center gap-3 rounded-lg border border-border bg-surface px-5 py-3 text-sm font-medium text-foreground hover:border-primary/60 hover:bg-surface-raised; }
+    .status-badge { @apply inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3 py-1 font-mono text-[11px] text-primary; }
+    .status-badge[data-status='coming-soon'] { @apply border-secondary/25 bg-secondary/8 text-secondary; }
+    .status-badge[data-status='finished'] { @apply border-border bg-surface-raised text-muted; }
+    .status-badge[data-status='cancelled'] { @apply border-danger/25 bg-danger/8 text-danger; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+}

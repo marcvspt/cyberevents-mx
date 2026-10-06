@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_PAGES } from '@/lib/data.ts';
+import EventCard from '@/components/EventCard.astro';
+import { getPublishedEventCards } from '@/lib/event.ts';
+const cards = (await getPublishedEventCards()).filter((card) => card.status !== 'finished' || card.isRecent);
+const copy = TEXTS_GENERAL.catalog;
+const groups = [
+    { id: 'near', ...copy.groups.near, cards: cards.filter((card) => card.isNear) },
+    { id: 'upcoming', ...copy.groups.upcoming, cards: cards.filter((card) => card.status === 'upcoming' && !card.isNear) },
+    { id: 'coming-soon', ...copy.groups.comingSoon, cards: cards.filter((card) => card.status === 'coming-soon') },
+    { id: 'recent', ...copy.groups.recent, cards: cards.filter((card) => card.isRecent).sort((a, b) => (b.event.data.endDate ?? b.event.data.startDate!).localeCompare(a.event.data.endDate ?? a.event.data.startDate!)) },
+    { id: 'cancelled', ...copy.groups.cancelled, cards: cards.filter((card) => card.status === 'cancelled') },
+].filter((group) => group.cards.length > 0);
+---
+<BaseLayout title={SITE_PAGES.Events.name} description={SITE_PAGES.Events.description} canonical={SITE_PAGES.Events.url}>
+    <div class="page-shell py-14 sm:py-20">
+        <header class="max-w-3xl">
+            <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{copy.title}</h1>
+            <p class="mt-5 text-base leading-relaxed text-muted">{copy.description}</p>
+            <p class="mt-5 font-mono text-xs text-secondary">{String(cards.length).padStart(2, '0')} {copy.count}</p>
+            <a href={SITE_PAGES.Archive.url} class="button-secondary mt-6">{copy.archiveAction}<span aria-hidden="true">↗</span></a>
+        </header>
+        {groups.length > 0 && <nav aria-label={copy.navigation} class="mt-8 flex flex-wrap gap-2 border-b border-border pb-8">
+            {groups.map((group) => <a class="button-secondary py-2 text-xs" href={'#' + group.id}>{group.title}<span class="text-secondary">{group.cards.length}</span></a>)}
+        </nav>}
+        {cards.length === 0 && <p class="mt-8 rounded-xl border border-border bg-surface p-6 text-muted">{copy.empty}</p>}
+        <div class="space-y-14 pt-10">
+            {groups.map((group) => <section id={group.id}>
+                <div class="mb-6 flex items-center gap-4">
+                    <span aria-hidden="true" class="h-8 w-0.5 bg-linear-to-b from-primary to-secondary"></span>
+                    <div><h2 class="text-2xl font-semibold tracking-tight">{group.title}</h2><p class="mt-1 text-sm text-muted">{group.description}</p></div>
+                </div>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{group.cards.map((card) => <EventCard card={card} />)}</div>
+            </section>)}
+        </div>
+    </div>
+</BaseLayout>

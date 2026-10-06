@@ -1,0 +1,50 @@
+---
+import "@/styles/global.css";
+
+import { ClientRouter } from "astro:transitions";
+
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_DATA } from '@/lib/data.ts';
+
+export interface Props {
+    title: string;
+    description?: string;
+    canonical?: string;
+}
+
+const {
+    title,
+    description = SITE_DATA.description,
+    canonical,
+} = Astro.props as Props;
+if (!Astro.site) {
+    throw new Error(TEXTS_GENERAL.errors.canonicalSite);
+}
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={TEXTS_GENERAL.locale.html} class="dark scheme-dark scroll-pt-8 scroll-smooth motion-reduce:scroll-auto selection:bg-secondary selection:text-background">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <title>{SITE_DATA.name} | {title}</title>
+        <ClientRouter />
+    </head>
+    <body class="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-5 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-3 focus:text-background">{TEXTS_GENERAL.navigation.skip}</a>
+        <Header />
+        <main id="main-content" tabindex="-1" class="flex-1">
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>

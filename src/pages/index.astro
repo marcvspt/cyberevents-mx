@@ -1,17 +1,48 @@
 ---
-
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_PAGES } from '@/lib/data.ts';
+import EventCard from '@/components/EventCard.astro';
+import { getPublishedEventCards } from '@/lib/event.ts';
+const allCards = await getPublishedEventCards();
+const upcoming = allCards.filter((card) => card.status === 'upcoming' || card.status === 'ongoing');
+const cards = upcoming.slice(0, 6);
+const copy = TEXTS_GENERAL.home;
+const stats = [
+    { value: allCards.length, label: copy.stats.events },
+    { value: upcoming.length, label: copy.stats.upcoming },
+    { value: allCards.filter((card) => card.status === 'finished').length, label: copy.stats.archive },
+];
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={SITE_PAGES.Home.name} description={SITE_PAGES.Home.description} canonical={SITE_PAGES.Home.url}>
+    <div class="page-shell">
+        <header class="relative py-16 sm:py-24">
+            <div aria-hidden="true" class="pointer-events-none absolute right-0 top-16 hidden size-56 rotate-12 rounded-3xl border border-secondary/15 bg-linear-to-br from-primary/5 to-secondary/10 lg:block">
+                <div class="absolute inset-7 rounded-2xl border border-primary/20"></div>
+                <div class="absolute inset-14 rounded-xl border border-secondary/25"></div>
+                <div class="absolute inset-21 rounded-lg border border-primary/30"></div>
+            </div>
+            <h1 class="max-w-3xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+                {copy.title}<br /><span class="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">{copy.titleAccent}</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{copy.description}</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href={SITE_PAGES.Events.url} class="button-primary">{copy.primaryAction}<span aria-hidden="true">↗</span></a>
+                <a href={SITE_PAGES.About.url} class="button-secondary">{copy.secondaryAction}</a>
+            </div>
+        </header>
+        <dl class="grid grid-cols-1 divide-y divide-border rounded-xl border border-border bg-surface/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {stats.map((stat) => <div class="px-6 py-5">
+                <dd class="font-mono text-3xl font-medium text-foreground">{String(stat.value).padStart(2, '0')}</dd>
+                <dt class="mt-2 text-xs text-muted">{stat.label}</dt>
+            </div>)}
+        </dl>
+        <section class="pt-16">
+            <div class="mb-7 flex flex-wrap items-end justify-between gap-5">
+                <div><h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{copy.sectionTitle}</h2><p class="mt-2 text-sm text-muted">{copy.sectionDescription}</p></div>
+                <a href={SITE_PAGES.Events.url} class="text-link text-sm">{copy.allEvents} <span aria-hidden="true">↗</span></a>
+            </div>
+            {cards.length > 0 ? <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{cards.map((card) => <EventCard card={card} />)}</div> : <p class="rounded-xl border border-border bg-surface p-6 text-muted">{copy.empty}</p>}
+        </section>
+    </div>
+</BaseLayout>

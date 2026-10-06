@@ -1,0 +1,31 @@
+---
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_DATA, SITE_PAGES } from '@/lib/data.ts';
+const copy = TEXTS_GENERAL.navigation;
+const links = [
+    { href: SITE_PAGES.Home.url, label: copy.home },
+    { href: SITE_PAGES.Events.url, label: copy.events },
+    { href: SITE_PAGES.Archive.url, label: copy.archive },
+    { href: SITE_PAGES.About.url, label: copy.about },
+];
+const activeHref = [...links].sort((a, b) => b.href.length - a.href.length).find(({ href }) => {
+    const path = href === '/' ? '/' : href.replace(/\/$/, '');
+    return Astro.url.pathname === path || Astro.url.pathname === href || (path !== '/' && Astro.url.pathname.startsWith(path + '/'));
+})?.href;
+const isActive = (href: string) => href === activeHref;
+---
+<header class="border-b border-border/70">
+    <div class="page-shell flex flex-wrap items-center justify-between gap-5 py-5">
+        <a href="/" class="flex items-center gap-3 font-semibold tracking-tight" aria-label={SITE_DATA.name}>
+            {SITE_DATA.logo ? <img src={SITE_DATA.logo} alt={SITE_DATA.name} width="200" height="36" class="h-9 w-auto max-w-[200px] object-contain" /> : <>
+            <span class="flex size-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/8 text-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 8 9 8 9s8-4.5 8-9V6l-8-3Z"/><path d="m9 10-2 2 2 2m6-4 2 2-2 2"/></svg>
+            </span>
+            {SITE_DATA.name}
+            </>}
+        </a>
+        <nav aria-label={copy.label} class="flex gap-5 text-sm sm:gap-7">
+            {links.map((link) => <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} class:list={['py-1 hover:text-primary', isActive(link.href) ? 'text-primary' : 'text-muted']}>{link.label}</a>)}
+        </nav>
+    </div>
+</header>

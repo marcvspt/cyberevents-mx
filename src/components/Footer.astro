@@ -1,0 +1,61 @@
+---
+import { TEXTS_GENERAL } from "@/lib/texts.ts";
+import { SITE_DATA, currentYear, EXTERNAL_RESOURCES } from "@/lib/data.ts";
+const copy = TEXTS_GENERAL.footer;
+---
+
+<footer class="mt-16 border-t border-border/70 bg-surface">
+    <div class="page-shell">
+        <div
+            class="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12"
+        >
+            <div class="max-w-sm">
+                <a
+                    href="/"
+                    class="font-semibold text-primary hover:text-foreground"
+                    >{SITE_DATA.name}</a
+                >
+                <p class="mt-2 text-sm text-muted">{copy.description}</p>
+            </div>
+            <nav aria-label={copy.externalLinks} class="text-sm lg:col-start-3">
+                <h2 class="text-base font-semibold text-primary">
+                    {copy.externalLinks}
+                </h2>
+                <ul class="mt-5 flex flex-col gap-3">
+                    {
+                        EXTERNAL_RESOURCES.map((resource) => (
+                            <li>
+                                <a
+                                    href={resource.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-baseline gap-2 leading-relaxed text-foreground hover:text-primary"
+                                >
+                                    {resource.name}{" "}
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </nav>
+        </div>
+        <div
+            class="border-t border-border py-7 text-center text-sm leading-relaxed text-foreground"
+        >
+            <p>
+                © {currentYear}
+                . {copy.independent}
+            </p>
+            <p>
+                Este proyecto está licenciado bajo los términos de la <a
+                    href="https://github.com/marcvspt/cyberevents-mx/blob/master/LICENSE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-primary transition duration-100 ease-in-out"
+                    ><strong>GNU General Public License v3.0</strong></a
+                >.
+            </p>
+        </div>
+    </div>
+</footer>

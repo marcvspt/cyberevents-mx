@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import EventCard from '@/components/EventCard.astro';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_PAGES } from '@/lib/data.ts';
+import { getArchivedEventGroups } from '@/lib/event.ts';
+
+const groups = await getArchivedEventGroups();
+const count = groups.reduce((total, group) => total + group.cards.length, 0);
+const copy = TEXTS_GENERAL.archive;
+---
+
+<BaseLayout title={SITE_PAGES.Archive.name} description={SITE_PAGES.Archive.description} canonical={SITE_PAGES.Archive.url}>
+    <div class="page-shell py-14 sm:py-20">
+        <header class="max-w-3xl">
+            <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{copy.title}</h1>
+            <p class="mt-5 text-base leading-relaxed text-muted">{copy.description}</p>
+            <p class="mt-5 font-mono text-xs text-secondary">{String(count).padStart(2, '0')} {copy.count}</p>
+            <a href={SITE_PAGES.Events.url} class="button-secondary mt-6"><span aria-hidden="true">←</span>{copy.back}</a>
+        </header>
+        {groups.length > 0 && <nav aria-label={copy.navigation} class="mt-8 flex flex-wrap gap-2 border-b border-border pb-8">
+            {groups.map((group) => <a href={'#year-' + group.year} class="button-secondary py-2 font-mono text-xs">{group.year}<span class="text-secondary">{group.cards.length}</span></a>)}
+        </nav>}
+        {groups.length === 0 && <p class="mt-8 rounded-xl border border-border bg-surface p-6 text-muted">{copy.empty}</p>}
+        <div class="space-y-14 pt-10">
+            {groups.map((group) => <section id={'year-' + group.year}>
+                <div class="mb-6 flex items-center gap-4">
+                    <span aria-hidden="true" class="h-8 w-0.5 bg-linear-to-b from-primary to-secondary"></span>
+                    <h2 class="font-mono text-2xl font-semibold">{group.year}</h2>
+                    <span class="text-xs text-muted">{group.cards.length} {copy.yearCount}</span>
+                </div>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{group.cards.map((card) => <EventCard card={card} />)}</div>
+            </section>)}
+        </div>
+    </div>
+</BaseLayout>

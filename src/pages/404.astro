@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+import { SITE_PAGES } from '@/lib/data.ts';
+const copy = TEXTS_GENERAL.notFound;
+Astro.response.status = 404;
+---
+<BaseLayout title={copy.title} description={copy.description}>
+    <div class="page-shell py-16 sm:py-24">
+        <p class="font-mono text-sm text-muted">404</p>
+        <h1 class="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">{copy.title}</h1>
+        <p class="mt-5 max-w-xl leading-relaxed text-muted">{copy.description}</p>
+        <a href={SITE_PAGES.Events.url} class="button-primary mt-8">{copy.action}</a>
+    </div>
+</BaseLayout>
