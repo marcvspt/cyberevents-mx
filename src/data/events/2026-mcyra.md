@@ -1,7 +1,7 @@
 ---
 title: "MCyRA 2026"
 description: "Conferencia mexicana de investigación y aplicaciones de ciberseguridad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-11-09"
 endDate: "2026-11-13"
 city: "Ciudad de México"

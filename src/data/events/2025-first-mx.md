@@ -1,7 +1,7 @@
 ---
 title: "FIRST MX 2025"
 description: "Coloquio técnico de respuesta a incidentes con jornadas plenarias y capacitación."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2025-10-27"
 endDate: "2025-10-29"
 city: "Ciudad de México"

@@ -1,7 +1,7 @@
 ---
 title: "BSides CDMX 2027"
 description: "Conferencia gratuita de seguridad informática organizada por la comunidad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/shared/bsides-cdmx.webp"
 startDate: "2027-07-16"
 city: "Ciudad de México"

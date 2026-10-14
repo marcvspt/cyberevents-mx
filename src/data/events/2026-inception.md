@@ -1,7 +1,7 @@
 ---
 title: "Inception 2026"
 description: "Encuentro de TrustDimension para líderes de ciberseguridad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 country: "MX"
 format: "in-person"
 categories: ["conference"]

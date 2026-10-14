@@ -1,7 +1,7 @@
 ---
 title: "FIRST MX 2027"
 description: "Próxima edición anunciada de FIRST MX."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/shared/first-supported.webp"
 country: "MX"
 format: "in-person"

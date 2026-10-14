@@ -1,7 +1,10 @@
 ---
 import { TEXTS_GENERAL } from "@/lib/texts.ts";
-import { SITE_DATA, currentYear, EXTERNAL_RESOURCES } from "@/lib/data.ts";
+import { SITE_DATA } from "@/lib/site.ts";
+import { SITE_PAGES } from "@/lib/navigation.ts";
+import { EXTERNAL_RESOURCES, LICENSE_LINK } from "@/lib/links.ts";
 const copy = TEXTS_GENERAL.footer;
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mt-16 border-t border-border/70 bg-surface">
@@ -11,7 +14,7 @@ const copy = TEXTS_GENERAL.footer;
         >
             <div class="max-w-sm">
                 <a
-                    href="/"
+                    href={SITE_PAGES.Home.href}
                     class="font-semibold text-primary hover:text-foreground"
                     >{SITE_DATA.name}</a
                 >
@@ -26,12 +29,12 @@ const copy = TEXTS_GENERAL.footer;
                         EXTERNAL_RESOURCES.map((resource) => (
                             <li>
                                 <a
-                                    href={resource.url}
+                                    href={resource.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="inline-flex items-baseline gap-2 leading-relaxed text-foreground hover:text-primary"
                                 >
-                                    {resource.name}{" "}
+                                    {resource.label}{" "}
                                     <span aria-hidden="true">↗</span>
                                 </a>
                             </li>
@@ -48,12 +51,12 @@ const copy = TEXTS_GENERAL.footer;
                 . {copy.independent}
             </p>
             <p>
-                Este proyecto está licenciado bajo los términos de la <a
-                    href="https://github.com/marcvspt/cyberevents-mx/blob/master/LICENSE"
+                {copy.licenseIntro}{" "}<a
+                    href={LICENSE_LINK.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="hover:text-primary transition duration-100 ease-in-out"
-                    ><strong>GNU General Public License v3.0</strong></a
+                    ><strong>{LICENSE_LINK.label}</strong></a
                 >.
             </p>
         </div>

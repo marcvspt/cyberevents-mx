@@ -1,7 +1,7 @@
 ---
 title: "Security BSides CDMX 2025"
 description: "Quinta edición del encuentro comunitario de seguridad informática de Ciudad de México."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2025-07-18"
 city: "Ciudad de México"
 country: "MX"

@@ -1,7 +1,7 @@
 ---
 title: "8.8 Unreal México 2026 — Monterrey"
 description: "Jornada de ciberseguridad y hacking con ponencias técnicas."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-07-31"
 city: "Monterrey"
 state: "Nuevo León"

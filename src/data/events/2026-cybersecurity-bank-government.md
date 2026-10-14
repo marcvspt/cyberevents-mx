@@ -1,7 +1,7 @@
 ---
 title: "Cybersecurity Bank & Government México 2026"
 description: "Conferencias sobre seguridad digital para banca, gobierno y líderes empresariales."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-cybersecurity-bank-government.webp"
 startDate: "2026-05-14"
 city: "Ciudad de México"

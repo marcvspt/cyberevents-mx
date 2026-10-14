@@ -1,7 +1,7 @@
 ---
 title: "Cybersecurity Week 2026"
 description: "Semana de ciberseguridad, riesgos tecnológicos y gobierno de datos."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 country: "MX"
 format: "hybrid"
 categories: ["conference","academic"]

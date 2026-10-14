@@ -1,7 +1,7 @@
 ---
 title: "CÓDICE 5.0 2026"
 description: "Congreso de operaciones, datos, inteligencia, ciberseguridad y entornos digitales."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-09-23"
 endDate: "2026-09-25"
 city: "Santiago de Querétaro"

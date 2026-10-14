@@ -2,9 +2,11 @@
 
 Directorio y archivo histórico de eventos de ciberseguridad en México. La intención del producto está en `DATA.md`; las fechas mencionadas allí necesitan confirmación antes de publicarse.
 
+Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para preparar contribuciones de código o fichas de eventos y seguir la convención de mensajes de commit.
+
 ## Tecnología y despliegue
 
-Astro 7.3.5, TypeScript, Tailwind CSS 4.3.3 y `@tailwindcss/typography` 0.5.20. Usa `output: 'server'` con el adaptador de Netlify 8.2.6. Inicio, Eventos, Archivo y fichas generan HTML por petición (SSR); acerca de, RSS, robots y el sitemap de fichas se generan durante el build. No requiere base de datos. El dominio se define únicamente en la propiedad `site` de `astro.config.mjs`. Las páginas lo obtienen mediante `Astro.site` y las rutas mediante `context.site`; canónicas, RSS y robots requieren esa configuración. `src/lib/texts.ts` centraliza los textos en español en `TEXTS_GENERAL`; `src/lib/site.ts` combina los textos de marca con la ruta opcional del logo, y `src/lib/data.ts` combina los textos de las páginas con sus rutas y reexporta los datos del sitio.
+Astro 7.3.5, TypeScript, Tailwind CSS 4.3.3 y `@tailwindcss/typography` 0.5.20. Usa `output: 'server'` con el adaptador de Netlify 8.2.6. Inicio, Eventos, Archivo y fichas generan HTML por petición (SSR); acerca de, RSS, robots y el sitemap de fichas se generan durante el build. No requiere base de datos. El dominio se define únicamente en la propiedad `site` de `astro.config.mjs`. Las páginas lo obtienen mediante `Astro.site` y las rutas mediante `context.site`; canónicas, RSS y robots requieren esa configuración. `src/lib/texts.ts` centraliza los textos en español en `TEXTS_GENERAL`; `src/lib/site.ts` configura la marca, el logo y el idioma; `src/lib/navigation.ts` define páginas y navegación; `src/lib/links.ts` define los enlaces externos. Cada consumidor importa el módulo concreto.
 
 ## Estados por petición
 
@@ -18,14 +20,22 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 
 - `src/content.config.ts`: esquema de la colección `events`.
 - `src/data/events/`: fichas Markdown.
-- `src/lib/event.ts`: selección de publicados, URL, fechas, estados, cercanía, archivo por año y CFP.
+- `src/lib/texts.ts`: textos de interfaz, accesibilidad, metadatos y mensajes, agrupados por sección.
+- `src/lib/site.ts`: `SITE_DATA` (marca y logo) y `SITE_LOCALE` (idioma y zona horaria), sin duplicar el dominio de Astro.
+- `src/lib/navigation.ts`: `SITE_PAGES` y `MAIN_NAVIGATION`.
+- `src/lib/links.ts`: recursos externos y enlace de licencia.
+- `src/lib/types/site.ts`: contratos de enlaces (`id`, `label`, `href`), metadatos (`title`, `description`) y marca.
+- `src/lib/types/event.ts`: tipos derivados de la colección y datos de tarjetas y archivo.
+- `src/lib/events/content.ts`: selección de publicados, datos de tarjetas y archivo por año.
+- `src/lib/events/status.ts`: estados, cercanía, ventana de eventos recientes y CFP.
+- `src/lib/events/presentation.ts`: URL de fichas, etiquetas de estado y formato de fechas.
 - `src/components/EventCard.astro`: tarjeta compartida entre inicio y catálogo.
 - `src/components/EventVisual.astro`: imagen oficial o ilustración SVG compartida entre tarjetas y fichas.
 - `src/layouts/EventSummaryLayout.astro`: ficha y recursos del evento.
 - `src/pages/events/index.astro`: sección Eventos: encuentros cercanos, próximos, sin fecha, recientes y cancelados.
 - `src/pages/events/archive/index.astro`: eventos pasados agrupados por año en `/events/archive/`.
 - `src/pages/events/[...slug].astro`: fichas SSR de eventos publicados; devuelve 404 para IDs desconocidos o borradores.
-- `src/pages/rss.xml.ts`: RSS en `/rss.xml`, ordenado por última actualización editorial (`updateAt`).
+- `src/pages/rss.xml.ts`: RSS en `/rss.xml`, ordenado por última actualización editorial (`updatedAt`).
 - `src/styles/global.css`: Tailwind y tipografía Markdown.
 - `public/`: recursos públicos.
 - `public/img/events/shared/`: identidad visual reutilizable entre ediciones.
@@ -34,15 +44,15 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/pages/sitemap-events.xml.ts`: sitemap estático de fichas publicadas, incluidas las rutas SSR.
 - `src/pages/404.astro`: página para rutas inexistentes y borradores.
 
-Se mantienen las rutas existentes `/events/` y `/about`, con el archivo histórico en `/events/archive/`. La configuración utiliza `integrations: [sitemap()]` para generar `/sitemap-index.xml` y el sitemap de páginas de ruta fija. Robots y `BaseLayout.astro` apuntan a ese índice; el enlace del layout solo lo anuncia, no lo genera ni añade otros sitemaps. `/sitemap-events.xml` se genera por separado y enumera las fichas publicadas, con `updateAt` como `lastmod`. Actualmente no está registrado en el índice ni en robots: la integración no descubre automáticamente las rutas SSR con parámetros ni incorpora este XML sin configuración adicional.
+Se mantienen las rutas existentes `/events/` y `/about`, con el archivo histórico en `/events/archive/`. La integración `@astrojs/sitemap` genera `/sitemap-index.xml` y el sitemap de páginas de ruta fija. `/sitemap-events.xml` se genera por separado y enumera las fichas publicadas, con `updatedAt` como `lastmod`; se registra en el índice mediante `customSitemaps`, usando el dominio de `site`. Robots y `BaseLayout.astro` anuncian el índice, que permite descubrir ambos sitemaps. La integración no enumera por sí sola las fichas SSR con parámetros. Consulta la [opción oficial customSitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/#customsitemaps).
 
 ## Publicar un evento
 
-La carga inicial revisada el 5 de octubre de 2026 contiene 43 fichas reales o candidatas: 35 están habilitadas para publicación y 8 permanecen como borradores. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
+La colección contiene 50 fichas reales o candidatas: 42 están habilitadas para publicación y 8 permanecen como borradores. La ampliación editorial del 13 de octubre de 2026 añade el Congreso Nacional de Ciberseguridad de la Guardia Nacional, Cyber Case Challenge, CyberForce Summit, Hacktitud Summit, la serie de webinars de KeD, el encuentro de CISOCLUB en Monterrey y TROPICON. Consulta [la investigación y guía de imágenes](docs/investigacion-eventos-2026-10-13.md) para sus fuentes, datos pendientes y enlaces de descarga. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
 
 El archivo incluye HackGDL e Infosecurity Mexico de 2024; HackGDL, Infosecurity Mexico, FIRST MX y Security BSides CDMX de 2025. Es una selección inicial, no un registro exhaustivo. Las fechas de cada ficha se contrastaron con sitios o documentos oficiales.
 
-Los borradores pendientes son FIRST MX 2027, HackGDL 2027, Cyber Range 2026, BugCON 2026, Segurinfo México, Cybersecurity Week 2026, Inception 2026 y el Foro Internacional de Seguridad y Justicia. El cuerpo de cada archivo explica qué debe confirmarse. En algunos borradores la modalidad es provisional porque el esquema la requiere: confírmala antes de publicar. No confundir un anuncio sin fecha con información verificada de sede o modalidad.
+Los borradores pendientes son FIRST MX 2027, HackGDL 2027, Cyber Range 2026, BugCON 2026, Segurinfo México, Cybersecurity Week 2026, Inception 2026 y el Foro Internacional de Seguridad y Justicia. BugCON conserva fechas contradictorias entre su CFP y los anuncios difundidos en LinkedIn; Cyber Range requiere reconfirmar su anuncio tras el cambio de la página de AMECS. El cuerpo de cada archivo explica qué debe confirmarse. En algunos borradores la modalidad es provisional porque el esquema la requiere: confírmala antes de publicar. No confundir un anuncio sin fecha con información verificada de sede o modalidad.
 
 Crea un Markdown en `src/data/events/`, usando el ejemplo de abajo como plantilla. El nombre comienza por el año de celebración: `2027-nombre-evento.md` genera la URL `/events/2027-nombre-evento/`. Completa la información y el cuerpo Markdown, verifica los datos oficiales y cambia `draft` a `false` cuando esté listo.
 
@@ -60,7 +70,7 @@ Ejemplo ficticio con fechas anunciadas (mantener como borrador):
 ---
 title: 'Conferencia de ejemplo 2027'
 description: 'Descripción breve del evento.'
-updateAt: '2026-10-05'
+updatedAt: '2026-10-05'
 startDate: '2027-06-16'
 endDate: '2027-06-17'
 city: 'Ciudad de México'
@@ -77,7 +87,7 @@ draft: true
 ---
 ```
 
-Campos obligatorios: `title`, `description`, `updateAt`, `format` y al menos una categoría. `format` acepta `in-person`, `online` o `hybrid`. Categorías: `conference`, `congress`, `meetup`, `ctf`, `bsides`, `workshop`, `summit`, `forum`, `academic`, `community`. Los temas son etiquetas libres.
+Campos obligatorios: `title`, `description`, `updatedAt`, `format` y al menos una categoría. `format` acepta `in-person`, `online` o `hybrid`. Categorías: `conference`, `congress`, `meetup`, `ctf`, `bsides`, `workshop`, `summit`, `forum`, `academic`, `community`. Los temas son etiquetas libres.
 
 Las fechas son cadenas `YYYY-MM-DD` entre comillas. Omite campos desconocidos; no uses `null`. Sin `startDate`, la ficha muestra «Próximamente / Fecha por anunciar». `endDate` requiere un inicio y no puede precederlo; si se omite, se considera un evento de un día. Cada edición puede tener su propio archivo para conservar el histórico.
 
@@ -105,9 +115,9 @@ Guarda las imágenes en `public/img/events/` con el nombre de la ficha o en `sha
 
 El estado general se calcula a partir de las fechas y `cancelled`. El registro abierto se muestra como indicador adicional en tarjetas futuras o sin fecha. El CFP respeta un cierre editorial explícito, cierra después de `closes` y abre desde `opens`; antes de la apertura aparece por anunciar. Sin `opens`, utiliza su estado editorial o por anunciar. El último día se incluye. Una cancelación oculta el CFP.
 
-Los borradores validan el esquema, pero quedan fuera del inicio, catálogo, fichas públicas, RSS y sitemap. Acceder al ID de un borrador devuelve 404. `updateAt` es la última actualización editorial de la ficha y alimenta el orden y la fecha del RSS, aunque el evento todavía no tenga fecha. Las URL de tarjetas, RSS y canónicas usan `getEventUrl`.
+Los borradores validan el esquema, pero quedan fuera del inicio, catálogo, fichas públicas, RSS y sitemap. Acceder al ID de un borrador devuelve 404. `updatedAt` es la última actualización editorial de la ficha y alimenta el orden y la fecha del RSS, aunque el evento todavía no tenga fecha. Las URL de tarjetas, RSS y canónicas usan `getEventUrl`.
 
-El inicio muestra hasta seis eventos próximos o en curso. La sección Eventos (`/events/`) muestra primero «En curso y muy pronto»: eventos en marcha o que comienzan en los próximos 30 días, incluyendo el día límite. A continuación aparecen «Próximos», con inicio posterior a ese plazo, «Fechas por anunciar», «Descubre cómo fue» y «Cancelados». «Descubre cómo fue» conserva los finalizados hace menos de dos meses de calendario, ordenados por fecha de finalización descendente. `isEventRecent` usa `endDate` o `startDate`, excluye la fecha límite exacta y ajusta al último día del mes si corresponde. Estos eventos también permanecen en el archivo. Las secciones sin eventos se ocultan. La cercanía se define en `NEAR_EVENT_DAYS` y `isEventNear`, en `src/lib/event.ts`, y se calcula por petición con días de calendario de `America/Mexico_City`.
+El inicio muestra hasta seis eventos próximos o en curso. La sección Eventos (`/events/`) muestra primero «En curso y muy pronto»: eventos en marcha o que comienzan en los próximos 30 días, incluyendo el día límite. A continuación aparecen «Próximos», con inicio posterior a ese plazo, «Fechas por anunciar», «Descubre cómo fue» y «Cancelados». «Descubre cómo fue» conserva los finalizados hace menos de dos meses de calendario, ordenados por fecha de finalización descendente. `isEventRecent` usa `endDate` o `startDate`, excluye la fecha límite exacta y ajusta al último día del mes si corresponde. Estos eventos también permanecen en el archivo. Las secciones sin eventos se ocultan. La cercanía se define en `NEAR_EVENT_DAYS` y `isEventNear`, en `src/lib/events/status.ts`, y se calcula por petición con días de calendario de `America/Mexico_City`.
 
 Los eventos finalizados están en `/events/archive/`, agrupados por el año de inicio, con los años y las fechas más recientes primero. Un evento que cruza de año pertenece al año de `startDate`. El archivo tiene enlaces para saltar a cada año y usa las mismas tarjetas. Se accede desde Eventos y la navegación principal. Todavía no hay filtros interactivos ni relaciones automáticas entre ediciones.
 
@@ -115,7 +125,11 @@ Los eventos finalizados están en `/events/archive/`, agrupados por el año de i
 
 La UI es exclusivamente oscura, con azul y turquesa como acentos. Los colores se editan en `@theme` de `src/styles/global.css`, con nombres semánticos como `--color-primary`, `--color-secondary`, `--color-background` y `--color-surface`. Los componentes consumen esas utilidades de Tailwind. No hay selector de tema ni depende del tema del sistema. `BaseLayout.astro` usa utilidades de Tailwind para el esquema oscuro, fondo, tipografía, selección y scroll con reducción de movimiento. El Markdown conserva `prose prose-invert` y usa modificadores `prose-*` para el blanco y los enlaces. `global.css` mantiene el gradiente radial, los patrones compartidos mediante `@apply`, el foco de teclado y la desactivación global de animaciones y transiciones cuando se solicita movimiento reducido.
 
-Edita `TEXTS_GENERAL` en `src/lib/texts.ts` para cambiar los textos de inicio, Eventos, archivo, acerca de, 404, tarjetas, fichas, navegación y pie. El mismo objeto contiene `pages` (títulos y descripciones de las páginas), `site` (nombre y descripción globales), `externalResources` (etiquetas de enlaces), `validation` y `errors` (mensajes propios de validación y configuración). `locale` centraliza el idioma del HTML, RSS, fechas y ordenación alfabética. Es una base para i18n futuro; todavía no hay selector, diccionarios por idioma ni rutas localizadas. `SITE_PAGES` y `SITE_DATA` consumen estos textos y conservan las rutas y configuración en `data.ts` y `site.ts`. Los títulos, descripciones y cuerpos de los eventos siguen en `src/data/events/`. La sección `/events/` se llama «Eventos» en navegación, breadcrumbs y acciones; conserva ese nombre. El footer muestra marca y descripción a la izquierda con su estilo original, espacio central vacío en escritorio y Recursos Externos a la derecha y una franja inferior centrada con el año y el texto del proyecto. En móvil las secciones siguen el flujo vertical. Sus enlaces se editan en `EXTERNAL_RESOURCES` dentro de `src/lib/data.ts` y abren en otra pestaña. El footer no muestra enlace RSS; `/rss.xml` sigue disponible.
+Edita `TEXTS_GENERAL` en `src/lib/texts.ts` para cambiar los textos de inicio, Eventos, archivo, acerca de, 404, tarjetas, fichas, navegación y pie, incluido el aviso de licencia. El mismo objeto contiene `pages` (metadatos con `title` y `description`), `site` (nombre y descripción globales), `externalResources` (etiquetas de enlaces), `validation` y `errors` (mensajes propios de validación y configuración). La configuración técnica de idioma del HTML, RSS, fechas, ordenación alfabética y zona horaria vive en `SITE_LOCALE` de `src/lib/site.ts`. Todavía no hay selector, diccionarios por idioma ni rutas localizadas.
+
+`SITE_PAGES` en `src/lib/navigation.ts` combina metadatos y enlaces con `id`, `label` y `href`; `MAIN_NAVIGATION` fija su orden. Los identificadores no dependen de etiquetas traducibles. `SITE_DATA` se importa directamente desde `src/lib/site.ts`. Los títulos, descripciones y cuerpos editoriales de los eventos siguen en `src/data/events/`. Usa alias `@/` y la extensión real explícita en imports internos, importando el archivo concreto sin reexportaciones de conveniencia.
+
+La sección `/events/` se llama «Eventos» en navegación, breadcrumbs y acciones; conserva ese nombre. El footer muestra marca y descripción a la izquierda con su estilo original, espacio central vacío en escritorio y Recursos Externos a la derecha y una franja inferior centrada con el año y el texto del proyecto. En móvil las secciones siguen el flujo vertical. Sus enlaces se editan en `EXTERNAL_RESOURCES` dentro de `src/lib/links.ts` y abren en otra pestaña. El enlace de licencia vive en `LICENSE_LINK` del mismo módulo. El footer no muestra enlace RSS; `/rss.xml` sigue disponible.
 
 Para sustituir escudo y texto por un logo horizontal, guarda el archivo en `public/img/` y asigna su ruta a `SITE_DATA.logo`, por ejemplo `/img/logo.svg`. La cabecera reserva 36 px de alto y hasta 200 px de ancho, mantiene la proporción y usa el nombre de marca como texto alternativo. Se recomienda SVG transparente o PNG de 400 × 72 px. Mientras `logo` esté vacío, se conserva la marca actual.
 
@@ -152,6 +166,6 @@ El propietario ejecuta todos los comandos de pnpm desde `C:\Users\marco\Desktop\
 
 Revisa inicio, Eventos, Archivo, acerca de y una ficha en móvil y escritorio, incluyendo navegación por teclado, botones y contraste. Comprueba que un evento en curso o a 30 días aparezca en la primera sección y uno a 31 días en «Próximos», sin duplicados. Todos los finalizados deben aparecer en el archivo por año de inicio, incluidos 2024 y 2025. Los que terminaron hace menos de dos meses deben aparecer también en «Descubre cómo fue»; los de la fecha de corte exacta y anteriores, solo en el archivo. Revisa imágenes, alternativa SVG y búsquedas de conversación, incluido LinkedIn. Comprueba una ficha pasada con recursos, BSides CDMX 2027 con su CFP y León Cybersecurity Conference sin fecha. Para probar otros estados con el ejemplo, modifica una copia de forma local, publícala temporalmente y revisa rango de fechas, cancelación y recursos. Retira el contenido ficticio antes de desplegar.
 
-Comprueba también breadcrumbs, estado y categorías sobre el título, el texto blanco en tarjetas y Markdown, 404 para IDs desconocidos y borradores, y ambos sitemaps: `/sitemap-index.xml` para páginas de ruta fija y `/sitemap-events.xml` para fichas sin borradores. No se espera que el índice incluya el sitemap de fichas con la configuración actual. En un despliegue de Netlify, verifica la cabecera `Cache-Control` de inicio y eventos.
+Comprueba también breadcrumbs, estado y categorías sobre el título, el texto blanco en tarjetas y Markdown, 404 para IDs desconocidos y borradores, y ambos sitemaps: `/sitemap-index.xml` debe incluir el sitemap de páginas de ruta fija y la URL absoluta de `/sitemap-events.xml`; este último debe enumerar fichas sin borradores y usar `updatedAt` como `lastmod`. `/robots.txt` debe anunciar el índice. En un despliegue de Netlify, verifica la cabecera `Cache-Control` de inicio y eventos.
 
 El build y la revisión visual de esta adaptación están pendientes de ejecución por el propietario. No hay script de pruebas ni `@astrojs/check` configurado en `package.json`. No edites `dist/`, `.astro/` ni `node_modules/`.

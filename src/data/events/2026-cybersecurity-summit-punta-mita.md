@@ -1,7 +1,7 @@
 ---
 title: "Cybersecurity Summit Punta Mita 2026"
 description: "Encuentro sobre seguridad digital, riesgos y resiliencia organizacional."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-cybersecurity-summit-punta-mita.webp"
 startDate: "2026-10-28"
 endDate: "2026-10-31"

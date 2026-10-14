@@ -7,7 +7,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
-import { SITE_DATA } from '@/lib/data.ts';
+import { SITE_DATA, SITE_LOCALE } from '@/lib/site.ts';
 
 export interface Props {
     title: string;
@@ -27,7 +27,7 @@ const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
-<html lang={TEXTS_GENERAL.locale.html} class="dark scheme-dark scroll-pt-8 scroll-smooth motion-reduce:scroll-auto selection:bg-secondary selection:text-background">
+<html lang={SITE_LOCALE.html} class="dark scheme-dark scroll-pt-8 scroll-smooth motion-reduce:scroll-auto selection:bg-secondary selection:text-background">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

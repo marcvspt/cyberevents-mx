@@ -1,7 +1,7 @@
 ---
 title: "HACKMEX IPN CTF 2026 — Clasificatoria"
 description: "Ronda en línea para clasificar a la final del CTF del IPN."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-hackmex.webp"
 startDate: "2026-09-04"
 endDate: "2026-09-06"

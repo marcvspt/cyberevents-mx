@@ -1,8 +1,9 @@
 ---
-import { EVENT_STATUS_LABELS, formatEventDate, type getPublishedEventCards } from '@/lib/event.ts';
+import { EVENT_STATUS_LABELS, formatEventDate } from '@/lib/events/presentation.ts';
+import type { EventCardData } from '@/lib/types/event.ts';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
 import EventVisual from '@/components/EventVisual.astro';
-interface Props { card: Awaited<ReturnType<typeof getPublishedEventCards>>[number] }
+interface Props { card: EventCardData }
 const { card } = Astro.props;
 const { event, url, status, cfpStatus } = card;
 const { data } = event;

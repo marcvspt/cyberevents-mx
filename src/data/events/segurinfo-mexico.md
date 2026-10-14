@@ -1,7 +1,7 @@
 ---
 title: "Segurinfo México"
 description: "Congreso de seguridad de la información de la red Segurinfo."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 country: "MX"
 format: "in-person"
 categories: ["congress"]

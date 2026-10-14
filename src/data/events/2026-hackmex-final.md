@@ -1,7 +1,7 @@
 ---
 title: "HACKMEX IPN CTF 2026 — Final"
 description: "Ronda presencial del CTF académico de ataque y defensa del IPN."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-hackmex.webp"
 startDate: "2026-10-15"
 endDate: "2026-10-16"

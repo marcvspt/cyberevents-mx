@@ -1,7 +1,7 @@
 ---
 title: "Infosecurity Mexico 2024"
 description: "Exposición y conferencias sobre seguridad de la información en Ciudad de México."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2024-10-22"
 endDate: "2024-10-23"
 city: "Ciudad de México"

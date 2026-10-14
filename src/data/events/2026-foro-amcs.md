@@ -1,7 +1,7 @@
 ---
 title: "3.er Foro Nacional de Ciberseguridad AMCS 2026"
 description: "Foro multisectorial sobre seguridad, resiliencia y derechos en el entorno digital."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-foro-amcs.webp"
 startDate: "2026-10-05"
 endDate: "2026-10-09"

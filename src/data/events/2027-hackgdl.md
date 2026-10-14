@@ -1,13 +1,13 @@
 ---
 title: "HackGDL 2027"
 description: "Siguiente edición de HackGDL anunciada sin fecha."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-13"
 image: "/img/events/shared/hackgdl.webp"
 country: "MX"
 format: "in-person"
 categories: ["conference","community"]
 website: "https://hackgdl.mx/"
-verification: {"status":"needs-verification","checkedAt":"2026-10-05","sources":["https://hackgdl.mx/"]}
+verification: {"status":"needs-verification","checkedAt":"2026-10-13","sources":["https://hackgdl.mx/"]}
 draft: true
 city: "Guadalajara"
 state: "Jalisco"

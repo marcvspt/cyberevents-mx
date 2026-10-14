@@ -1,7 +1,7 @@
 ---
 title: "Hackers con IA: ¿Estamos preparados? — Mérida 2026"
 description: "Charla empresarial sobre amenazas con inteligencia artificial y ransomware."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-10-22"
 city: "Mérida"
 state: "Yucatán"

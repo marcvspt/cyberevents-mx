@@ -1,7 +1,7 @@
 ---
 title: "Mexico Cybersecurity Summit 2026"
 description: "Encuentro ejecutivo sobre ciberseguridad, regulación e infraestructura crítica."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-mexico-cybersecurity-summit.webp"
 startDate: "2026-10-21"
 city: "Ciudad de México"

@@ -1,7 +1,7 @@
 ---
 title: "BSides Querétaro 2026"
 description: "Conferencia técnica con talleres, CTF y contenidos de seguridad IT y OT/ICS."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-10-23"
 endDate: "2026-10-24"
 city: "Santiago de Querétaro"

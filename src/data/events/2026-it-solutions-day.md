@@ -1,7 +1,7 @@
 ---
 title: "IT Solutions Day 2026"
 description: "Encuentro de soluciones tecnológicas y ciberseguridad empresarial."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-it-solutions-day.webp"
 startDate: "2026-10-14"
 city: "Ciudad de México"

@@ -11,7 +11,9 @@ const site = 'https://cemx.marcvspt.tech';
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [sitemap()],
+    integrations: [sitemap({
+        customSitemaps: [new URL('/sitemap-events.xml', site).href],
+    })],
 
     site,
     output: 'server',

@@ -1,26 +1,25 @@
 // Textos en español fuera del contenido editorial Markdown.
-// Las rutas y la configuración permanecen en data.ts y site.ts.
+// Las rutas, enlaces y configuración viven en navigation.ts, links.ts y site.ts.
 export const TEXTS_GENERAL = {
-    locale: { html: 'es', date: 'es-MX', sort: 'es', rss: 'es-mx' },
     site: {
         name: 'CyberEvents.MX',
         description: 'Eventos y archivo histórico de eventos de ciberseguridad en México',
     },
     pages: {
         Home: {
-            name: 'Inicio',
+            title: 'Inicio',
             description: 'Fechas, sedes y recursos de eventos de ciberseguridad en México',
         },
         Events: {
-            name: 'Eventos',
+            title: 'Eventos',
             description: 'Consulta los eventos actuales y el archivo de eventos pasados de ciberseguridad en México',
         },
         About: {
-            name: 'Acerca de',
+            title: 'Acerca de',
             description: 'Conoce CyberEvents.MX, el directorio independiente de ciberseguridad en México',
         },
         Archive: {
-            name: 'Archivo de eventos',
+            title: 'Archivo de eventos',
             description: 'Explora los eventos pasados de ciberseguridad en México por año',
         },
     },
@@ -137,6 +136,8 @@ export const TEXTS_GENERAL = {
         description: 'Encuentra conferencias, CTF y talleres de ciberseguridad en México. Conecta con la comunidad y explora los recursos de cada encuentro en nuestro archivo histórico.',
         externalLinks: 'Recursos Externos',
         independent: 'Un directorio independiente, hecho para conectar.',
+        licenseIntro: 'Este proyecto está licenciado bajo los términos de la',
+        licenseName: 'GNU General Public License v3.0',
     },
     notFound: {
         title: 'Página no encontrada',

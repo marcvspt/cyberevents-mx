@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import EventVisual from '@/components/EventVisual.astro';
-import { EVENT_STATUS_LABELS, formatEventDate, getCfpStatus, getEventStatus, getEventUrl, getToday, type Event } from '@/lib/event.ts';
+import { EVENT_STATUS_LABELS, formatEventDate, getEventUrl } from '@/lib/events/presentation.ts';
+import { getCfpStatus, getEventStatus, getToday } from '@/lib/events/status.ts';
+import type { Event } from '@/lib/types/event.ts';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
-import { SITE_PAGES } from '@/lib/data.ts';
+import { SITE_PAGES } from '@/lib/navigation.ts';
 interface Props { event: Event }
 const { event } = Astro.props;
 const { data } = event;
@@ -17,15 +19,15 @@ const conversation = data.hashtags.length > 0
     ? data.hashtags.map((tag) => ({ term: '#' + tag, tag }))
     : [{ term: data.title, tag: undefined }];
 const breadcrumbSection = status === 'finished'
-    ? { href: SITE_PAGES.Archive.url, label: TEXTS_GENERAL.navigation.archive }
-    : { href: SITE_PAGES.Events.url, label: TEXTS_GENERAL.navigation.events };
+    ? SITE_PAGES.Archive
+    : SITE_PAGES.Events;
 ---
 <BaseLayout title={data.title} description={data.description} canonical={getEventUrl(event)}>
     <article class="page-shell py-12 sm:py-16">
         <header class="max-w-4xl">
             <nav aria-label={copy.breadcrumbLabel} class="text-sm leading-relaxed text-muted">
                 <ol class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <li><a href={SITE_PAGES.Home.url} class="hover:text-primary">{TEXTS_GENERAL.navigation.home}</a></li>
+                    <li><a href={SITE_PAGES.Home.href} class="hover:text-primary">{SITE_PAGES.Home.label}</a></li>
                     <li aria-hidden="true">/</li>
                     <li><a href={breadcrumbSection.href} class="hover:text-primary">{breadcrumbSection.label}</a></li>
                     <li aria-hidden="true">/</li>
@@ -61,7 +63,7 @@ const breadcrumbSection = status === 'finished'
                     </section>}
                 </div>
                 <footer class="mt-12 border-t border-border pt-6 text-xs leading-relaxed text-muted">
-                    <p>{copy.updated} {formatEventDate(data.updateAt)}</p>
+                    <p>{copy.updated} {formatEventDate(data.updatedAt)}</p>
                     {data.verification && <>
                     <p>{copy.verificationLabels[data.verification.status]}{data.verification.checkedAt ? ' · ' + copy.checked + ' ' + formatEventDate(data.verification.checkedAt) : ''}</p>
                     </>}

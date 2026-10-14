@@ -1,7 +1,7 @@
 ---
 title: "8.8 Unreal México 2026 — Ciudad de México"
 description: "Jornada de ciberseguridad y hacking con ponencias técnicas."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-07-29"
 city: "Ciudad de México"
 country: "MX"

@@ -1,7 +1,7 @@
 ---
 title: "Pwnterrey 2026"
 description: "Evento comunitario gratuito con charlas, talleres y retos de ciberseguridad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-pwnterrey.webp"
 startDate: "2026-05-29"
 city: "Monterrey"

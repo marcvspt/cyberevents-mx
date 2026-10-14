@@ -1,7 +1,7 @@
 ---
 title: "America Digital México 2027"
 description: "Congreso de tecnología y negocios que incluye proveedores de seguridad IT."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2027-06-16"
 endDate: "2027-06-17"
 city: "Ciudad de México"

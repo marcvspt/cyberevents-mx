@@ -1,7 +1,7 @@
 ---
 title: "CYBERMID 2026"
 description: "Semana de cultura y conciencia de seguridad digital en Mérida."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: /img/events/2026-cybermid.webp
 startDate: "2026-10-12"
 endDate: "2026-10-16"

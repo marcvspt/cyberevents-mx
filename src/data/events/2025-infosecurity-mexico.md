@@ -1,7 +1,7 @@
 ---
 title: "Infosecurity Mexico 2025"
 description: "Conferencias, exposición y espacios de aprendizaje sobre ciberseguridad en Ciudad de México."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2025-09-30"
 endDate: "2025-10-01"
 city: "Ciudad de México"

@@ -1,7 +1,7 @@
 ---
 title: "Congreso Internacional de Ciberseguridad Industrial LATAM 2026 — México"
 description: "Congreso sobre protección de entornos industriales e infraestructura crítica."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-cci-con-mexico.webp"
 startDate: "2026-05-26"
 endDate: "2026-05-27"

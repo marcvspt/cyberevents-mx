@@ -1,7 +1,7 @@
 ---
 title: "Infosecurity México 2026"
 description: "Exposición y programa educativo de seguridad de la información y ciberseguridad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-06-02"
 endDate: "2026-06-04"
 city: "Ciudad de México"

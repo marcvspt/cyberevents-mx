@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
-import { SITE_PAGES } from '@/lib/data.ts';
+import { SITE_PAGES } from '@/lib/navigation.ts';
 import EventCard from '@/components/EventCard.astro';
-import { getPublishedEventCards } from '@/lib/event.ts';
+import { getPublishedEventCards } from '@/lib/events/content.ts';
 const allCards = await getPublishedEventCards();
 const upcoming = allCards.filter((card) => card.status === 'upcoming' || card.status === 'ongoing');
 const cards = upcoming.slice(0, 6);
@@ -14,7 +14,7 @@ const stats = [
     { value: allCards.filter((card) => card.status === 'finished').length, label: copy.stats.archive },
 ];
 ---
-<BaseLayout title={SITE_PAGES.Home.name} description={SITE_PAGES.Home.description} canonical={SITE_PAGES.Home.url}>
+<BaseLayout title={SITE_PAGES.Home.title} description={SITE_PAGES.Home.description} canonical={SITE_PAGES.Home.href}>
     <div class="page-shell">
         <header class="relative py-16 sm:py-24">
             <div aria-hidden="true" class="pointer-events-none absolute right-0 top-16 hidden size-56 rotate-12 rounded-3xl border border-secondary/15 bg-linear-to-br from-primary/5 to-secondary/10 lg:block">
@@ -27,8 +27,8 @@ const stats = [
             </h1>
             <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{copy.description}</p>
             <div class="mt-8 flex flex-wrap gap-3">
-                <a href={SITE_PAGES.Events.url} class="button-primary">{copy.primaryAction}<span aria-hidden="true">↗</span></a>
-                <a href={SITE_PAGES.About.url} class="button-secondary">{copy.secondaryAction}</a>
+                <a href={SITE_PAGES.Events.href} class="button-primary">{copy.primaryAction}<span aria-hidden="true">↗</span></a>
+                <a href={SITE_PAGES.About.href} class="button-secondary">{copy.secondaryAction}</a>
             </div>
         </header>
         <dl class="grid grid-cols-1 divide-y divide-border rounded-xl border border-border bg-surface/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -40,7 +40,7 @@ const stats = [
         <section class="pt-16">
             <div class="mb-7 flex flex-wrap items-end justify-between gap-5">
                 <div><h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{copy.sectionTitle}</h2><p class="mt-2 text-sm text-muted">{copy.sectionDescription}</p></div>
-                <a href={SITE_PAGES.Events.url} class="text-link text-sm">{copy.allEvents} <span aria-hidden="true">↗</span></a>
+                <a href={SITE_PAGES.Events.href} class="text-link text-sm">{copy.allEvents} <span aria-hidden="true">↗</span></a>
             </div>
             {cards.length > 0 ? <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{cards.map((card) => <EventCard card={card} />)}</div> : <p class="rounded-xl border border-border bg-surface p-6 text-muted">{copy.empty}</p>}
         </section>

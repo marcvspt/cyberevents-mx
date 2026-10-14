@@ -1,7 +1,7 @@
 ---
 title: "14.º Congreso de Seguridad de la Información IPN 2026"
 description: "Congreso de seguridad de la información de la ESIME Culhuacán."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 image: "/img/events/2026-congreso-seguridad-ipn.webp"
 startDate: "2026-10-15"
 endDate: "2026-10-16"

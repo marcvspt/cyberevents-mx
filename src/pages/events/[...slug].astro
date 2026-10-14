@@ -1,7 +1,7 @@
 ---
 import { render } from "astro:content";
 import EventSummaryLayout from "@/layouts/EventSummaryLayout.astro";
-import { getPublishedEvents } from "@/lib/event.ts";
+import { getPublishedEvents } from "@/lib/events/content.ts";
 
 const event = (await getPublishedEvents()).find((entry) => entry.id === Astro.params.slug);
 if (!event) return Astro.rewrite('/404');

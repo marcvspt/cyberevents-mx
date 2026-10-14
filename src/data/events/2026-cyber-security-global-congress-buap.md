@@ -1,7 +1,7 @@
 ---
 title: "Cyber Security Global Congress BUAP 2026"
 description: "Congreso académico con investigación, talleres y competencia CTF."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-09-30"
 endDate: "2026-10-02"
 city: "Puebla"

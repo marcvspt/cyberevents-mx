@@ -1,7 +1,7 @@
 ---
 title: "America Digital México 2026"
 description: "Congreso de tecnología y negocios con contenidos de seguridad digital."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 startDate: "2026-06-09"
 endDate: "2026-06-10"
 city: "Ciudad de México"

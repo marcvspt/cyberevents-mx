@@ -1,7 +1,7 @@
 ---
 title: "Foro Internacional de Seguridad y Justicia — Aguascalientes"
 description: "Foro con actividades relacionadas con tecnología y seguridad."
-updateAt: "2026-10-05"
+updatedAt: "2026-10-05"
 country: "MX"
 format: "in-person"
 categories: ["forum"]
