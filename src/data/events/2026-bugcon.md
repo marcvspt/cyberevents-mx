@@ -1,6 +1,6 @@
 ---
 title: "BugCON Security Conference 2026"
-description: "Encuentro de hacking y seguridad informática en Ciudad de México, con talleres y conferencias técnicas en Frontón Bucareli."
+description: "Evento de hacking y seguridad informática en Ciudad de México, con talleres y conferencias técnicas en Frontón Bucareli."
 updatedAt: "2026-10-14"
 startDate: "2026-11-24"
 endDate: "2026-11-27"
@@ -23,7 +23,7 @@ BugCON Security Conference reúne a hackers, profesionales de seguridad informá
 
 ## Programa de la edición
 
-El encuentro se celebra del **24 al 27 de noviembre de 2026** en **Frontón Bucareli**, Ciudad de México.
+El evento se celebra del **24 al 27 de noviembre de 2026** en **Frontón Bucareli**, Ciudad de México.
 
 | Actividad | Fechas |
 | --- | --- |

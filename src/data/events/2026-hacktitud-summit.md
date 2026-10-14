@@ -22,7 +22,7 @@ draft: false
 image: /img/events/2026-hacktitud-summit.webp
 ---
 
-Hacktitud Summit celebra su segunda edición el 25 de noviembre de 2026 en el Tecnológico de Monterrey, Campus Ciudad de México. El encuentro es presencial y tiene cupo limitado.
+Hacktitud Summit celebra su segunda edición el 25 de noviembre de 2026 en el Tecnológico de Monterrey, Campus Ciudad de México. El evento es presencial y tiene cupo limitado.
 
 ## Investigación y comunidad
 

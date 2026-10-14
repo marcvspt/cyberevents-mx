@@ -1,6 +1,6 @@
 ---
 title: "HackGDL 2026"
-description: "Encuentro comunitario de hacking con charlas técnicas y actividades de seguridad informática."
+description: "Evento comunitario de hacking con charlas técnicas y actividades de seguridad informática."
 updatedAt: "2026-10-13"
 image: "/img/events/shared/hackgdl.webp"
 startDate: "2026-03-14"

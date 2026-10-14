@@ -1,6 +1,6 @@
 ---
 title: "Manual de un ciberataque — CISOCLUB Monterrey 2026"
-description: "Encuentro de CISOCLUB para líderes de seguridad sobre cómo una exposición personal puede comprometer a una organización."
+description: "Evento de CISOCLUB para líderes de seguridad sobre cómo una exposición personal puede comprometer a una organización."
 updatedAt: "2026-10-13"
 startDate: "2026-10-21"
 city: "Monterrey"
@@ -24,4 +24,4 @@ La agenda visible de CISOCLUB anuncia «Manual de un ciberataque: De tu foto de 
 
 Es un evento privado para miembros de la comunidad. El formulario permite solicitar un lugar; la asistencia está sujeta a confirmación del organizador, que emite el acceso.
 
-Consulta la [convocatoria oficial](https://cisoclub.mx/eventos-cisoclub/) para conocer los detalles del encuentro.
+Consulta la [convocatoria oficial](https://cisoclub.mx/eventos-cisoclub/) para conocer los detalles del evento.

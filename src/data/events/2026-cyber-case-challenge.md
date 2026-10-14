@@ -1,6 +1,6 @@
 ---
 title: "Cyber Case Challenge 2026 — AMECS"
-description: "Encuentro de AMECS y el Cybersecurity Hub del Tec para analizar incidentes, decisiones y aprendizajes ante brechas de seguridad."
+description: "Evento de AMECS y el Cybersecurity Hub del Tec para analizar incidentes, decisiones y aprendizajes ante brechas de seguridad."
 updatedAt: "2026-10-13"
 startDate: "2026-10-27"
 city: "Ciudad de México"
@@ -23,7 +23,7 @@ Cyber Case Challenge propone una conversación entre especialistas para examinar
 
 ## Fecha y sede
 
-AMECS anuncia el encuentro para el 27 de octubre de 2026, a las 8:30 a.m., en el Tecnológico de Monterrey, Campus Ciudad de México. La sala indicada es Aula 3, antes CIEE, A3-402.
+AMECS anuncia el evento para el 27 de octubre de 2026, a las 8:30 a.m., en el Tecnológico de Monterrey, Campus Ciudad de México. La sala indicada es Aula 3, antes CIEE, A3-402.
 
 ## Registro
 

@@ -1,6 +1,6 @@
 ---
 title: "HackGDL 2025"
-description: "Segunda edición del encuentro comunitario de hacking de Guadalajara."
+description: "Segunda edición del evento comunitario de hacking de Guadalajara."
 updatedAt: "2026-10-05"
 startDate: "2025-03-01"
 city: "Guadalajara"

@@ -32,7 +32,7 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/components/EventCard.astro`: tarjeta compartida entre inicio y catálogo.
 - `src/components/EventVisual.astro`: imagen oficial o ilustración SVG compartida entre tarjetas y fichas.
 - `src/layouts/EventSummaryLayout.astro`: ficha y recursos del evento.
-- `src/pages/events/index.astro`: sección Eventos: encuentros cercanos, próximos, sin fecha, recientes y cancelados.
+- `src/pages/events/index.astro`: sección Eventos: cercanos, próximos, sin fecha, recientes y cancelados.
 - `src/pages/events/archive/index.astro`: eventos pasados agrupados por año en `/events/archive/`.
 - `src/pages/events/[...slug].astro`: fichas SSR de eventos publicados; devuelve 404 para IDs desconocidos o borradores.
 - `src/pages/rss.xml.ts`: RSS en `/rss.xml`, ordenado por última actualización editorial (`updatedAt`).

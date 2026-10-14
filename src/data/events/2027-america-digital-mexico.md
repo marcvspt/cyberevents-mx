@@ -17,5 +17,5 @@ topics: ["transformacion-digital"]
 image: /img/events/2027-america-digital-mexico
 ---
 
-Encuentro empresarial de tecnología e inteligencia artificial. Su exposición incluye seguridad IT, junto con otras áreas de transformación digital.
+Evento empresarial de tecnología e inteligencia artificial. Su exposición incluye seguridad IT, junto con otras áreas de transformación digital.
 

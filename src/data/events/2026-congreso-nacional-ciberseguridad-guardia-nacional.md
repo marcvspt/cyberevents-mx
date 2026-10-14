@@ -17,10 +17,10 @@ image: /img/events/2026-congreso-nacional-ciberseguridad-guardia-nacional.webp
 
 La Guardia Nacional celebró el Congreso Nacional de Ciberseguridad «Inteligencia Artificial en la Seguridad Pública» los días 6 y 7 de octubre de 2026. Participaron CERT-MX, dependencias gubernamentales, instituciones educativas y empresas tecnológicas.
 
-## Temas del encuentro
+## Temas del evento
 
 El programa abordó inteligencia artificial en seguridad pública, defensa digital, delitos relacionados con criptoactivos, ataques que emplean IA y cooperación frente al cibercrimen transnacional.
 
 ## Fuente oficial
 
-Consulta el [comunicado de la Guardia Nacional](https://www.gob.mx/guardianacional/prensa/guardia-nacional-realiza-congreso-nacional-de-ciberseguridad-inteligencia-artificial-en-la-seguridad-publica?state=published) para conocer la reseña del encuentro.
+Consulta el [comunicado de la Guardia Nacional](https://www.gob.mx/guardianacional/prensa/guardia-nacional-realiza-congreso-nacional-de-ciberseguridad-inteligencia-artificial-en-la-seguridad-publica?state=published) para conocer la reseña del evento.

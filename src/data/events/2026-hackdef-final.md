@@ -14,7 +14,7 @@ categories: ["ctf", "academic"]
 topics: ["ai-security", "agentes-autonomos", "analisis-de-codigo"]
 website: "https://ctf.hack-defender.mx/home"
 organizer: {"name":"Hack Defender","website":"https://www.linkedin.com/company/hack-defender-academy"}
-social: {"linkedin":"https://www.linkedin.com/company/hack-defender-academy","x":"https://twitter.com/hackdef"}
+social: {"linkedin":"https://www.linkedin.com/company/hack-defender-academy","x":"https://x.com/hackdef"}
 verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://merida.anahuac.mx/noticias/primer-lugar-hack-defender-10","https://ctf.hack-defender.mx/home"]}
 image: /img/events/2026-hackdef-final.webp
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Cybersecurity Summit Punta Mita 2026"
-description: "Encuentro sobre seguridad digital, riesgos y resiliencia organizacional."
+description: "Evento sobre seguridad digital, riesgos y resiliencia organizacional."
 updatedAt: "2026-10-05"
 image: "/img/events/2026-cybersecurity-summit-punta-mita.webp"
 startDate: "2026-10-28"
@@ -16,5 +16,5 @@ draft: false
 topics: ["grc","resiliencia"]
 ---
 
-Encuentro sobre seguridad digital, riesgos y resiliencia organizacional.
+Evento sobre seguridad digital, riesgos y resiliencia organizacional.
 
