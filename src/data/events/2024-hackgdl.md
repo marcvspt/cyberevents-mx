@@ -1,6 +1,6 @@
 ---
 title: "HackGDL 2024"
-description: "Primera edición del encuentro comunitario de hacking de Guadalajara."
+description: "Primera edición del evento comunitario de hacking de Guadalajara."
 updatedAt: "2026-10-05"
 startDate: "2024-03-16"
 city: "Guadalajara"

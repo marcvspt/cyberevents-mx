@@ -1,6 +1,6 @@
 ---
 title: "Hack The Road Guadalajara 2026"
-description: "Encuentro de líderes de seguridad informática y comunidad empresarial."
+description: "Evento de líderes de seguridad informática y comunidad empresarial."
 updatedAt: "2026-10-05"
 image: "/img/events/shared/hack-the-road.webp"
 startDate: "2026-10-29"

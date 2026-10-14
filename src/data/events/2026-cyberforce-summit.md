@@ -1,6 +1,6 @@
 ---
 title: "CyberForce Summit 2026"
-description: "Encuentro virtual gratuito de Grupo Trycer con conferencias, talleres y un panel sobre defensa digital y retos de ciberseguridad."
+description: "Evento virtual gratuito de Grupo Trycer con conferencias, talleres y un panel sobre defensa digital y retos de ciberseguridad."
 updatedAt: "2026-10-13"
 startDate: "2026-10-15"
 endDate: "2026-10-16"
@@ -20,7 +20,7 @@ image: /img/events/2026-cyberforce-summit.webp
 draft: false
 ---
 
-Grupo Trycer anuncia CyberForce Summit 2026 como un encuentro completamente en línea los días 15 y 16 de octubre, con acceso gratuito y actividades a partir de las 9:00 a.m., hora de Ciudad de México.
+Grupo Trycer anuncia CyberForce Summit 2026 como un evento completamente en línea los días 15 y 16 de octubre, con acceso gratuito y actividades a partir de las 9:00 a.m., hora de Ciudad de México.
 
 ## Programa anunciado
 

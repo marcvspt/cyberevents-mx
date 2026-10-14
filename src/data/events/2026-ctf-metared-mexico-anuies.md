@@ -22,4 +22,4 @@ La participación estuvo abierta a cualquier persona, en equipos de hasta **cinc
 
 ## Consulta de la edición
 
-La [plataforma oficial](https://ctf.anuies.mx/) conserva la descripción, reglas y fechas de la competencia. El encuentro fomenta la formación y el desarrollo de talento en la comunidad universitaria.
+La [plataforma oficial](https://ctf.anuies.mx/) conserva la descripción, reglas y fechas de la competencia. El evento fomenta la formación y el desarrollo de talento en la comunidad universitaria.

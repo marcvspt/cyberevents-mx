@@ -1,6 +1,6 @@
 ---
 title: "IT Solutions Day 2026"
-description: "Encuentro de soluciones tecnológicas y ciberseguridad empresarial."
+description: "Evento de soluciones tecnológicas y ciberseguridad empresarial."
 updatedAt: "2026-10-05"
 image: "/img/events/2026-it-solutions-day.webp"
 startDate: "2026-10-14"
@@ -15,5 +15,5 @@ venue: "Centro Banamex"
 price: {"type":"free"}
 ---
 
-Encuentro de soluciones tecnológicas y ciberseguridad empresarial.
+Evento de soluciones tecnológicas y ciberseguridad empresarial.
 

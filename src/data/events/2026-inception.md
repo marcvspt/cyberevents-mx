@@ -1,6 +1,6 @@
 ---
 title: "Inception 2026"
-description: "Encuentro de TrustDimension para líderes de ciberseguridad."
+description: "Evento de TrustDimension para líderes de ciberseguridad."
 updatedAt: "2026-10-05"
 startDate: "2026-11-13"
 edition: 7
@@ -20,6 +20,6 @@ image: /img/events/2026-inception.webp
 
 ## Pendiente de revisión
 
-El encuentro que define el rumbo de la seguridad de la información, un espacio exclusivo que reúne a los principales líderes de ciberseguridad, CISOs y partners tecnológicos.
+El evento que define el rumbo de la seguridad de la información, un espacio exclusivo que reúne a los principales líderes de ciberseguridad, CISOs y partners tecnológicos.
 
 En esta edición, explora la Inteligencia Artificial y como esta reescribiendo las reglas de la protección digital, desde la detección predictiva de amenazas hasta la automatización inteligente de controles.

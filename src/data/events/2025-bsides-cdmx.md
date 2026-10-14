@@ -1,6 +1,6 @@
 ---
 title: "Security BSides CDMX 2025"
-description: "Quinta edición del encuentro comunitario de seguridad informática de Ciudad de México."
+description: "Quinta edición del evento comunitario de seguridad informática de Ciudad de México."
 updatedAt: "2026-10-05"
 startDate: "2025-07-18"
 city: "Ciudad de México"
@@ -15,5 +15,5 @@ draft: false
 
 La quinta edición de Security BSides CDMX se celebró el 18 de julio de 2025.
 
-La sección de recursos del organizador reúne charlas y presentaciones de distintas ediciones. Selecciona los materiales identificados como 2025 para revisar este encuentro.
+La sección de recursos del organizador reúne charlas y presentaciones de distintas ediciones. Selecciona los materiales identificados como 2025 para revisar este evento.
 

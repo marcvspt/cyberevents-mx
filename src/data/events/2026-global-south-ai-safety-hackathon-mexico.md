@@ -18,8 +18,8 @@ La participación mexicana del Global South AI Safety Hackathon se celebró del 
 
 ## Enfoque
 
-Los equipos desarrollaron herramientas, evaluaciones e investigación sobre seguridad y gobernanza de IA. El encuentro convocó a investigadores, especialistas en seguridad, red teamers, estudiantes y personas interesadas en los riesgos de estos sistemas.
+Los equipos desarrollaron herramientas, evaluaciones e investigación sobre seguridad y gobernanza de IA. El evento convocó a investigadores, especialistas en seguridad, red teamers, estudiantes y personas interesadas en los riesgos de estos sistemas.
 
-## Consultar el encuentro
+## Consultar el evento
 
 La [convocatoria mexicana en Luma](https://luma.com/5q6vva0b) confirma fechas y modalidad. La [página de Apart Research](https://apartresearch.com/sprints/global-south-ais-hackathon-2026-06-19-to-2026-06-21) identifica el evento como terminado y permite explorar los proyectos entregados.

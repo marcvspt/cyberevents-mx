@@ -27,4 +27,4 @@ La propuesta reunió conferencias de seguridad informática, talleres y villas e
 
 ## Consultar la edición
 
-El [sitio de TROPICON](https://tropicon.org/) conserva información y material audiovisual del encuentro. El [registro histórico de Eventbrite](https://www.eventbrite.com/e/tropicon-2026-tickets-1976192749712) corresponde a esta edición; las ventas han finalizado.
+El [sitio de TROPICON](https://tropicon.org/) conserva información y material audiovisual del evento. El [registro histórico de Eventbrite](https://www.eventbrite.com/e/tropicon-2026-tickets-1976192749712) corresponde a esta edición; las ventas han finalizado.
