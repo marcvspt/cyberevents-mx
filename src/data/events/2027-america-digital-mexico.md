@@ -14,7 +14,7 @@ draft: false
 edition: 12
 venue: "World Trade Center"
 topics: ["transformacion-digital"]
-image: /img/events/2027-america-digital-mexico
+image: /img/events/2027-america-digital-mexico.webp
 ---
 
 Evento empresarial de tecnología e inteligencia artificial. Su exposición incluye seguridad IT, junto con otras áreas de transformación digital.
