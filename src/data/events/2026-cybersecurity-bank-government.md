@@ -15,7 +15,6 @@ edition: 14
 venue: "Marriott Reforma México City"
 topics: ["zero-trust","ai-security","grc"]
 organizer: {"name":"MTICS"}
-resources: {"photos":"https://www.facebook.com/media/set/?set=a.1033643185837011&vanity=mtics","videos":"https://www.mticsproducciones.com/cybersecurity-bank-and-government-mexico-2026/"}
 ---
 
 Conferencias sobre seguridad digital para banca, gobierno y líderes empresariales.

@@ -15,6 +15,7 @@ website: "https://tropicon.org/"
 tickets: "https://www.eventbrite.com/e/tropicon-2026-tickets-1976192749712"
 organizer: {"name":"Websec Events"}
 verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://tropicon.org/","https://www.eventbrite.com/e/tropicon-2026-tickets-1976192749712"]}
+image: /img/events/2026-tropicon.webp
 draft: false
 ---
 

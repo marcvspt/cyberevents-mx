@@ -17,7 +17,8 @@ venue: "Facultad de Informática UAQ / BLOQUE"
 topics: ["ot","ics","devsecops","blue-team"]
 price: {"type":"paid"}
 tickets: "https://www.passline.com/eventos/bsides-queretaro-2026"
-social: {"linkedin":"https://mx.linkedin.com/company/security-bsides-quer%C3%A9taro"}
+social: {"linkedin":"https://www.linkedin.com/company/security-bsides-quer%C3%A9taro"}
+image: /img/events/2026-bsides-queretaro.webp
 ---
 
 El 23 de octubre se celebran talleres en la Facultad de Informática de la UAQ. El 24 de octubre se realizan conferencias IT/OT en BLOQUE.

@@ -15,6 +15,7 @@ registrationOpen: true
 organizer: {"name":"AMECS / Cybersecurity Hub del Tecnológico de Monterrey","website":"https://amecsmexico.org/"}
 social: {"linkedin":"https://www.linkedin.com/company/amecsmx/","instagram":"https://www.instagram.com/amecs.mexico/","youtube":"https://www.youtube.com/@AMECS_MX"}
 verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://amecsmexico.org/eventos"]}
+image: /img/events/2026-cyber-case-challenge.webp
 draft: false
 ---
 
@@ -26,6 +27,4 @@ AMECS anuncia el encuentro para el 27 de octubre de 2026, a las 8:30 a.m., en el
 
 ## Registro
 
-El formulario está en la [página oficial de eventos de AMECS](https://amecsmexico.org/eventos): selecciona «Registro» en el bloque de Cyber Case Challenge. No se incorpora un precio porque la convocatoria revisada no lo especifica.
-
-La convocatoria describe un espacio de análisis de casos; no anuncia una competencia CTF ni publica reglas de competición.
+El formulario está en la [página oficial de eventos de AMECS](https://amecsmexico.org/eventos): selecciona «Registro» en el bloque de Cyber Case Challenge.

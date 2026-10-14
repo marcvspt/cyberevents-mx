@@ -2,22 +2,24 @@
 title: "Inception 2026"
 description: "Encuentro de TrustDimension para líderes de ciberseguridad."
 updatedAt: "2026-10-05"
+startDate: "2026-11-13"
+edition: 7
 country: "MX"
 format: "in-person"
 categories: ["conference"]
 website: "https://www.trustdimension.com/inception/"
 verification: {"status":"needs-verification","checkedAt":"2026-10-05","sources":["https://www.trustdimension.com/inception/"]}
-draft: true
+draft: false
 city: "Monterrey"
 state: "Nuevo León"
 venue: "Horno³, Parque Fundidora"
 topics: ["ai-security","grc"]
 organizer: {"name":"TrustDimension"}
+image: /img/events/2026-inception.webp
 ---
 
 ## Pendiente de revisión
 
-La portada indica edición 2026 y «Jueves 13 Nov.», pero el 13 de noviembre de 2026 es viernes. Confirmar el año y la fecha exactos con el organizador antes de publicar.
+El encuentro que define el rumbo de la seguridad de la información, un espacio exclusivo que reúne a los principales líderes de ciberseguridad, CISOs y partners tecnológicos.
 
-Esta ficha permanece como borrador. No publicar hasta resolver estos puntos con el organizador.
-
+En esta edición, explora la Inteligencia Artificial y como esta reescribiendo las reglas de la protección digital, desde la detección predictiva de amenazas hasta la automatización inteligente de controles.

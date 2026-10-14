@@ -121,7 +121,7 @@ export const TEXTS_GENERAL = {
         cfpLabels: { open: 'Abierta', closed: 'Cerrada', announced: 'Por anunciar' },
         formats: { 'in-person': 'Presencial', online: 'En línea', hybrid: 'Híbrido' },
         statusLabels: { 'coming-soon': 'Próximamente', upcoming: 'Próximo', ongoing: 'En curso', finished: 'Finalizado', cancelled: 'Cancelado' },
-        categories: { conference: 'Conferencia', congress: 'Congreso', meetup: 'Meetup', ctf: 'CTF', bsides: 'BSides', workshop: 'Taller', summit: 'Summit', forum: 'Foro', academic: 'Académico', community: 'Comunidad' },
+        categories: { conference: 'Conferencia', congress: 'Congreso', meetup: 'Meetup', ctf: 'CTF', hackathon: 'Hackatón', bsides: 'BSides', workshop: 'Taller', summit: 'Summit', forum: 'Foro', academic: 'Académico', community: 'Comunidad' },
         resourcesTitle: 'Lo que dejó el encuentro',
         resourceLabels: { photos: 'Fotografías', videos: 'Videos y charlas', slides: 'Presentaciones', aftermovie: 'Aftermovie' },
         conversationTitle: 'Busca el evento en redes',
@@ -135,6 +135,7 @@ export const TEXTS_GENERAL = {
     footer: {
         description: 'Encuentra conferencias, CTF y talleres de ciberseguridad en México. Conecta con la comunidad y explora los recursos de cada encuentro en nuestro archivo histórico.',
         externalLinks: 'Recursos Externos',
+        disclaimer: 'La información de este sitio se recopila de fuentes públicas, como sitios web, redes sociales y publicaciones de los organizadores.',
         independent: 'Un directorio independiente, hecho para conectar.',
         licenseIntro: 'Este proyecto está licenciado bajo los términos de la',
         licenseName: 'GNU General Public License v3.0',

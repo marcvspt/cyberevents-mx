@@ -48,11 +48,11 @@ Se mantienen las rutas existentes `/events/` y `/about`, con el archivo históri
 
 ## Publicar un evento
 
-La colección contiene 50 fichas reales o candidatas: 42 están habilitadas para publicación y 8 permanecen como borradores. La ampliación editorial del 13 de octubre de 2026 añade el Congreso Nacional de Ciberseguridad de la Guardia Nacional, Cyber Case Challenge, CyberForce Summit, Hacktitud Summit, la serie de webinars de KeD, el encuentro de CISOCLUB en Monterrey y TROPICON. Consulta [la investigación y guía de imágenes](docs/investigacion-eventos-2026-10-13.md) para sus fuentes, datos pendientes y enlaces de descarga. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
+La colección contiene 55 fichas reales o candidatas: 49 están habilitadas para publicación y 6 permanecen como borradores. La ampliación editorial del 13 de octubre de 2026 añade el Congreso Nacional de Ciberseguridad de la Guardia Nacional, Cyber Case Challenge, CyberForce Summit, Hacktitud Summit, la serie de webinars de KeD, el encuentro de CISOCLUB en Monterrey y TROPICON. Consulta [la investigación y guía de imágenes](docs/investigacion-eventos-2026-10-13.md) para sus fuentes, datos pendientes y enlaces de descarga. La revisión adicional de [CTFs y hackatones](docs/investigacion-ctf-hackatones-2026-10-13.md) incorpora OEA Cyber Challenge México, AHAU CTF, MetaRed México, la final de HackDef y el Global South AI Safety Hackathon en México, además de un borrador para OMCS. La revisión del 14 de octubre habilita BugCON 2026 con el calendario de Boletia del 24 al 27 de noviembre y Cybersecurity Week del 19 al 23 de octubre. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
 
 El archivo incluye HackGDL e Infosecurity Mexico de 2024; HackGDL, Infosecurity Mexico, FIRST MX y Security BSides CDMX de 2025. Es una selección inicial, no un registro exhaustivo. Las fechas de cada ficha se contrastaron con sitios o documentos oficiales.
 
-Los borradores pendientes son FIRST MX 2027, HackGDL 2027, Cyber Range 2026, BugCON 2026, Segurinfo México, Cybersecurity Week 2026, Inception 2026 y el Foro Internacional de Seguridad y Justicia. BugCON conserva fechas contradictorias entre su CFP y los anuncios difundidos en LinkedIn; Cyber Range requiere reconfirmar su anuncio tras el cambio de la página de AMECS. El cuerpo de cada archivo explica qué debe confirmarse. En algunos borradores la modalidad es provisional porque el esquema la requiere: confírmala antes de publicar. No confundir un anuncio sin fecha con información verificada de sede o modalidad.
+Los borradores pendientes son FIRST MX 2027, HackGDL 2027, Segurinfo México, Inception 2026, el Foro Internacional de Seguridad y Justicia y Olimpiada Mexicana de Ciberseguridad 2026. OMCS necesita documentar las fechas y modalidades de sus fases. El cuerpo de cada archivo explica qué debe confirmarse. En algunos borradores la modalidad es provisional porque el esquema la requiere: confírmala antes de publicar. No confundir un anuncio sin fecha con información verificada de sede o modalidad.
 
 Crea un Markdown en `src/data/events/`, usando el ejemplo de abajo como plantilla. El nombre comienza por el año de celebración: `2027-nombre-evento.md` genera la URL `/events/2027-nombre-evento/`. Completa la información y el cuerpo Markdown, verifica los datos oficiales y cambia `draft` a `false` cuando esté listo.
 
@@ -87,9 +87,13 @@ draft: true
 ---
 ```
 
-Campos obligatorios: `title`, `description`, `updatedAt`, `format` y al menos una categoría. `format` acepta `in-person`, `online` o `hybrid`. Categorías: `conference`, `congress`, `meetup`, `ctf`, `bsides`, `workshop`, `summit`, `forum`, `academic`, `community`. Los temas son etiquetas libres.
+Campos obligatorios: `title`, `description`, `updatedAt`, `format` y al menos una categoría. `format` acepta `in-person`, `online` o `hybrid`. Categorías: `conference`, `congress`, `meetup`, `ctf`, `hackathon`, `bsides`, `workshop`, `summit`, `forum`, `academic`, `community`. `hackathon` se muestra como «Hackatón». Los temas son etiquetas libres.
 
 Las fechas son cadenas `YYYY-MM-DD` entre comillas. Omite campos desconocidos; no uses `null`. Sin `startDate`, la ficha muestra «Próximamente / Fecha por anunciar». `endDate` requiere un inicio y no puede precederlo; si se omite, se considera un evento de un día. Cada edición puede tener su propio archivo para conservar el histórico.
+
+Redacta el cuerpo público con información confirmada y útil sobre el evento. Omite los datos desconocidos sin comentar su ausencia ni explicar decisiones sobre los campos de la ficha. Las notas de investigación y los pendientes editoriales se conservan en la documentación o en borradores excluidos de publicación.
+
+Para CTFs y hackatones, explica en el cuerpo los requisitos de edad, estudios, país o región, tamaño del equipo y restricciones para premios cuando estén confirmados. Distingue las fechas de registro de las fechas de competición. Si la fuente publica horas en UTC, conviértelas a `America/Mexico_City` para los campos de calendario: el CTF MetaRed 2026 del 9 de octubre a las 14:00 UTC al 10 de octubre a las 02:00 UTC corresponde al 9 de octubre, de 08:00 a 20:00 en CDMX. Conserva fases independientes en fichas distintas, como la clasificatoria y la final de HACKMEX.
 
 Otros campos opcionales:
 

@@ -16,6 +16,7 @@ topics: ["investigacion","seguridad-digital"]
 price: {"type":"paid"}
 tickets: "https://mcyra2026.unam.mx/attend"
 organizer: {"name":"UNAM"}
+image: /img/events/2026-mcyra.webp
 ---
 
 Conferencia mexicana de investigación y aplicaciones de ciberseguridad.

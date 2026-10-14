@@ -27,7 +27,7 @@ const events = defineCollection({
         country: z.literal('MX').default('MX'),
         venue: z.string().trim().min(1).optional(),
         format: z.enum(['in-person', 'online', 'hybrid']),
-        categories: z.array(z.enum(['conference', 'congress', 'meetup', 'ctf', 'bsides', 'workshop', 'summit', 'forum', 'academic', 'community'])).min(1),
+        categories: z.array(z.enum(['conference', 'congress', 'meetup', 'ctf', 'hackathon', 'bsides', 'workshop', 'summit', 'forum', 'academic', 'community'])).min(1),
         topics: z.array(z.string().trim().min(1)).default([]),
         price: z.object({
             type: z.enum(['free', 'paid', 'unknown']),

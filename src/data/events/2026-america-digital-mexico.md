@@ -1,7 +1,7 @@
 ---
 title: "America Digital México 2026"
 description: "Congreso de tecnología y negocios con contenidos de seguridad digital."
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-13"
 startDate: "2026-06-09"
 endDate: "2026-06-10"
 city: "Ciudad de México"
@@ -15,7 +15,6 @@ venue: "World Trade Center"
 topics: ["transformacion-digital","ai-security"]
 ---
 
-Evento de tecnología y negocios que incluye seguridad digital; no está dedicado exclusivamente a ciberseguridad.
+Evento de tecnología y negocios que incluye seguridad digital.
 
 Las fechas de esta ficha corresponden al programa oficial de la edición 2026.
-

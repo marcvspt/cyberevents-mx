@@ -1,21 +1,33 @@
 ---
 title: "Cybersecurity Week 2026"
 description: "Semana de ciberseguridad, riesgos tecnológicos y gobierno de datos."
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
+startDate: "2026-10-19"
+endDate: "2026-10-23"
 country: "MX"
 format: "hybrid"
 categories: ["conference","academic"]
 website: "https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"
-verification: {"status":"needs-verification","checkedAt":"2026-10-05","sources":["https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"]}
-draft: true
+verification: {"status":"verified","checkedAt":"2026-10-14","sources":["https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"]}
+draft: false
 city: "Monterrey"
 state: "Nuevo León"
 topics: ["grc","gobierno-de-datos"]
+organizer: {"name":"Grupo Educativo Tecnológico de Monterrey"}
 ---
 
-## Pendiente de revisión
+Cybersecurity Week 2026 se celebra del **19 al 23 de octubre** en Monterrey, con actividades presenciales y transmisión en vivo. El Grupo Educativo Tecnológico de Monterrey organiza esta semana dirigida al público en general.
 
-El título y el programa indican 19–23 de octubre, pero el campo «Termina» muestra 23 de septiembre. Solicitar confirmación de las fechas antes de publicar. La página anuncia asistencia presencial y seguimiento en vivo.
+## Temas
 
-Esta ficha permanece como borrador. No publicar hasta resolver estos puntos con el organizador.
+El programa aborda ciberseguridad, gestión de riesgos tecnológicos y gobierno de datos, con énfasis en continuidad operativa, innovación y confianza digital.
 
+## Actividades presenciales
+
+| Día | Espacio |
+| --- | --- |
+| Lunes 19 | La Carreta. |
+| Martes 20, miércoles 21 y jueves 22 | Mirador CEDES. |
+| Viernes 23 | Tecmilenio, Campus Las Torres. |
+
+Las sesiones se realizan a las 9:00 y 10:00 a.m. Consulta el programa y el seguimiento en vivo en la [convocatoria oficial](https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre).

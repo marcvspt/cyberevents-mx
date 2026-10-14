@@ -10,7 +10,7 @@ country: "MX"
 format: "in-person"
 categories: ["conference","community"]
 website: "https://www.hacktheroad.org/"
-verification: {"status":"verified","checkedAt":"2026-10-05","sources":["https://www.hacktheroad.org/","https://mx.linkedin.com/company/hacktheroad"]}
+verification: {"status":"verified","checkedAt":"2026-10-05","sources":["https://www.hacktheroad.org/","https://www.linkedin.com/company/hacktheroad"]}
 draft: false
 price: {"type":"free"}
 topics: ["grc","ai-security"]

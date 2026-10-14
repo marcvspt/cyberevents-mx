@@ -9,13 +9,14 @@ format: "online"
 categories: ["summit", "workshop"]
 topics: ["ai-security", "identity-security", "ot-security", "defensa-digital"]
 price: {"type":"free"}
-website: "https://mx.linkedin.com/company/grupo-trycer"
-tickets: "https://lnkd.in/gzTi7vRQ"
+website: "https://cybersecurity.trycer.com/cyberforcesummit2026"
+tickets: "https://cybersecurity.trycer.com/cyberforcesummit2026"
 registrationOpen: true
 organizer: {"name":"Grupo Trycer","website":"https://www.trycer.com/"}
-social: {"linkedin":"https://mx.linkedin.com/company/grupo-trycer","instagram":"https://www.instagram.com/grupotrycer/","youtube":"https://www.youtube.com/@grupotrycer"}
+social: {"linkedin":"https://www.linkedin.com/company/grupo-trycer","instagram":"https://www.instagram.com/grupotrycer/","youtube":"https://www.youtube.com/@grupotrycer"}
 hashtags: ["CyberForceSummit2026"]
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://mx.linkedin.com/company/grupo-trycer","https://es.linkedin.com/posts/r0bertmart1nez_la-pr%C3%B3xima-semana-participar%C3%A9-como-ponente-activity-7514814633774387201-rtGM"]}
+verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://www.linkedin.com/company/grupo-trycer","https://cybersecurity.trycer.com/cyberforcesummit2026"]}
+image: /img/events/2026-cyberforce-summit.webp
 draft: false
 ---
 
@@ -27,4 +28,4 @@ La convocatoria incluye conferencias, talleres prácticos y un panel de especial
 
 ## Registro
 
-Utiliza el [enlace de registro difundido por Grupo Trycer](https://lnkd.in/gzTi7vRQ). Es una URL abreviada de LinkedIn; si no abre, consulta la [cuenta oficial del organizador](https://mx.linkedin.com/company/grupo-trycer) para localizar la convocatoria vigente.
+Utiliza el [enlace de registro difundido por Grupo Trycer](https://cybersecurity.trycer.com/cyberforcesummit2026) y consulta las novedades en la [cuenta oficial del organizador](https://www.linkedin.com/company/grupo-trycer).

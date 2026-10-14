@@ -8,19 +8,18 @@ state: "Guanajuato"
 country: "MX"
 format: "in-person"
 categories: ["conference","community"]
-website: "https://mx.linkedin.com/company/leon-cybersecurity-conference"
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://mx.linkedin.com/company/leon-cybersecurity-conference"]}
+website: "https://www.linkedin.com/company/leon-cybersecurity-conference"
+verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://www.linkedin.com/company/leon-cybersecurity-conference"]}
 draft: false
 topics: ["blue-team","red-team"]
 hashtags: ["LCC2026"]
-social: {"linkedin":"https://mx.linkedin.com/company/leon-cybersecurity-conference"}
+social: {"linkedin":"https://www.linkedin.com/company/leon-cybersecurity-conference"}
 ---
 
-La cuenta del organizador confirma que trabaja en la edición 2026. No se incorpora una fecha ni una sede específica porque todavía no están anunciadas en la fuente revisada.
+El organizador trabaja en la edición 2026 de León Cybersecurity Conference.
 
 ## Participar en la comunidad
 
-El anuncio contempla futuras convocatorias de ponencias, patrocinadores y villas con talleres, retos y laboratorios. No se añade un CFP abierto porque no se ha localizado una URL de convocatoria vigente.
+El anuncio contempla futuras convocatorias de ponencias, patrocinadores y villas con talleres, retos y laboratorios.
 
-Consulta las actualizaciones en la [cuenta oficial de León Cybersecurity Conference](https://mx.linkedin.com/company/leon-cybersecurity-conference) para conocer las fechas y requisitos cuando se publiquen.
-
+Consulta las actualizaciones en la [cuenta oficial de León Cybersecurity Conference](https://www.linkedin.com/company/leon-cybersecurity-conference) para conocer las fechas y requisitos cuando se publiquen.

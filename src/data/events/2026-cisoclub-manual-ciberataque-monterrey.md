@@ -13,6 +13,7 @@ website: "https://cisoclub.mx/eventos-cisoclub/"
 tickets: "https://es.surveymonkey.com/r/CHMT38M"
 registrationOpen: true
 organizer: {"name":"CISOCLUB","website":"https://cisoclub.mx/"}
+image: /img/events/2026-cisoclub-manual-ciberataque-monterrey.webp
 verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://cisoclub.mx/eventos-cisoclub/"]}
 draft: false
 ---
@@ -21,6 +22,6 @@ La agenda visible de CISOCLUB anuncia «Manual de un ciberataque: De tu foto de 
 
 ## Acceso por invitación
 
-Es un evento privado para miembros de la comunidad. El formulario permite solicitar un lugar; el equipo del organizador confirma cada registro y emite el acceso. Completarlo no garantiza una entrada.
+Es un evento privado para miembros de la comunidad. El formulario permite solicitar un lugar; la asistencia está sujeta a confirmación del organizador, que emite el acceso.
 
-La sede específica no está publicada en la agenda. Consulta la [convocatoria oficial](https://cisoclub.mx/eventos-cisoclub/) para confirmar los detalles antes de asistir.
+Consulta la [convocatoria oficial](https://cisoclub.mx/eventos-cisoclub/) para conocer los detalles del encuentro.

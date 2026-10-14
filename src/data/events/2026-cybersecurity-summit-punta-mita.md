@@ -11,7 +11,7 @@ country: "MX"
 format: "in-person"
 categories: ["summit"]
 website: "https://www.cybersecuritysummit-cpt.com/"
-verification: {"status":"verified","checkedAt":"2026-10-05","sources":["https://www.cybersecuritysummit-cpt.com/","https://es.linkedin.com/posts/cybersecurity-cpt_cssmt26-cybersecuritysummit-cybersecurity-activity-7468076412365676545-jo3i"]}
+verification: {"status":"verified","checkedAt":"2026-10-05","sources":["https://www.cybersecuritysummit-cpt.com/","https://www.linkedin.com/posts/cybersecurity-cpt_cssmt26-cybersecuritysummit-cybersecurity-activity-7468076412365676545-jo3i"]}
 draft: false
 topics: ["grc","resiliencia"]
 ---

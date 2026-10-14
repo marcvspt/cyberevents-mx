@@ -9,7 +9,6 @@ format: "in-person"
 categories: ["conference","bsides","community"]
 website: "https://bsidescdmx.org/es/recursos/"
 image: "/img/events/shared/bsides-cdmx.webp"
-resources: {"videos":"https://bsidescdmx.org/es/recursos/","slides":"https://bsidescdmx.org/es/recursos/"}
 verification: {"status":"verified","checkedAt":"2026-10-05","sources":["https://bsidescdmx.org/docs/Invitacion_Patrocinio_BSides_CDMX_ES.pdf"]}
 draft: false
 ---

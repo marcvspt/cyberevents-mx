@@ -19,9 +19,10 @@ social: {"linkedin":"https://www.linkedin.com/company/hacktitud"}
 hashtags: ["HTTDSummit26", "HackHigher"]
 verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://hacktitud.org/","https://hacktitud.org/summit/registro/","https://sessionize.com/httds26/"]}
 draft: false
+image: /img/events/2026-hacktitud-summit.webp
 ---
 
-Hacktitud Summit celebra su segunda edición el 25 de noviembre de 2026 en el Tecnológico de Monterrey, Campus Ciudad de México. El organizador confirma la modalidad presencial y el cupo limitado; la hora de inicio está pendiente de anunciarse.
+Hacktitud Summit celebra su segunda edición el 25 de noviembre de 2026 en el Tecnológico de Monterrey, Campus Ciudad de México. El encuentro es presencial y tiene cupo limitado.
 
 ## Investigación y comunidad
 
@@ -29,6 +30,6 @@ La convocatoria busca investigación y experiencias prácticas en respuesta a in
 
 ## Participar
 
-El [registro de asistentes](https://hacktitud.org/summit/registro/) está abierto y sujeto a disponibilidad. No se informa una tarifa general en la página revisada.
+El [registro de asistentes](https://hacktitud.org/summit/registro/) está abierto y sujeto a disponibilidad.
 
 El [CFP en Sessionize](https://sessionize.com/httds26/) recibe propuestas del 14 de septiembre al 16 de octubre de 2026, con cierre a las 23:59, hora del centro de México. Admite charlas, workshops, masterclasses y lightning talks. La gratuidad indicada en Sessionize corresponde a ponentes.
