@@ -1,10 +1,11 @@
 ---
 title: "Hacktitud Summit 2026"
 description: "Segunda edición de la cumbre de Hacktitud con investigación técnica, charlas y talleres de ciberseguridad en el Tec, Campus Ciudad de México."
-updatedAt: "2026-10-13"
+updatedAt: "2026-10-18"
 edition: 2
 startDate: "2026-11-25"
 city: "Ciudad de México"
+state: "Ciudad de México"
 country: "MX"
 venue: "Tecnológico de Monterrey, Campus Ciudad de México"
 format: "in-person"
@@ -17,12 +18,14 @@ cfp: {"url":"https://sessionize.com/httds26/","opens":"2026-09-14","closes":"202
 organizer: {"name":"Hacktitud","website":"https://hacktitud.org/"}
 social: {"linkedin":"https://www.linkedin.com/company/hacktitud"}
 hashtags: ["HTTDSummit26", "HackHigher"]
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://hacktitud.org/","https://hacktitud.org/summit/registro/","https://sessionize.com/httds26/"]}
+verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://hacktitud.org/summit/","https://hacktitud.org/host/","https://hacktitud.org/summit/registro/","https://sessionize.com/httds26/"]}
 draft: false
 image: /img/events/2026-hacktitud-summit.webp
 ---
 
 Hacktitud Summit celebra su segunda edición el 25 de noviembre de 2026 en el Tecnológico de Monterrey, Campus Ciudad de México. El evento es presencial y tiene cupo limitado.
+
+La colaboración con el Tec es impulsada por su Cybersecurity Hub, que reúne academia, industria y talento emergente.
 
 ## Investigación y comunidad
 
@@ -32,4 +35,4 @@ La convocatoria busca investigación y experiencias prácticas en respuesta a in
 
 El [registro de asistentes](https://hacktitud.org/summit/registro/) está abierto y sujeto a disponibilidad.
 
-El [CFP en Sessionize](https://sessionize.com/httds26/) recibe propuestas del 14 de septiembre al 16 de octubre de 2026, con cierre a las 23:59, hora del centro de México. Admite charlas, workshops, masterclasses y lightning talks. La gratuidad indicada en Sessionize corresponde a ponentes.
+El [CFP en Sessionize](https://sessionize.com/httds26/) recibió propuestas del 14 de septiembre al 16 de octubre de 2026, con cierre a las 23:59, hora del centro de México. La convocatoria contempla charlas, workshops, masterclasses y lightning talks, con participación gratuita para ponentes.
