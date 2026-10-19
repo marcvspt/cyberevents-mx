@@ -12,7 +12,7 @@ website: "https://www.oas.org/ext/es/principal/calendario/evento/id/1878"
 tickets: "https://oea-cyberchallenge-mexico.hackrocks.com/"
 organizer: {"name":"OEA / CICTE — Sección de Ciberseguridad","website":"https://www.oas.org/"}
 hashtags: ["OEACyberChallenge"]
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://www.oas.org/ext/es/principal/calendario/evento/id/1878","https://www.oas.org/ext/en/main/calendar/event/id/1878"]}
+verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://www.oas.org/ext/es/principal/calendario/evento/id/1878","https://www.oas.org/ext/en/main/calendar/event/id/1878"]}
 image: /img/events/2026-oea-cyber-challenge-mexico.webp
 draft: false
 ---

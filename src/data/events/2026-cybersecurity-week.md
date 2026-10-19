@@ -1,17 +1,18 @@
 ---
 title: "Cybersecurity Week 2026"
 description: "Semana de ciberseguridad, riesgos tecnológicos y gobierno de datos."
-updatedAt: "2026-10-14"
+updatedAt: "2026-10-18"
 startDate: "2026-10-19"
 endDate: "2026-10-23"
 country: "MX"
 format: "hybrid"
 categories: ["conference","academic"]
 website: "https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"
-verification: {"status":"verified","checkedAt":"2026-10-14","sources":["https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"]}
+verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://conecta.tec.mx/es/noticias/eventos/nacional/institucion/cybersecurity-week-2026-del-19-al-23-de-octubre"]}
 draft: false
 city: "Monterrey"
 state: "Nuevo León"
+venue: "La Carreta / Mirador CEDES / Tecmilenio, Campus Las Torres"
 topics: ["grc","gobierno-de-datos"]
 organizer: {"name":"Grupo Educativo Tecnológico de Monterrey"}
 ---
