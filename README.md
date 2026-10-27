@@ -48,6 +48,8 @@ Se mantienen las rutas existentes `/events/` y `/about`, con el archivo históri
 
 ## Publicar un evento
 
+La revisión editorial del 26 de octubre de 2026 contrasta cinco fichas existentes con los avisos recibidos: detalla programa y boletos de BugCON, amplía Cybersecurity Summit Punta Mita y añade el hashtag oficial `HTTDS26` a Hacktitud Summit. También revisa Cyber Case Challenge y el Congreso Nacional de Ciberseguridad de la Guardia Nacional. Consulta [las fuentes y decisiones de esta revisión](docs/investigacion-eventos-2026-10-26.md).
+
 La colección contiene 56 fichas habilitadas para publicación. La revisión editorial del 18 de octubre de 2026 añade cinco encuentros de CISOCLUB, incluido TechSummit 2027, y corrige el inicio de MCyRA 2026 al 10 de noviembre. También revisa Hacktitud Summit, OEA Cyber Challenge México, Cybersecurity Week, Mexico Cybersecurity Summit y BSides Querétaro. Consulta [las fuentes y los enlaces de imágenes de esta revisión](docs/investigacion-eventos-2026-10-18.md). Las cinco fichas nuevas omiten `image` y usan la ilustración predeterminada; las imágenes existentes se conservan. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
 
 El archivo incluye HackGDL e Infosecurity Mexico de 2024; HackGDL, Infosecurity Mexico, FIRST MX y Security BSides CDMX de 2025. Es una selección inicial, no un registro exhaustivo. Las fechas de cada ficha se contrastaron con sitios o documentos oficiales.

@@ -14,7 +14,7 @@ tickets: "https://amecsmexico.org/eventos"
 registrationOpen: true
 organizer: {"name":"AMECS / Cybersecurity Hub del Tecnológico de Monterrey","website":"https://amecsmexico.org/"}
 social: {"linkedin":"https://www.linkedin.com/company/amecsmx/","instagram":"https://www.instagram.com/amecs.mexico/","youtube":"https://www.youtube.com/@AMECS_MX"}
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://amecsmexico.org/eventos"]}
+verification: {"status":"verified","checkedAt":"2026-10-26","sources":["https://amecsmexico.org/eventos"]}
 image: /img/events/2026-cyber-case-challenge.webp
 draft: false
 ---
