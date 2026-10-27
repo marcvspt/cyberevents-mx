@@ -10,7 +10,7 @@ categories: ["congress"]
 topics: ["ai-security", "incident-response", "cibercrimen", "seguridad-publica"]
 website: "https://www.gob.mx/guardianacional/prensa/guardia-nacional-realiza-congreso-nacional-de-ciberseguridad-inteligencia-artificial-en-la-seguridad-publica?state=published"
 organizer: {"name":"Guardia Nacional / CERT-MX","website":"https://www.gob.mx/guardianacional"}
-verification: {"status":"verified","checkedAt":"2026-10-13","sources":["https://www.gob.mx/guardianacional/prensa/guardia-nacional-realiza-congreso-nacional-de-ciberseguridad-inteligencia-artificial-en-la-seguridad-publica?state=published"]}
+verification: {"status":"verified","checkedAt":"2026-10-26","sources":["https://www.gob.mx/guardianacional/prensa/guardia-nacional-realiza-congreso-nacional-de-ciberseguridad-inteligencia-artificial-en-la-seguridad-publica?state=published"]}
 draft: false
 image: /img/events/2026-congreso-nacional-ciberseguridad-guardia-nacional.webp
 ---

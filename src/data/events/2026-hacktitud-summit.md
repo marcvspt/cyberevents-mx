@@ -1,7 +1,7 @@
 ---
 title: "Hacktitud Summit 2026"
 description: "Segunda edición de la cumbre de Hacktitud con investigación técnica, charlas y talleres de ciberseguridad en el Tec, Campus Ciudad de México."
-updatedAt: "2026-10-18"
+updatedAt: "2026-10-26"
 edition: 2
 startDate: "2026-11-25"
 city: "Ciudad de México"
@@ -17,8 +17,8 @@ registrationOpen: true
 cfp: {"url":"https://sessionize.com/httds26/","opens":"2026-09-14","closes":"2026-10-16"}
 organizer: {"name":"Hacktitud","website":"https://hacktitud.org/"}
 social: {"linkedin":"https://www.linkedin.com/company/hacktitud"}
-hashtags: ["HTTDSummit26", "HackHigher"]
-verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://hacktitud.org/summit/","https://hacktitud.org/host/","https://hacktitud.org/summit/registro/","https://sessionize.com/httds26/"]}
+hashtags: ["HTTDS26", "HTTDSummit26", "HackHigher"]
+verification: {"status":"verified","checkedAt":"2026-10-26","sources":["https://hacktitud.org/summit/","https://hacktitud.org/host/","https://hacktitud.org/summit/registro/","https://sessionize.com/httds26/"]}
 draft: false
 image: /img/events/2026-hacktitud-summit.webp
 ---
