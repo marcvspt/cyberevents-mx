@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import { TEXTS_GENERAL } from "@/lib/texts.ts";
 import { SITE_DATA } from "@/lib/site.ts";
 import { SITE_PAGES } from "@/lib/navigation.ts";
@@ -10,7 +11,7 @@ const currentYear = new Date().getFullYear();
 <footer class="mt-16 border-t border-border/70 bg-surface">
     <div class="page-shell">
         <div
-            class="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-12"
+            class="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12"
         >
             <div class="max-w-sm">
                 <a
@@ -20,7 +21,8 @@ const currentYear = new Date().getFullYear();
                 >
                 <p class="mt-2 text-sm text-muted">{copy.description}</p>
             </div>
-            <nav aria-label={copy.externalLinks} class="text-sm lg:col-start-3">
+            <p class="text-sm leading-relaxed text-muted">{copy.disclaimer}</p>
+            <nav aria-label={copy.externalLinks} class="text-sm">
                 <h2 class="text-base font-semibold text-primary">
                     {copy.externalLinks}
                 </h2>
@@ -35,7 +37,7 @@ const currentYear = new Date().getFullYear();
                                     class="inline-flex items-baseline gap-2 leading-relaxed text-foreground hover:text-primary"
                                 >
                                     {resource.label}{" "}
-                                    <span aria-hidden="true">↗</span>
+                                    <ArrowIcon />
                                 </a>
                             </li>
                         ))
@@ -46,7 +48,6 @@ const currentYear = new Date().getFullYear();
         <div
             class="border-t border-border py-7 text-center text-sm leading-relaxed text-foreground"
         >
-            <p class="mx-auto mb-5 max-w-3xl">{copy.disclaimer}</p>
             <p>
                 © {currentYear}
                 . {copy.independent}

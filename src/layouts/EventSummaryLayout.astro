@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import EventVisual from '@/components/EventVisual.astro';
 import { EVENT_STATUS_LABELS, formatEventDate, getEventUrl } from '@/lib/events/presentation.ts';
@@ -57,7 +58,7 @@ const breadcrumbSection = status === 'finished'
                         <ul class="mt-4 grid gap-3 sm:grid-cols-2">
                             {Object.entries(resourceLabels).map(([key, label]) => {
                                 const url = data.resources?.[key as keyof typeof resourceLabels];
-                                return url && <li><a target="_blank" rel="noopener noreferrer" href={url} class="button-secondary w-full justify-between">{label}<span aria-hidden="true">↗</span></a></li>;
+                                return url && <li><a target="_blank" rel="noopener noreferrer" href={url} class="button-secondary w-full justify-between">{label}<ArrowIcon /></a></li>;
                             })}
                         </ul>
                     </section>}
@@ -78,8 +79,8 @@ const breadcrumbSection = status === 'finished'
                 </dl>
                 {data.price && <p class="mt-5 border-t border-border pt-5 text-sm text-primary">{data.price.type === 'free' ? copy.free : data.price.type === 'paid' ? copy.paid + (data.price.amount !== undefined ? ': ' + data.price.amount + ' ' + data.price.currency : '') : copy.priceUnknown}</p>}
                 <nav aria-label={copy.linksLabel} class="mt-6 flex flex-col gap-3">
-                    {data.website && <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={data.website}>{copy.official}<span aria-hidden="true">↗</span></a>}
-                    {data.tickets && (status === 'upcoming' || status === 'ongoing' || status === 'coming-soon') && <a target="_blank" rel="noopener noreferrer" class="button-primary" href={data.tickets}>{copy.tickets}<span aria-hidden="true">↗</span></a>}
+                    {data.website && <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={data.website}>{copy.official}<ArrowIcon /></a>}
+                    {data.tickets && (status === 'upcoming' || status === 'ongoing' || status === 'coming-soon') && <a target="_blank" rel="noopener noreferrer" class="button-primary" href={data.tickets}>{copy.tickets}<ArrowIcon /></a>}
                     {data.cfp && cfpStatus && <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={data.cfp.url}>{copy.cfp}: {copy.cfpLabels[cfpStatus]}</a>}
                 </nav>
                 <section id="conversation" class="mt-6 rounded-lg border border-primary/25 bg-primary/5 p-4">
