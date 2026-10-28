@@ -14,6 +14,7 @@ topics: ["ciberseguridad", "liderazgo-tecnologico", "networking"]
 website: "https://cisoclub.mx/techsummit/"
 organizer: {"name":"CISOCLUB","website":"https://cisoclub.mx/"}
 verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://cisoclub.mx/techsummit/","https://cisoclub.mx/eventos-cisoclub/"]}
+image: /img/events/2027-cisoclub-techsummit.webp
 draft: false
 ---
 

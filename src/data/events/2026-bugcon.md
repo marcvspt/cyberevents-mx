@@ -16,6 +16,7 @@ tickets: "https://bugcon-security-conference-2026.boletia.com/"
 registrationOpen: true
 organizer: {"name":"BugCON","website":"https://www.bugcon.org/"}
 verification: {"status":"verified","checkedAt":"2026-10-26","sources":["https://bugcon.org/","https://bugcon.org/assets/app.js"]}
+image: /img/events/shared/bugcon.webp
 draft: false
 ---
 

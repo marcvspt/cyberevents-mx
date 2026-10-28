@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import { EVENT_STATUS_LABELS, formatEventDate } from '@/lib/events/presentation.ts';
 import type { EventCardData } from '@/lib/types/event.ts';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
@@ -31,7 +32,7 @@ const copy = TEXTS_GENERAL.event;
     </div>
     <div class="mt-auto pt-6">
         <a href={url} class="flex items-center justify-between border-t border-border pt-4 text-sm font-medium text-primary hover:text-secondary">
-            {copy.view}<span aria-hidden="true">↗</span>
+            {copy.view}<ArrowIcon />
         </a>
     </div>
 </article>

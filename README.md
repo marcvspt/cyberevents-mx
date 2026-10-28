@@ -31,6 +31,7 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/lib/events/presentation.ts`: URL de fichas, etiquetas de estado y formato de fechas.
 - `src/components/EventCard.astro`: tarjeta compartida entre inicio y catálogo.
 - `src/components/EventVisual.astro`: imagen oficial o ilustración SVG compartida entre tarjetas y fichas.
+- `src/components/ArrowIcon.astro`: flechas SVG compartidas para enlaces y acciones, sin emojis ni caracteres Unicode como iconos.
 - `src/layouts/EventSummaryLayout.astro`: ficha y recursos del evento.
 - `src/pages/events/index.astro`: sección Eventos: cercanos, próximos, sin fecha, recientes y cancelados.
 - `src/pages/events/archive/index.astro`: eventos pasados agrupados por año en `/events/archive/`.
@@ -137,7 +138,7 @@ Edita `TEXTS_GENERAL` en `src/lib/texts.ts` para cambiar los textos de inicio, E
 
 `SITE_PAGES` en `src/lib/navigation.ts` combina metadatos y enlaces con `id`, `label` y `href`; `MAIN_NAVIGATION` fija su orden. Los identificadores no dependen de etiquetas traducibles. `SITE_DATA` se importa directamente desde `src/lib/site.ts`. Los títulos, descripciones y cuerpos editoriales de los eventos siguen en `src/data/events/`. Usa alias `@/` y la extensión real explícita en imports internos, importando el archivo concreto sin reexportaciones de conveniencia.
 
-La sección `/events/` se llama «Eventos» en navegación, breadcrumbs y acciones; conserva ese nombre. El footer muestra marca y descripción a la izquierda con su estilo original, espacio central vacío en escritorio y Recursos Externos a la derecha y una franja inferior centrada con el año y el texto del proyecto. En móvil las secciones siguen el flujo vertical. Sus enlaces se editan en `EXTERNAL_RESOURCES` dentro de `src/lib/links.ts` y abren en otra pestaña. El enlace de licencia vive en `LICENSE_LINK` del mismo módulo. El footer no muestra enlace RSS; `/rss.xml` sigue disponible.
+La sección `/events/` se llama «Eventos» en navegación, breadcrumbs y acciones; conserva ese nombre. El footer muestra marca y descripción a la izquierda con su estilo original, aviso sobre fuentes públicas en la columna central en escritorio y Recursos Externos a la derecha y una franja inferior centrada con el año y el texto del proyecto. En móvil las secciones siguen el flujo vertical. Sus enlaces se editan en `EXTERNAL_RESOURCES` dentro de `src/lib/links.ts` y abren en otra pestaña. El enlace de licencia vive en `LICENSE_LINK` del mismo módulo. El footer no muestra enlace RSS; `/rss.xml` sigue disponible.
 
 Para sustituir escudo y texto por un logo horizontal, guarda el archivo en `public/img/` y asigna su ruta a `SITE_DATA.logo`, por ejemplo `/img/logo.svg`. La cabecera reserva 36 px de alto y hasta 200 px de ancho, mantiene la proporción y usa el nombre de marca como texto alternativo. Se recomienda SVG transparente o PNG de 400 × 72 px. Mientras `logo` esté vacío, se conserva la marca actual.
 

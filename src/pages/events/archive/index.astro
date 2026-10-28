@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import EventCard from '@/components/EventCard.astro';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
@@ -16,7 +17,7 @@ const copy = TEXTS_GENERAL.archive;
             <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{copy.title}</h1>
             <p class="mt-5 text-base leading-relaxed text-muted">{copy.description}</p>
             <p class="mt-5 font-mono text-xs text-secondary">{String(count).padStart(2, '0')} {copy.count}</p>
-            <a href={SITE_PAGES.Events.href} class="button-secondary mt-6"><span aria-hidden="true">←</span>{copy.back}</a>
+            <a href={SITE_PAGES.Events.href} class="button-secondary mt-6"><ArrowIcon direction="left" />{copy.back}</a>
         </header>
         {groups.length > 0 && <nav aria-label={copy.navigation} class="mt-8 flex flex-wrap gap-2 border-b border-border pb-8">
             {groups.map((group) => <a href={'#year-' + group.year} class="button-secondary py-2 font-mono text-xs">{group.year}<span class="text-secondary">{group.cards.length}</span></a>)}

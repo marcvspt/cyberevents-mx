@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { TEXTS_GENERAL } from "@/lib/texts.ts";
 import { SITE_PAGES } from "@/lib/navigation.ts";
@@ -49,7 +50,7 @@ const copy = TEXTS_GENERAL.about;
             {copy.note}
         </aside>
         <a href={SITE_PAGES.Events.href} class="button-primary mt-8"
-            >{copy.action}<span aria-hidden="true">↗</span></a
+            >{copy.action}<ArrowIcon /></a
         >
     </div>
 </BaseLayout>
