@@ -14,6 +14,7 @@ tickets: "https://es.surveymonkey.com/r/Y79P62P"
 registrationOpen: true
 organizer: {"name":"CISOCLUB","website":"https://cisoclub.mx/"}
 verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://cisoclub.mx/eventos-cisoclub/","https://cisoclub.mx/gatherings/"]}
+image: /img/events/2026-cisoclub-winter-gathering.webp
 draft: false
 ---
 

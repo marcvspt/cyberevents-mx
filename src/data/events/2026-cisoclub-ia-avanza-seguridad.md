@@ -12,6 +12,7 @@ topics: ["inteligencia-artificial", "ciberseguridad"]
 website: "https://cisoclub.mx/eventos-cisoclub/"
 organizer: {"name":"CISOCLUB","website":"https://cisoclub.mx/"}
 verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://cisoclub.mx/eventos-cisoclub/"]}
+image: /img/events/2026-cisoclub-ia-avanza-seguridad.webp
 draft: false
 ---
 
