@@ -19,3 +19,9 @@ export const LICENSE_LINK: LinkItem = {
     label: TEXTS_GENERAL.footer.licenseName,
     href: 'https://github.com/marcvspt/cyberevents-mx/blob/master/LICENSE',
 };
+
+export const CONTACT_LINK: LinkItem = {
+    id: 'contact',
+    label: TEXTS_GENERAL.footer.contact,
+    href: 'https://github.com/marcvspt/adventsec-issues',
+};
