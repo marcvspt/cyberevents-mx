@@ -144,6 +144,8 @@ Para sustituir escudo y texto por un logo horizontal, guarda el archivo en `publ
 
 `Header.astro`, `Footer.astro` y `EventCard.astro` comparten el estilo entre vistas. El catálogo incluye enlaces a cada sección; son navegación por anclas, no filtros interactivos. Se incluye foco visible, enlace para saltar al contenido y respeto a la preferencia de movimiento reducido.
 
+La cabecera agrupa los enlaces en un menú de hamburguesa por debajo de `md` (768 px), con apertura nativa mediante `details` y `summary`. Con JavaScript se cierra al elegir un enlace, pulsar Escape, hacer clic fuera o navegar con `ClientRouter`. El pie apila y centra todos sus bloques por debajo de `lg` (1024 px); desde ese ancho conserva las tres columnas alineadas a la izquierda. Revisa ambos componentes en inicio, Eventos, Archivo, acerca de y una ficha, incluyendo teclado y navegación entre páginas.
+
 Se eliminaron los textos decorativos de entrada (eyebrows). Cada ficha comienza con Inicio / Eventos o Archivo / título, seguido de su estado y categorías. El texto es blanco puro; tamaños y pesos distinguen títulos, descripciones y metadata. Los enlaces y etiquetas mantienen los acentos azul y turquesa.
 
 En cada ficha, el bloque de título y descripción está por encima de la cuadrícula. El aside empieza a la altura de la imagen y permanece visible al desplazarse en escritorio mediante `sticky`. Su altura se ajusta al viewport y admite scroll interno; en móvil aparece debajo del contenido. Los enlaces externos abren otra pestaña con `target="_blank"` y `rel="noopener noreferrer"`. Los del cuerpo Markdown reciben esos atributos mediante el script de la plantilla, también al navegar con `ClientRouter`; la navegación interna permanece en la misma pestaña.

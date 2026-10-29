@@ -45,6 +45,7 @@ export const TEXTS_GENERAL = {
     },
     navigation: {
         label: 'Navegación principal',
+        menu: 'Menú de navegación',
         home: 'Inicio',
         events: 'Eventos',
         archive: 'Archivo',
