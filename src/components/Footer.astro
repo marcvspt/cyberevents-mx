@@ -3,7 +3,7 @@ import ArrowIcon from '@/components/ArrowIcon.astro';
 import { TEXTS_GENERAL } from "@/lib/texts.ts";
 import { SITE_DATA } from "@/lib/site.ts";
 import { SITE_PAGES } from "@/lib/navigation.ts";
-import { EXTERNAL_RESOURCES, LICENSE_LINK } from "@/lib/links.ts";
+import { CONTACT_LINK, EXTERNAL_RESOURCES, LICENSE_LINK } from "@/lib/links.ts";
 const copy = TEXTS_GENERAL.footer;
 const currentYear = new Date().getFullYear();
 ---
@@ -21,7 +21,19 @@ const currentYear = new Date().getFullYear();
                 >
                 <p class="mt-2 text-sm text-muted">{copy.description}</p>
             </div>
-            <p class="text-sm leading-relaxed text-muted">{copy.disclaimer}</p>
+            <div class="text-sm leading-relaxed text-muted">
+                <p>{copy.disclaimer}</p>
+                <p class="mt-4">
+                    <a
+                        href={CONTACT_LINK.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-link"
+                    >
+                        {CONTACT_LINK.label}{" "}<ArrowIcon />
+                    </a>
+                </p>
+            </div>
             <nav aria-label={copy.externalLinks} class="text-sm">
                 <h2 class="text-base font-semibold text-primary">
                     {copy.externalLinks}

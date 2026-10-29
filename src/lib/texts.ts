@@ -136,6 +136,7 @@ export const TEXTS_GENERAL = {
     footer: {
         description: 'Encuentra conferencias, CTF y talleres de ciberseguridad en México. Conecta con la comunidad y explora los recursos de cada evento en el archivo histórico de eventos.',
         externalLinks: 'Recursos Externos',
+        contact: '¿Quieres reportar algo o contactar conmigo?',
         disclaimer: 'La información de este sitio se recopila de fuentes públicas, como sitios web, redes sociales y publicaciones de los organizadores.',
         independent: 'Un directorio independiente, hecho para conectar.',
         licenseIntro: 'Este proyecto está licenciado bajo los términos de la',
