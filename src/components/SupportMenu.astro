@@ -1,0 +1,22 @@
+---
+import ArrowIcon from '@/components/ArrowIcon.astro';
+import { SUPPORT_LINKS } from '@/lib/links.ts';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+---
+
+<details data-navigation-menu class="group/support relative border-t border-border md:border-0">
+    <summary class="flex min-h-14 w-full cursor-pointer list-none items-center justify-between gap-2 rounded-lg px-4 py-3 text-primary transition-colors hover:bg-surface-raised hover:text-secondary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-5 md:min-h-0 md:w-auto md:justify-start md:rounded-none md:px-0 md:py-1 md:hover:bg-transparent [&::-webkit-details-marker]:hidden">
+        {TEXTS_GENERAL.support.title}
+        <svg class="group-open/support:rotate-180" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+    </summary>
+    <ul class="static mt-1 flex w-full flex-col gap-2 rounded-xl border border-border bg-surface-raised p-2 text-base md:absolute md:right-0 md:top-full md:z-40 md:mt-3 md:w-56 md:gap-1 md:bg-surface md:text-sm md:shadow-lg">
+        {SUPPORT_LINKS.map((link) => (
+            <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="flex min-h-14 w-full items-center justify-between gap-3 rounded-lg border border-border bg-surface px-4 py-4 text-foreground hover:bg-surface-raised hover:text-primary md:min-h-0 md:border-transparent md:bg-transparent md:py-3">
+                    {link.label}
+                    <ArrowIcon />
+                </a>
+            </li>
+        ))}
+    </ul>
+</details>

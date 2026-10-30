@@ -2,7 +2,7 @@
 // Las rutas, enlaces y configuración viven en navigation.ts, links.ts y site.ts.
 export const TEXTS_GENERAL = {
     site: {
-        name: 'CyberEvents.MX',
+        name: 'CyberEvents',
         description: 'Eventos y archivo histórico de eventos de ciberseguridad en México',
     },
     pages: {
@@ -16,7 +16,7 @@ export const TEXTS_GENERAL = {
         },
         About: {
             title: 'Acerca de',
-            description: 'Conoce CyberEvents.MX, el directorio independiente de ciberseguridad en México',
+            description: 'Conoce CyberEvents, el directorio independiente de ciberseguridad en México',
         },
         Archive: {
             title: 'Archivo de eventos',
@@ -51,6 +51,11 @@ export const TEXTS_GENERAL = {
         archive: 'Archivo',
         about: 'Acerca de',
         skip: 'Saltar al contenido',
+    },
+    support: {
+        title: 'Apóyame',
+        buyMeACoffee: 'Buy Me a Coffee',
+        githubSponsors: 'GitHub Sponsors',
     },
     home: {
         title: 'Tu próxima conexión',
@@ -91,7 +96,7 @@ export const TEXTS_GENERAL = {
     about: {
         title: 'Un lugar para toda',
         titleAccent: 'la comunidad.',
-        description: 'CyberEvents.MX reúne la actividad de ciberseguridad en México: antes, durante y después de cada evento.',
+        description: 'CyberEvents reúne la actividad de ciberseguridad en México: antes, durante y después de cada evento.',
         sections: [
             { title: 'Encuentra tu siguiente evento', description: 'Conferencias, congresos, CTF y talleres. Consulta fechas, sedes y enlaces del organizador en una misma página.' },
             { title: 'Conserva lo que se comparte', description: 'Los eventos terminan, el conocimiento permanece. El archivo reúne ediciones pasadas y enlaza fotografías, charlas y materiales cuando están disponibles.' },
@@ -136,7 +141,6 @@ export const TEXTS_GENERAL = {
     footer: {
         description: 'Encuentra conferencias, CTF y talleres de ciberseguridad en México. Conecta con la comunidad y explora los recursos de cada evento en el archivo histórico de eventos.',
         externalLinks: 'Recursos Externos',
-        contact: '¿Quieres reportar algo o contactar conmigo?',
         disclaimer: 'La información de este sitio se recopila de fuentes públicas, como sitios web, redes sociales y publicaciones de los organizadores.',
         independent: 'Un directorio independiente, hecho para conectar.',
         licenseIntro: 'Este proyecto está licenciado bajo los términos de la',

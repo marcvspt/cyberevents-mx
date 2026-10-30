@@ -1,4 +1,4 @@
-# CyberEvents.MX
+# CyberEvents
 
 Directorio y archivo histórico de eventos de ciberseguridad en México. La intención del producto está en `DATA.md`; las fechas mencionadas allí necesitan confirmación antes de publicarse.
 
@@ -140,7 +140,9 @@ Edita `TEXTS_GENERAL` en `src/lib/texts.ts` para cambiar los textos de inicio, E
 
 La sección `/events/` se llama «Eventos» en navegación, breadcrumbs y acciones; conserva ese nombre. El footer muestra marca y descripción a la izquierda con su estilo original, aviso sobre fuentes públicas en la columna central en escritorio y Recursos Externos a la derecha y una franja inferior centrada con el año y el texto del proyecto. En móvil las secciones siguen el flujo vertical. Sus enlaces se editan en `EXTERNAL_RESOURCES` dentro de `src/lib/links.ts` y abren en otra pestaña. El enlace de licencia vive en `LICENSE_LINK` del mismo módulo. El footer no muestra enlace RSS; `/rss.xml` sigue disponible.
 
-Para sustituir escudo y texto por un logo horizontal, guarda el archivo en `public/img/` y asigna su ruta a `SITE_DATA.logo`, por ejemplo `/img/logo.svg`. La cabecera reserva 36 px de alto y hasta 200 px de ancho, mantiene la proporción y usa el nombre de marca como texto alternativo. Se recomienda SVG transparente o PNG de 400 × 72 px. Mientras `logo` esté vacío, se conserva la marca actual.
+La marca visible es CyberEvents, sin el sufijo «.MX». `SITE_DATA.logo` usa `/img/logo.svg`: un único SVG horizontal de 188 × 36 px con el escudo y el nombre convertido a trazados, sin depender de fuentes instaladas. `public/favicon.svg` contiene el mismo escudo por separado y `BaseLayout.astro` lo declara como favicon. Conserva el símbolo y los colores de ambos archivos sincronizados; los colores del SVG corresponden a los tokens del tema oscuro de `global.css`. El dominio y el nombre del repositorio se mantienen.
+
+Para sustituir el logo horizontal, guarda el archivo en `public/img/` y asigna su ruta a `SITE_DATA.logo`. La cabecera muestra 36 px de alto y hasta 200 px de ancho, mantiene la proporción y usa el nombre de marca como texto alternativo. Actualiza los atributos `width` y `height` de la imagen en `Header.astro` si cambian las dimensiones del recurso. Mientras `logo` esté vacío, se conserva el escudo con el nombre como texto.
 
 `Header.astro`, `Footer.astro` y `EventCard.astro` comparten el estilo entre vistas. El catálogo incluye enlaces a cada sección; son navegación por anclas, no filtros interactivos. Se incluye foco visible, enlace para saltar al contenido y respeto a la preferencia de movimiento reducido.
 
