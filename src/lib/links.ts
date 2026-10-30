@@ -20,8 +20,15 @@ export const LICENSE_LINK: LinkItem = {
     href: 'https://github.com/marcvspt/cyberevents-mx/blob/master/LICENSE',
 };
 
-export const CONTACT_LINK: LinkItem = {
-    id: 'contact',
-    label: TEXTS_GENERAL.footer.contact,
-    href: 'https://github.com/marcvspt/adventsec-issues',
-};
+export const SUPPORT_LINKS: LinkItem[] = [
+    {
+        id: 'buy-me-a-coffee',
+        label: TEXTS_GENERAL.support.buyMeACoffee,
+        href: 'https://buymeacoffee.com/marcvspt',
+    },
+    {
+        id: 'github-sponsors',
+        label: TEXTS_GENERAL.support.githubSponsors,
+        href: 'https://github.com/sponsors/marcvspt',
+    },
+];

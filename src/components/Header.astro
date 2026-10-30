@@ -1,4 +1,5 @@
 ---
+import SupportMenu from '@/components/SupportMenu.astro';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
 import { SITE_DATA } from '@/lib/site.ts';
 import { MAIN_NAVIGATION, SITE_PAGES } from '@/lib/navigation.ts';
@@ -13,15 +14,16 @@ const isActive = (href: string) => href === activeHref;
 <header class="border-b border-border/70">
     <div class="page-shell flex items-center justify-between gap-5 py-5">
         <a href={SITE_PAGES.Home.href} class="flex shrink-0 items-center gap-3 whitespace-nowrap font-semibold tracking-tight" aria-label={SITE_DATA.name}>
-            {SITE_DATA.logo ? <img src={SITE_DATA.logo} alt={SITE_DATA.name} width="200" height="36" class="h-9 w-auto max-w-[200px] object-contain" /> : <>
+            {SITE_DATA.logo ? <img src={SITE_DATA.logo} alt={SITE_DATA.name} width="188" height="36" class="h-9 w-auto max-w-[200px] object-contain" /> : <>
             <span class="flex size-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/8 text-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 8 9 8 9s8-4.5 8-9V6l-8-3Z"/><path d="m9 10-2 2 2 2m6-4 2 2-2 2"/></svg>
             </span>
             {SITE_DATA.name}
             </>}
         </a>
-        <nav aria-label={copy.label} class="hidden gap-7 text-sm md:flex">
+        <nav aria-label={copy.label} class="hidden gap-4 text-sm md:flex lg:gap-7">
             {links.map((link) => <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} class:list={['py-1 hover:text-primary', isActive(link.href) ? 'text-primary' : 'text-muted']}>{link.label}</a>)}
+            <SupportMenu />
         </nav>
         <details data-navigation-menu class="group relative shrink-0 md:hidden">
             <summary class="flex size-11 cursor-pointer list-none items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:border-primary/60 hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-5 [&::-webkit-details-marker]:hidden">
@@ -29,19 +31,34 @@ const isActive = (href: string) => href === activeHref;
                 <svg class="group-open:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
                 <svg class="hidden group-open:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg>
             </summary>
-            <nav aria-label={copy.label} class="absolute right-0 top-full z-40 mt-3 flex w-[min(18rem,calc(100vw-2.5rem))] flex-col gap-1 rounded-xl border border-border bg-surface p-2 text-sm shadow-lg">
+            <nav aria-label={copy.label} class="absolute right-0 top-full z-40 mt-3 flex max-h-[calc(100dvh-6rem)] w-[min(18rem,calc(100vw-2.5rem))] flex-col gap-1 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 text-sm shadow-lg">
                 {links.map((link) => <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} class:list={['rounded-lg px-4 py-3 hover:bg-surface-raised hover:text-primary', isActive(link.href) ? 'bg-primary/8 text-primary' : 'text-muted']}>{link.label}</a>)}
+                <SupportMenu />
             </nav>
         </details>
     </div>
 </header>
 
 <script>
+    function closeNavigationMenu(menu: HTMLDetailsElement) {
+        menu.querySelectorAll<HTMLDetailsElement>('[data-navigation-menu][open]').forEach((panel) => {
+            panel.open = false;
+        });
+        menu.open = false;
+    }
+
     function closeNavigationMenus() {
         document.querySelectorAll<HTMLDetailsElement>('[data-navigation-menu]').forEach((menu) => {
-            menu.open = false;
+            closeNavigationMenu(menu);
         });
     }
+
+    document.addEventListener('toggle', (event) => {
+        const menu = event.target;
+        if (!(menu instanceof HTMLDetailsElement) || !menu.matches('[data-navigation-menu]') || menu.open) return;
+
+        closeNavigationMenu(menu);
+    }, true);
 
     document.addEventListener('click', (event) => {
         const target = event.target;
@@ -49,7 +66,7 @@ const isActive = (href: string) => href === activeHref;
 
         document.querySelectorAll<HTMLDetailsElement>('[data-navigation-menu]').forEach((menu) => {
             if (!menu.contains(target) || (target instanceof Element && target.closest('a'))) {
-                menu.open = false;
+                closeNavigationMenu(menu);
             }
         });
     });
@@ -57,10 +74,12 @@ const isActive = (href: string) => href === activeHref;
     document.addEventListener('keydown', (event) => {
         if (event.key !== 'Escape') return;
 
-        document.querySelectorAll<HTMLDetailsElement>('[data-navigation-menu][open]').forEach((menu) => {
-            menu.open = false;
-            menu.querySelector('summary')?.focus();
-        });
+        const openMenus = [...document.querySelectorAll<HTMLDetailsElement>('[data-navigation-menu][open]')];
+        const menu = openMenus.reverse().find((candidate) => candidate.contains(document.activeElement)) ?? openMenus[0];
+        if (!menu) return;
+
+        closeNavigationMenu(menu);
+        menu.querySelector('summary')?.focus();
     });
 
     document.addEventListener('astro:before-swap', closeNavigationMenus);

@@ -3,7 +3,7 @@ import type { SiteData } from '@/lib/types/site.ts';
 
 export const SITE_DATA: SiteData = {
     ...TEXTS_GENERAL.site,
-    logo: '',
+    logo: '/img/logo.svg',
 };
 
 export const SITE_LOCALE = {
