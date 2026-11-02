@@ -49,9 +49,11 @@ Se mantienen las rutas existentes `/events/` y `/about`, con el archivo históri
 
 ## Publicar un evento
 
+La revisión editorial del 1 de noviembre de 2026 incorpora Black ESET Security Day México, CITIS 2026 y Crónica de un ataque anunciado. Confirma que TechSummit 2027 ya tiene ficha y conserva su contenido. Las tres fichas nuevas usan la ilustración predeterminada.
+
 La revisión editorial del 26 de octubre de 2026 contrasta cinco fichas existentes con los avisos recibidos: detalla programa y boletos de BugCON, amplía Cybersecurity Summit Punta Mita y añade el hashtag oficial `HTTDS26` a Hacktitud Summit. También revisa Cyber Case Challenge y el Congreso Nacional de Ciberseguridad de la Guardia Nacional. Consulta [las fuentes y decisiones de esta revisión](docs/investigacion-eventos-2026-10-26.md).
 
-La colección contiene 56 fichas habilitadas para publicación. La revisión editorial del 18 de octubre de 2026 añade cinco encuentros de CISOCLUB, incluido TechSummit 2027, y corrige el inicio de MCyRA 2026 al 10 de noviembre. También revisa Hacktitud Summit, OEA Cyber Challenge México, Cybersecurity Week, Mexico Cybersecurity Summit y BSides Querétaro. Consulta [las fuentes y los enlaces de imágenes de esta revisión](docs/investigacion-eventos-2026-10-18.md). Las cinco fichas nuevas omiten `image` y usan la ilustración predeterminada; las imágenes existentes se conservan. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
+La colección contiene 59 fichas habilitadas para publicación. La revisión editorial del 18 de octubre de 2026 añade cinco encuentros de CISOCLUB, incluido TechSummit 2027, y corrige el inicio de MCyRA 2026 al 10 de noviembre. También revisa Hacktitud Summit, OEA Cyber Challenge México, Cybersecurity Week, Mexico Cybersecurity Summit y BSides Querétaro. Consulta [las fuentes y los enlaces de imágenes de esta revisión](docs/investigacion-eventos-2026-10-18.md). Las cinco fichas nuevas omiten `image` y usan la ilustración predeterminada; las imágenes existentes se conservan. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
 
 El archivo incluye HackGDL e Infosecurity Mexico de 2024; HackGDL, Infosecurity Mexico, FIRST MX y Security BSides CDMX de 2025. Es una selección inicial, no un registro exhaustivo. Las fechas de cada ficha se contrastaron con sitios o documentos oficiales.
 
@@ -94,7 +96,7 @@ Campos obligatorios: `title`, `description`, `updatedAt`, `format` y al menos un
 
 Las fechas son cadenas `YYYY-MM-DD` entre comillas. Omite campos desconocidos; no uses `null`. Sin `startDate`, la ficha muestra «Próximamente / Fecha por anunciar». `endDate` requiere un inicio y no puede precederlo; si se omite, se considera un evento de un día. Cada edición puede tener su propio archivo para conservar el histórico.
 
-Redacta el cuerpo público con información confirmada y útil sobre el evento. Omite los datos desconocidos sin comentar su ausencia ni explicar decisiones sobre los campos de la ficha. Las notas de investigación y los pendientes editoriales se conservan en la documentación o en borradores excluidos de publicación.
+Redacta el cuerpo público con información confirmada y útil sobre el evento. Omite los datos desconocidos sin comentar su ausencia ni explicar decisiones sobre los campos de la ficha. Las notas de investigación, decisiones de verificación, pendientes editoriales y enlaces de imágenes oficiales se entregan siempre directamente en el chat; no crees archivos de notas para entregarlos. Conserva las fuentes y la fecha de verificación en el frontmatter de las fichas.
 
 Para CTFs y hackatones, explica en el cuerpo los requisitos de edad, estudios, país o región, tamaño del equipo y restricciones para premios cuando estén confirmados. Distingue las fechas de registro de las fechas de competición. Si la fuente publica horas en UTC, conviértelas a `America/Mexico_City` para los campos de calendario: el CTF MetaRed 2026 del 9 de octubre a las 14:00 UTC al 10 de octubre a las 02:00 UTC corresponde al 9 de octubre, de 08:00 a 20:00 en CDMX. Conserva fases independientes en fichas distintas, como la clasificatoria y la final de HACKMEX.
 
