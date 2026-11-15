@@ -20,7 +20,7 @@
         background-image: radial-gradient(ellipse at 85% 0%, color-mix(in srgb, var(--color-secondary) 7%, transparent), transparent 40%), radial-gradient(ellipse at 10% 0%, color-mix(in srgb, var(--color-primary) 6%, transparent), transparent 35%);
     }
     a, button { @apply transition-colors; }
-    a:focus-visible, button:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
         @apply outline-2 outline-primary outline-offset-5;
     }
 }
@@ -30,6 +30,7 @@
     .text-link { @apply text-primary underline decoration-primary/35 underline-offset-4 hover:text-secondary hover:decoration-secondary; }
     .button-primary { @apply inline-flex items-center justify-center gap-3 rounded-lg border border-primary bg-primary px-5 py-3 text-sm font-semibold text-background hover:border-secondary hover:bg-secondary; }
     .button-secondary { @apply inline-flex items-center justify-center gap-3 rounded-lg border border-border bg-surface px-5 py-3 text-sm font-medium text-foreground hover:border-primary/60 hover:bg-surface-raised; }
+    .event-filter-field { @apply mt-2 block min-h-11 w-full rounded-lg border border-primary/55 bg-background px-3 py-2 text-base text-foreground; }
     .status-badge { @apply inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3 py-1 font-mono text-[11px] text-primary; }
     .status-badge[data-status='coming-soon'] { @apply border-secondary/25 bg-secondary/8 text-secondary; }
     .status-badge[data-status='finished'] { @apply border-border bg-surface-raised text-muted; }

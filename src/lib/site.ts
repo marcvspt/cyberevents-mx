@@ -4,6 +4,7 @@ import type { SiteData } from '@/lib/types/site.ts';
 export const SITE_DATA: SiteData = {
     ...TEXTS_GENERAL.site,
     logo: '/img/logo.svg',
+    socialImage: '/img/social-cover.jpg',
 };
 
 export const SITE_LOCALE = {

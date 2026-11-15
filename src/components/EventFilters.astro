@@ -1,0 +1,52 @@
+---
+import { EVENT_SEARCH_MAX_LENGTH } from '@/lib/events/filters.ts';
+import type { EventFilters } from '@/lib/events/filters.ts';
+import { SITE_LOCALE } from '@/lib/site.ts';
+import { TEXTS_GENERAL } from '@/lib/texts.ts';
+
+interface Props {
+    action: string;
+    filters: EventFilters;
+    years?: string[];
+}
+
+const { action, filters, years } = Astro.props;
+const copy = TEXTS_GENERAL.eventFilters;
+const categories = Object.entries(TEXTS_GENERAL.event.categories)
+    .sort(([, left], [, right]) => left.localeCompare(right, SITE_LOCALE.sort));
+const formats = Object.entries(TEXTS_GENERAL.event.formats);
+const hasFilters = Object.values(filters).some(Boolean);
+---
+<form method="get" action={action} role="search" aria-label={copy.label} class="mt-8 rounded-xl border border-border bg-surface p-4 sm:p-5">
+    <div class:list={['grid gap-4 sm:grid-cols-2', years ? 'lg:grid-cols-4' : 'lg:grid-cols-3']}>
+        <label class="min-w-0 text-sm font-medium">
+            {copy.search}
+            <input type="search" name="q" value={filters.q} maxlength={EVENT_SEARCH_MAX_LENGTH} class="event-filter-field" />
+        </label>
+        <label class="min-w-0 text-sm font-medium">
+            {copy.category}
+            <select name="category" class="event-filter-field">
+                <option value="">{copy.allCategories}</option>
+                {categories.map(([value, label]) => <option value={value} selected={value === filters.category}>{label}</option>)}
+            </select>
+        </label>
+        <label class="min-w-0 text-sm font-medium">
+            {copy.format}
+            <select name="format" class="event-filter-field">
+                <option value="">{copy.allFormats}</option>
+                {formats.map(([value, label]) => <option value={value} selected={value === filters.format}>{label}</option>)}
+            </select>
+        </label>
+        {years && <label class="min-w-0 text-sm font-medium">
+            {copy.year}
+            <select name="year" class="event-filter-field">
+                <option value="">{copy.allYears}</option>
+                {years.map((year) => <option value={year} selected={year === filters.year}>{year}</option>)}
+            </select>
+        </label>}
+    </div>
+    <div class="mt-4 flex flex-wrap items-center gap-4">
+        <button type="submit" class="button-primary cursor-pointer">{copy.apply}</button>
+        {hasFilters && <a href={action} class="text-link text-sm">{copy.reset}</a>}
+    </div>
+</form>

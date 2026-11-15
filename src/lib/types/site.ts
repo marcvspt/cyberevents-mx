@@ -15,4 +15,5 @@ export interface SiteData {
     name: string;
     description: string;
     logo: string;
+    socialImage: string;
 }

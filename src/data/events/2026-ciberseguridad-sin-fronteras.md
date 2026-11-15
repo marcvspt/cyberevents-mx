@@ -1,7 +1,7 @@
 ---
 title: "Ciberseguridad sin fronteras: desafíos globales, respuestas locales"
 description: "Panel presencial de CAMESCOM sobre amenazas, regulación y cooperación en ciberseguridad, gratuito y exclusivo para socios en Ciudad de México."
-updatedAt: "2026-10-29"
+updatedAt: "2026-11-15"
 startDate: "2026-11-25"
 city: "Ciudad de México"
 state: "Ciudad de México"
@@ -12,9 +12,10 @@ categories: ["forum"]
 topics: ["ciberseguridad", "ciberamenazas", "regulación", "cooperación-internacional"]
 price: {"type":"free"}
 website: "https://camescom.mx/evento_camescom/ciberseguridad-sin-fronteras-desafios-globales-respuestas-locales/"
+tickets: "https://camescom.mx/evento_camescom/ciberseguridad-sin-fronteras-desafios-globales-respuestas-locales/"
 registrationOpen: true
 organizer: {"name":"Cámara Española de Comercio en México (CAMESCOM)","website":"https://camescom.mx/"}
-verification: {"status":"verified","checkedAt":"2026-10-29","sources":["https://camescom.mx/evento_camescom/ciberseguridad-sin-fronteras-desafios-globales-respuestas-locales/"]}
+verification: {"status":"verified","checkedAt":"2026-11-15","sources":["https://camescom.mx/evento_camescom/ciberseguridad-sin-fronteras-desafios-globales-respuestas-locales/"]}
 image: /img/events/2026-ciberseguridad-sin-fronteras.webp
 draft: false
 ---

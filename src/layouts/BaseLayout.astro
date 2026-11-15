@@ -14,17 +14,22 @@ export interface Props {
     title: string;
     description?: string;
     canonical?: string;
+    socialImage?: string;
+    socialImageAlt?: string;
 }
 
 const {
     title,
     description = SITE_DATA.description,
     canonical,
+    socialImage = SITE_DATA.socialImage,
+    socialImageAlt = SITE_DATA.name,
 } = Astro.props as Props;
 if (!Astro.site) {
     throw new Error(TEXTS_GENERAL.errors.canonicalSite);
 }
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
+const socialImageURL = new URL(socialImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -35,9 +40,17 @@ const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site).href;
         <meta name="color-scheme" content="dark" />
         <link rel="icon" type="image/svg+xml" sizes="any" href={faviconUrl} />
         <meta name="description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={SITE_DATA.name} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:image" content={socialImageURL} />
+        <meta property="og:image:alt" content={socialImageAlt} />
         <link rel="canonical" href={canonicalURL} />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <title>{SITE_DATA.name} | {title}</title>
+        <slot name="head" />
         <ClientRouter />
     </head>
     <body class="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">

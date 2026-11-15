@@ -6,7 +6,7 @@ import { TEXTS_GENERAL } from '@/lib/texts.ts';
 import EventVisual from '@/components/EventVisual.astro';
 interface Props { card: EventCardData }
 const { card } = Astro.props;
-const { event, url, status, cfpStatus } = card;
+const { event, url, status, cfpStatus, registration } = card;
 const { data } = event;
 const copy = TEXTS_GENERAL.event;
 const titleId = `event-title-${event.id}`;
@@ -28,7 +28,7 @@ const actionId = `event-action-${event.id}`;
         <p class="mt-4 text-sm leading-relaxed text-muted">{data.description}</p>
         <div class="mt-4 flex flex-wrap gap-2">
             {data.categories.slice(0, 3).map((category) => <span class="rounded border border-border px-2 py-1 font-mono text-[10px] text-muted">{copy.categories[category]}</span>)}
-            {data.registrationOpen && (status === 'upcoming' || status === 'coming-soon') && <span class="text-xs text-primary">{copy.registrationOpen}</span>}
+            {registration?.open && <span class="text-xs text-primary">{copy.registrationOpen}</span>}
             {cfpStatus === 'open' && <span class="text-xs text-secondary">{copy.cfpOpen}</span>}
         </div>
         <div class="mt-auto pt-6">

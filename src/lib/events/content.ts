@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import { SITE_LOCALE } from '@/lib/site.ts';
 import { getEventUrl } from '@/lib/events/presentation.ts';
-import { getCfpStatus, getEventStatus, getToday, isEventNear, isEventRecent } from '@/lib/events/status.ts';
+import { getCfpStatus, getEventRegistration, getEventStatus, getToday, isEventNear, isEventRecent } from '@/lib/events/status.ts';
 import type { ArchivedEventGroup, Event, EventCardData } from '@/lib/types/event.ts';
 
 export async function getPublishedEvents(): Promise<Event[]> {
@@ -9,11 +9,24 @@ export async function getPublishedEvents(): Promise<Event[]> {
     return events.sort((a, b) => (a.data.startDate ?? '9999').localeCompare(b.data.startDate ?? '9999') || a.data.title.localeCompare(b.data.title, SITE_LOCALE.sort));
 }
 
+export async function getPublishedEvent(id: string | undefined): Promise<Event | undefined> {
+    return (await getPublishedEvents()).find((event) => event.id === id);
+}
+
 export async function getPublishedEventCards(): Promise<EventCardData[]> {
     const today = getToday();
-    return (await getPublishedEvents()).map((event) => ({
-        event, url: getEventUrl(event), status: getEventStatus(event, today), cfpStatus: getCfpStatus(event, today), isNear: isEventNear(event, today), isRecent: isEventRecent(event, today),
-    }));
+    return (await getPublishedEvents()).map((event) => {
+        const status = getEventStatus(event, today);
+        return {
+            event,
+            url: getEventUrl(event),
+            status,
+            cfpStatus: getCfpStatus(event, today),
+            registration: getEventRegistration(event, status),
+            isNear: isEventNear(event, today),
+            isRecent: isEventRecent(event, today),
+        };
+    });
 }
 
 export async function getArchivedEventGroups(): Promise<ArchivedEventGroup[]> {
