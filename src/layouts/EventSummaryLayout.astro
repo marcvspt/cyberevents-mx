@@ -2,8 +2,10 @@
 import ArrowIcon from '@/components/ArrowIcon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import EventVisual from '@/components/EventVisual.astro';
+import { getEventImageUrl, isEventRasterImage } from '@/lib/events/images.ts';
 import { EVENT_STATUS_LABELS, formatEventDate, getEventUrl } from '@/lib/events/presentation.ts';
-import { getCfpStatus, getEventStatus, getToday } from '@/lib/events/status.ts';
+import { getCfpStatus, getEventRegistration, getEventStatus, getToday } from '@/lib/events/status.ts';
+import { getEventStructuredData } from '@/lib/events/structured-data.ts';
 import type { Event } from '@/lib/types/event.ts';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
 import { SITE_PAGES } from '@/lib/navigation.ts';
@@ -13,9 +15,22 @@ const { data } = event;
 const today = getToday();
 const status = getEventStatus(event, today);
 const cfpStatus = getCfpStatus(event, today);
+const registration = getEventRegistration(event, status);
 const copy = TEXTS_GENERAL.event;
 const resourceLabels = copy.resourceLabels;
-const location = [data.venue, data.city, data.state].filter(Boolean).join(', ') || (data.format === 'online' ? copy.formats.online : copy.locationUnknown);
+const location = [...new Set([data.venue, data.city, data.state].filter(Boolean))].join(', ') || (data.format === 'online' ? copy.formats.online : copy.locationUnknown);
+const publicAddress = data.publicVenueAddress && [data.publicVenueAddress.street, data.publicVenueAddress.postalCode].filter(Boolean).join(', ');
+const cfp = data.cfp && cfpStatus ? { url: data.cfp.url, label: copy.cfp + ': ' + copy.cfpLabels[cfpStatus] } : undefined;
+const official = data.website ? { url: data.website, label: copy.official } : undefined;
+const primaryAction = registration
+    ? { url: registration.url, label: registration.open ? copy.tickets : copy.checkRegistration }
+    : (cfpStatus === 'open' ? cfp : undefined) ?? official;
+const secondaryActions: { url: string; label: string }[] = [];
+if (official && official.url !== primaryAction?.url) secondaryActions.push(official);
+if (cfp && cfp !== primaryAction) secondaryActions.push(cfp);
+const socialImage = data.image && isEventRasterImage(data.image) ? getEventImageUrl(data.image, 1200, 'jpg') : undefined;
+const socialImageAlt = socialImage ? data.imageAlt ?? copy.posterAlt(data.title) : undefined;
+const structuredData = Astro.site && getEventStructuredData(event, Astro.site);
 const conversation = data.hashtags.length > 0
     ? data.hashtags.map((tag) => ({ term: '#' + tag, tag }))
     : [{ term: data.title, tag: undefined }];
@@ -23,7 +38,10 @@ const breadcrumbSection = status === 'finished'
     ? SITE_PAGES.Archive
     : SITE_PAGES.Events;
 ---
-<BaseLayout title={data.title} description={data.description} canonical={getEventUrl(event)}>
+<BaseLayout title={data.title} description={data.description} canonical={getEventUrl(event)} socialImage={socialImage} socialImageAlt={socialImageAlt}>
+    <Fragment slot="head">
+        {structuredData && <script type="application/ld+json" is:inline set:html={structuredData} />}
+    </Fragment>
     <article class="page-shell py-12 sm:py-16">
         <header class="max-w-4xl">
             <nav aria-label={copy.breadcrumbLabel} class="text-sm leading-relaxed text-muted">
@@ -41,6 +59,27 @@ const breadcrumbSection = status === 'finished'
             </div>
             <h1 class="mt-6 text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">{data.title}</h1>
             <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{data.description}</p>
+            <dl class="mt-6 flex flex-wrap gap-x-8 gap-y-4 border-t border-border pt-5">
+                <div>
+                    <dt class="text-xs font-semibold text-muted">{copy.dateLabel}</dt>
+                    <dd class="mt-1 text-sm font-medium text-secondary">
+                        {data.startDate ? <time datetime={data.startDate}>{formatEventDate(data.startDate)}</time> : copy.dateUnknown}
+                        {data.endDate && data.endDate !== data.startDate && <>{' – '}<time datetime={data.endDate}>{formatEventDate(data.endDate)}</time></>}
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-xs font-semibold text-muted">{copy.formatLabel}</dt>
+                    <dd class="mt-1 text-sm">{copy.formats[data.format]}</dd>
+                </div>
+                <div>
+                    <dt class="text-xs font-semibold text-muted">{copy.locationLabel}</dt>
+                    <dd class="mt-1 text-sm">{location}{publicAddress && <span class="block">{publicAddress}</span>}</dd>
+                </div>
+            </dl>
+            {primaryAction && <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a target="_blank" rel="noopener noreferrer" class={primaryAction === official ? 'button-secondary' : 'button-primary'} href={primaryAction.url}>{primaryAction.label}<ArrowIcon /></a>
+                {registration?.open && <span class="text-sm text-primary">{copy.registrationOpen}</span>}
+            </div>}
         </header>
         <div class="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
             <div class="min-w-0">
@@ -66,37 +105,41 @@ const breadcrumbSection = status === 'finished'
                 <footer class="mt-12 border-t border-border pt-6 text-xs leading-relaxed text-muted">
                     <p>{copy.updated} {formatEventDate(data.updatedAt)}</p>
                     {data.verification && <>
-                    <p>{copy.verificationLabels[data.verification.status]}{data.verification.checkedAt ? ' · ' + copy.checked + ' ' + formatEventDate(data.verification.checkedAt) : ''}</p>
+                        <p>{copy.verificationLabels[data.verification.status]}{data.verification.checkedAt ? ' · ' + copy.checked + ' ' + formatEventDate(data.verification.checkedAt) : ''}</p>
+                        {data.verification.sources.length > 0 && <div class="mt-3">
+                            <p class="font-semibold">{copy.verificationSources}</p>
+                            <ul class="mt-2 grid gap-1">
+                                {data.verification.sources.map((source, index) => <li>
+                                    <a target="_blank" rel="noopener noreferrer" href={source} class="text-link [overflow-wrap:anywhere]">{copy.verificationSource(index + 1, new URL(source).hostname)}</a>
+                                </li>)}
+                            </ul>
+                        </div>}
                     </>}
                 </footer>
             </div>
-            <aside class="rounded-xl border border-border bg-surface p-6 lg:sticky lg:top-8 lg:max-h-[calc(100dvh-4rem)] lg:overflow-y-auto">
-                <dl class="space-y-5">
-                    <div><dt class="text-xs font-semibold text-muted">{copy.dateLabel}</dt><dd class="mt-2 text-sm leading-relaxed text-secondary">{data.startDate ? formatEventDate(data.startDate) : copy.dateUnknown}{data.endDate && data.endDate !== data.startDate ? ' – ' + formatEventDate(data.endDate) : ''}</dd></div>
-                    <div><dt class="text-xs font-semibold text-muted">{copy.locationLabel}</dt><dd class="mt-2 text-sm leading-relaxed">{location}</dd></div>
-                    <div><dt class="text-xs font-semibold text-muted">{copy.formatLabel}</dt><dd class="mt-2 text-sm">{copy.formats[data.format]}</dd></div>
-                    {data.organizer && <div><dt class="text-xs font-semibold text-muted">{copy.organizer}</dt><dd class="mt-2 text-sm">{data.organizer.website ? <a target="_blank" rel="noopener noreferrer" href={data.organizer.website} class="text-link">{data.organizer.name}</a> : data.organizer.name}</dd></div>}
-                </dl>
-                {data.price && <p class="mt-5 border-t border-border pt-5 text-sm text-primary">{data.price.type === 'free' ? copy.free : data.price.type === 'paid' ? copy.paid + (data.price.amount !== undefined ? ': ' + data.price.amount + ' ' + data.price.currency : '') : copy.priceUnknown}</p>}
-                <nav aria-label={copy.linksLabel} class="mt-6 flex flex-col gap-3">
-                    {data.website && <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={data.website}>{copy.official}<ArrowIcon /></a>}
-                    {data.tickets && (status === 'upcoming' || status === 'ongoing' || status === 'coming-soon') && <a target="_blank" rel="noopener noreferrer" class="button-primary" href={data.tickets}>{copy.tickets}<ArrowIcon /></a>}
-                    {data.cfp && cfpStatus && <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={data.cfp.url}>{copy.cfp}: {copy.cfpLabels[cfpStatus]}</a>}
-                </nav>
-                <section id="conversation" class="mt-6 rounded-lg border border-primary/25 bg-primary/5 p-4">
+            <aside class="space-y-6 rounded-xl border border-border bg-surface p-6 lg:sticky lg:top-8 lg:max-h-[calc(100dvh-4rem)] lg:overflow-y-auto">
+                {data.organizer && <dl>
+                    <dt class="text-xs font-semibold text-muted">{copy.organizer}</dt>
+                    <dd class="mt-2 text-sm">{data.organizer.website ? <a target="_blank" rel="noopener noreferrer" href={data.organizer.website} class="text-link">{data.organizer.name}</a> : data.organizer.name}</dd>
+                </dl>}
+                {data.price && <p class="text-sm text-primary">{data.price.type === 'free' ? copy.free : data.price.type === 'paid' ? copy.paid + (data.price.amount !== undefined ? ': ' + data.price.amount + ' ' + data.price.currency : '') : copy.priceUnknown}</p>}
+                {secondaryActions.length > 0 && <nav aria-label={copy.linksLabel} class="flex flex-col gap-3">
+                    {secondaryActions.map((action) => <a target="_blank" rel="noopener noreferrer" class="button-secondary" href={action.url}>{action.label}<ArrowIcon /></a>)}
+                </nav>}
+                <section id="conversation" class="rounded-lg border border-primary/25 bg-primary/5 p-4">
                     <h2 class="text-base font-semibold">{copy.conversationTitle}</h2>
                     <p class="mt-2 text-sm leading-relaxed text-muted">{copy.conversationDescription}</p>
                     <ul class="mt-4 space-y-4">{conversation.map(({ term, tag }) => <li class="space-y-3">
                         <p class="break-words font-mono text-xs text-secondary">{term}</p>
-                        <div class="grid grid-cols-2 gap-2">
-                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" href={'https://x.com/search?q=' + encodeURIComponent(term)}>{copy.networks.x}</a>
-                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" href={tag ? 'https://www.instagram.com/explore/tags/' + encodeURIComponent(tag) + '/' : 'https://www.instagram.com/explore/search/keyword/?q=' + encodeURIComponent(term)}>{copy.networks.instagram}</a>
-                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" href={'https://www.youtube.com/results?search_query=' + encodeURIComponent(term)}>{copy.networks.youtube}</a>
-                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" href={'https://www.linkedin.com/search/results/content/?keywords=' + encodeURIComponent(term)}>{copy.networks.linkedin}</a>
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,6rem),1fr))] gap-2">
+                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" aria-label={copy.searchOnNetwork(copy.networks.x, term)} href={'https://x.com/search?q=' + encodeURIComponent(term)}>{copy.networks.x}</a>
+                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" aria-label={copy.searchOnNetwork(copy.networks.instagram, term)} href={tag ? 'https://www.instagram.com/explore/tags/' + encodeURIComponent(tag) + '/' : 'https://www.instagram.com/explore/search/keyword/?q=' + encodeURIComponent(term)}>{copy.networks.instagram}</a>
+                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" aria-label={copy.searchOnNetwork(copy.networks.youtube, term)} href={'https://www.youtube.com/results?search_query=' + encodeURIComponent(term)}>{copy.networks.youtube}</a>
+                            <a target="_blank" rel="noopener noreferrer" class="button-secondary px-2 py-2 text-xs" aria-label={copy.searchOnNetwork(copy.networks.linkedin, term)} href={'https://www.linkedin.com/search/results/content/?keywords=' + encodeURIComponent(term)}>{copy.networks.linkedin}</a>
                         </div>
                     </li>)}</ul>
                 </section>
-                {data.social && Object.values(data.social).some(Boolean) && <nav aria-label={copy.socialLabel} class="mt-6 flex flex-wrap gap-4 border-t border-border pt-5 text-xs">
+                {data.social && Object.values(data.social).some(Boolean) && <nav aria-label={copy.socialLabel} class="flex flex-wrap gap-4 border-t border-border pt-5 text-xs">
                     {Object.entries(data.social).map(([network, url]) => url && <a target="_blank" rel="noopener noreferrer" class="text-link" href={url}>{copy.networks[network as keyof typeof copy.networks]}</a>)}
                 </nav>}
             </aside>

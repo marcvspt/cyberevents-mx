@@ -31,6 +31,7 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/lib/events/presentation.ts`: URL de fichas, etiquetas de estado y formato de fechas.
 - `src/components/EventCard.astro`: tarjeta compartida entre inicio, Eventos y Archivo, con un solo enlace a la ficha.
 - `src/components/EventVisual.astro`: imagen oficial o ilustración SVG compartida entre tarjetas y fichas.
+- `src/components/EventFilters.astro`: buscador de Eventos y Archivo, con filtros GET que se pueden compartir por URL.
 - `src/components/ArrowIcon.astro`: flechas SVG compartidas para enlaces y acciones, sin emojis ni caracteres Unicode como iconos.
 - `src/layouts/EventSummaryLayout.astro`: ficha y recursos del evento.
 - `src/pages/events/index.astro`: sección Eventos: cercanos, próximos, sin fecha, recientes y cancelados.
@@ -107,12 +108,13 @@ Otros campos opcionales:
 | `website`, `tickets` | URL HTTP/HTTPS del sitio oficial y registro. |
 | `price` | `type`: `free`, `paid` o `unknown`; importe opcional `amount` y moneda `currency` (MXN por defecto). |
 | `organizer` | `name` y `website` opcional. |
-| `registrationOpen`, `cancelled` | Indicadores editoriales, falsos por defecto. |
+| `registrationOpen`, `cancelled` | Indicadores editoriales, falsos por defecto. Si el registro está abierto, `tickets` es obligatorio y enlaza al registro oficial o a las instrucciones del organizador. |
 | `cfp` | `url`, `opens`, `closes` y `status` opcional: `announced`, `open` o `closed`. |
 | `social` | URL oficiales en `x`, `instagram`, `linkedin`, `youtube`. |
 | `hashtags` | Etiquetas sin `#` ni espacios; generan enlaces de búsqueda en X, Instagram, YouTube y LinkedIn. Si faltan hashtags, el CTA del aside busca el nombre del evento en X, Instagram, YouTube y LinkedIn, sin inventar etiquetas. |
 | `resources` | URL en `photos`, `videos`, `slides`, `aftermovie`. Se muestran cuando existen. |
 | `verification` | `status`: `verified`, `needs-verification` o `unconfirmed`; `checkedAt` y `sources`. |
+| `publicVenueAddress` | Dirección para eventos presenciales o híbridos abiertos al público general. Incluye `street` y opcionalmente `postalCode` de cinco dígitos. |
 | `image`, `imageAlt` | Ruta local desde `public/` y texto alternativo para tarjetas y fichas. |
 | `featured` | Metadata reservada; todavía no determina la selección de destacados. |
 | `draft` | Borrador, falso por defecto. |
@@ -121,9 +123,11 @@ Para marcar un evento como `verified`, incluye fecha de revisión y al menos una
 
 Las fichas nuevas se crean siempre sin `image` ni `imageAlt` y usan la ilustración predeterminada de `EventVisual.astro`. Al entregarlas, incluye los enlaces oficiales de descarga de las imágenes que encuentres, identificados por evento. No descargues ni incorpores imágenes salvo petición expresa del propietario; si no encuentras una imagen oficial, indícalo sin inventar enlaces. Conserva las imágenes de las fichas existentes salvo que se solicite cambiarlas.
 
-Cuando el propietario solicite incorporar una imagen, guárdala en `public/img/events/` con el nombre de la ficha o en `shared/` si es reutilizable. Usa rutas como `/img/events/2026-cybermid.webp` o `/img/events/shared/hackgdl.png`. `imageAlt` permite describirla. Conserva las marcas originales y evita reutilizar carteles fechados para otra edición. Las tarjetas llevan a la ficha; el CTA «Busca el evento en redes» está en su aside y reúne los enlaces de búsqueda.
+Cuando el propietario solicite incorporar una imagen, guárdala en `public/img/events/` con el nombre de la ficha o en `shared/` si es reutilizable. Usa rutas como `/img/events/2026-cybermid.webp` o `/img/events/shared/hackgdl.png`. `imageAlt` permite describirla. Conserva las marcas originales y evita reutilizar carteles fechados para otra edición. Netlify Image CDN entrega tamaños distintos para tarjetas y fichas a partir de los carteles raster. Open Graph usa una versión JPEG del cartel o la portada de CyberEvents.
 
-El estado general se calcula a partir de las fechas y `cancelled`. El registro abierto se muestra como indicador adicional en tarjetas futuras o sin fecha. El CFP respeta un cierre editorial explícito, cierra después de `closes` y abre desde `opens`; antes de la apertura aparece por anunciar. Sin `opens`, utiliza su estado editorial o por anunciar. El último día se incluye. Una cancelación oculta el CFP.
+El estado general se calcula a partir de las fechas y `cancelled`. Las tarjetas y fichas muestran «Registro abierto» cuando el organizador lo confirma y hay un enlace en `tickets`. La ficha ofrece «Consultar registro» si hay enlace y la apertura está sin confirmar. El registro se oculta al finalizar o cancelar el evento. El CFP respeta un cierre editorial explícito, cierra después de `closes` y abre desde `opens`; antes de la apertura aparece por anunciar. Sin `opens`, utiliza su estado editorial o por anunciar. El último día se incluye. Una cancelación oculta el CFP.
+
+Incluye `publicVenueAddress` solo cuando las fuentes oficiales confirmen la dirección completa y la posibilidad de inscribirse como público general. La ficha publica JSON-LD `Event` si además tiene verificación, ciudad, sede y fecha confirmadas. Las fuentes guardadas en `verification.sources` se enlazan en la ficha.
 
 Los borradores validan el esquema, pero quedan fuera del inicio, catálogo, fichas públicas, RSS y sitemap. Acceder al ID de un borrador devuelve 404. `updatedAt` es la última actualización editorial de la ficha y alimenta el orden y la fecha del RSS, aunque el evento todavía no tenga fecha. Las URL de tarjetas, RSS y canónicas usan `getEventUrl`.
 
@@ -153,7 +157,9 @@ La cabecera agrupa los enlaces en un menú de hamburguesa por debajo de `md` (76
 
 Se eliminaron los textos decorativos de entrada (eyebrows). Cada ficha comienza con Inicio / Eventos o Archivo / título, seguido de su estado y categorías. El texto es blanco puro; tamaños y pesos distinguen títulos, descripciones y metadata. Los enlaces y etiquetas mantienen los acentos azul y turquesa.
 
-En cada ficha, el bloque de título y descripción está por encima de la cuadrícula. El aside empieza a la altura de la imagen y permanece visible al desplazarse en escritorio mediante `sticky`. Su altura se ajusta al viewport y admite scroll interno; en móvil aparece debajo del contenido. Los enlaces externos abren otra pestaña con `target="_blank"` y `rel="noopener noreferrer"`. Los del cuerpo Markdown reciben esos atributos mediante el script de la plantilla, también al navegar con `ClientRouter`; la navegación interna permanece en la misma pestaña.
+En cada ficha, la cabecera reúne el título, la descripción, la fecha, la modalidad, la sede y la acción principal. En escritorio el aside con enlaces secundarios y la búsqueda en redes empieza junto a la imagen y permanece visible al desplazarse mediante `sticky`. Su altura se ajusta al viewport y admite scroll interno; en móvil aparece debajo del contenido. Los enlaces externos abren otra pestaña con `target="_blank"` y `rel="noopener noreferrer"`. Los del cuerpo Markdown reciben esos atributos mediante el script de la plantilla, también al navegar con `ClientRouter`; la navegación interna permanece en la misma pestaña.
+
+Eventos y Archivo permiten buscar por nombre o ciudad y filtrar por categoría y modalidad. Archivo añade un selector de año. El formulario envía los filtros por GET para que se puedan compartir y volver a abrir.
 
 Para revisar este comportamiento, comprueba una ficha larga y otra corta, el aside en escritorio y móvil, una pantalla baja y la navegación por teclado. Revisa un enlace externo del Markdown y los enlaces de registro, redes, recursos y sitio oficial después de navegar entre fichas.
 
@@ -178,6 +184,7 @@ El propietario ejecuta todos los comandos de pnpm desde `C:\Users\marco\Desktop\
 | `pnpm install` | Instalar las dependencias del proyecto cuando sea necesario. |
 | `pnpm dev` | Abrir el servidor de desarrollo para revisar las vistas. |
 | `pnpm build` | Validar contenido, salida del servidor, páginas prerenderizadas, RSS y sitemaps y producir `dist/`. |
+| `pnpm test` | Ejecutar las pruebas de Node para fechas, registro, filtros, JSON-LD y borradores en fichas, RSS y sitemap. |
 
 El adaptador de Netlify actual no admite `astro preview` para la salida SSR. Usa `pnpm dev` para revisar la interfaz localmente y un Deploy Preview de Netlify para validar el resultado desplegado.
 
@@ -185,4 +192,6 @@ Revisa inicio, Eventos, Archivo, acerca de y una ficha en móvil y escritorio, i
 
 Comprueba también breadcrumbs, estado y categorías sobre el título, el texto blanco en tarjetas y Markdown, 404 para IDs desconocidos y borradores, y ambos sitemaps: `/sitemap-index.xml` debe incluir el sitemap de páginas de ruta fija y la URL absoluta de `/sitemap-events.xml`; este último debe enumerar fichas sin borradores y usar `updatedAt` como `lastmod`. `/robots.txt` debe anunciar el índice. En un despliegue de Netlify, verifica la cabecera `Cache-Control` de inicio y eventos.
 
-No hay script de pruebas ni `@astrojs/check` configurado en `package.json`. No edites `dist/`, `.astro/` ni `node_modules/`.
+En el Deploy Preview comprueba que los carteles se descargan desde `/.netlify/images` en tamaños adecuados para tarjetas y fichas. Revisa también los metadatos Open Graph y el JSON-LD de Círculo Seguro. Ejecuta la búsqueda con teclado y sin JavaScript, y abre una URL con filtros para confirmar que conserva la selección.
+
+El proyecto no tiene `@astrojs/check` configurado en `package.json`. No edites `dist/`, `.astro/` ni `node_modules/`.

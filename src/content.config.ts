@@ -26,6 +26,10 @@ const events = defineCollection({
         state: z.string().trim().min(1).optional(),
         country: z.literal('MX').default('MX'),
         venue: z.string().trim().min(1).optional(),
+        publicVenueAddress: z.object({
+            street: z.string().trim().min(1),
+            postalCode: z.string().regex(/^\d{5}$/, TEXTS_GENERAL.validation.postalCode).optional(),
+        }).optional(),
         format: z.enum(['in-person', 'online', 'hybrid']),
         categories: z.array(z.enum(['conference', 'congress', 'meetup', 'ctf', 'hackathon', 'bsides', 'workshop', 'summit', 'forum', 'academic', 'community'])).min(1),
         topics: z.array(z.string().trim().min(1)).default([]),
@@ -67,7 +71,12 @@ const events = defineCollection({
         imageAlt: z.string().trim().min(1).optional(),
         featured: z.boolean().optional().default(false),
         draft: z.boolean().optional().default(false),
-    }).refine((event) => !event.endDate || (!!event.startDate && event.endDate >= event.startDate), TEXTS_GENERAL.validation.eventDates),
+    })
+        .refine((event) => !event.endDate || (!!event.startDate && event.endDate >= event.startDate), TEXTS_GENERAL.validation.eventDates)
+        .refine((event) => !event.registrationOpen || !!event.tickets, {
+            path: ['tickets'],
+            message: TEXTS_GENERAL.validation.registrationLink,
+        }),
 });
 
 export const collections = { events };

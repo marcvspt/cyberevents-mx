@@ -11,6 +11,7 @@ categories: ["conference"]
 topics: ["identidad-digital", "prevencion-de-fraudes", "deepfakes", "inteligencia-artificial"]
 price: {"type":"free"}
 website: "https://sovos.com/mx/eventos/iva/trust-day-confianza-digital/"
+tickets: "https://sovos.com/mx/eventos/iva/trust-day-confianza-digital/"
 registrationOpen: true
 organizer: {"name":"Sovos","website":"https://sovos.com/mx/"}
 verification: {"status":"verified","checkedAt":"2026-11-15","sources":["https://sovos.com/mx/eventos/iva/trust-day-confianza-digital/","https://es.linkedin.com/posts/sovos-latam_confianzadigital-inteligenciaartificial-sovosalwayson-activity-7526271858573271040-1cKq"]}

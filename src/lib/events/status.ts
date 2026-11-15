@@ -1,5 +1,5 @@
 import { SITE_LOCALE } from '@/lib/site.ts';
-import type { CfpStatus, Event, EventStatus } from '@/lib/types/event.ts';
+import type { CfpStatus, Event, EventRegistration, EventStatus } from '@/lib/types/event.ts';
 
 export const NEAR_EVENT_DAYS = 30;
 export const RECENT_EVENT_MONTHS = 2;
@@ -18,6 +18,12 @@ export function getEventStatus(event: Event, today = getToday()): EventStatus {
     if (!startDate) return 'coming-soon';
     if (today > (endDate ?? startDate)) return 'finished';
     return today >= startDate ? 'ongoing' : 'upcoming';
+}
+
+export function getEventRegistration(event: Event, status: EventStatus): EventRegistration | undefined {
+    const { tickets, registrationOpen } = event.data;
+    if (!tickets || status === 'finished' || status === 'cancelled') return undefined;
+    return { url: tickets, open: registrationOpen };
 }
 
 export function isEventRecent(event: Event, today = getToday()): boolean {

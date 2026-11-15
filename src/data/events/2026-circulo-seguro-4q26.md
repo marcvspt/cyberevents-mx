@@ -6,10 +6,12 @@ startDate: "2026-11-26"
 city: "Ciudad de México"
 country: "MX"
 venue: "Porco Rosso Roma Norte"
+publicVenueAddress: {"street":"Zacatecas 102, Roma Norte, Cuauhtémoc","postalCode":"06700"}
 format: "in-person"
 categories: ["meetup", "community"]
 topics: ["inteligencia-artificial", "liderazgo", "experiencia-de-usuario", "controles-de-seguridad"]
 website: "https://cloud.google.com/events/intl/es-419/circuloseguro2026?hl=es-419"
+tickets: "https://cloud.google.com/events/intl/es-419/circuloseguro2026?hl=es-419"
 registrationOpen: true
 organizer: {"name":"Google Cloud","website":"https://cloud.google.com/"}
 verification: {"status":"verified","checkedAt":"2026-11-15","sources":["https://cloud.google.com/events/intl/es-419/circuloseguro2026?hl=es-419"]}

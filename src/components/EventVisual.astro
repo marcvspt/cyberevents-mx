@@ -1,14 +1,22 @@
 ---
+import { getEventImageUrl, isEventRasterImage } from '@/lib/events/images.ts';
 import type { Event } from '@/lib/types/event.ts';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
 interface Props { event: Event; detail?: boolean }
 const { event, detail = false } = Astro.props;
 const { data } = event;
 const year = data.startDate?.slice(0, 4);
+const image = data.image;
+const responsive = image !== undefined && isEventRasterImage(image);
+const widths = detail ? [480, 768, 1200, 1440] : [320, 480, 768, 1024, 1280];
+const srcset = responsive ? widths.map((width) => `${getEventImageUrl(image, width)} ${width}w`).join(', ') : undefined;
+const sizes = detail
+    ? '(min-width: 72rem) 45rem, (min-width: 64rem) calc(100vw - 27rem), (min-width: 40rem) calc(100vw - 4rem), calc(100vw - 2.5rem)'
+    : '(min-width: 72rem) 19rem, (min-width: 64rem) calc((100vw - 6rem) / 3 - 3rem), (min-width: 48rem) calc((100vw - 5rem) / 2 - 3rem), (min-width: 40rem) calc(100vw - 7rem), calc(100vw - 5.5rem)';
 ---
 
 <div class:list={['relative flex aspect-video items-center justify-center overflow-hidden rounded-lg border border-border bg-background', detail && 'max-w-4xl']}>
-    {data.image ? <img src={data.image} alt={data.imageAlt ?? data.title} width="960" height="540" loading={detail ? 'eager' : 'lazy'} decoding="async" class="h-full w-full object-contain" /> : <div aria-hidden="true" class="absolute inset-0 bg-linear-to-br from-primary/12 via-surface to-secondary/20">
+    {image ? <img src={responsive ? getEventImageUrl(image, detail ? 1200 : 480) : image} srcset={srcset} sizes={responsive ? sizes : undefined} alt={data.imageAlt ?? (detail ? TEXTS_GENERAL.event.posterAlt(data.title) : '')} loading={detail ? 'eager' : 'lazy'} decoding="async" class="absolute inset-0 size-full object-contain" /> : <div aria-hidden="true" class="absolute inset-0 bg-linear-to-br from-primary/12 via-surface to-secondary/20">
         <svg viewBox="0 0 480 270" fill="none" class="h-full w-full" aria-hidden="true">
             <g class="text-border" stroke="currentColor" stroke-width="1">
                 <path d="M0 54h480M0 108h480M0 162h480M0 216h480M80 0v270M160 0v270M240 0v270M320 0v270M400 0v270" />

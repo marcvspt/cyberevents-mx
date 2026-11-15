@@ -4,9 +4,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { TEXTS_GENERAL } from '@/lib/texts.ts';
 import { SITE_PAGES } from '@/lib/navigation.ts';
 import EventCard from '@/components/EventCard.astro';
+import EventFilters from '@/components/EventFilters.astro';
 import { getPublishedEventCards } from '@/lib/events/content.ts';
-const cards = (await getPublishedEventCards()).filter((card) => card.status !== 'finished' || card.isRecent);
+import { matchesEventFilters, readEventFilters } from '@/lib/events/filters.ts';
+const filters = readEventFilters(Astro.url.searchParams);
+const hasFilters = Object.values(filters).some(Boolean);
+const cards = (await getPublishedEventCards()).filter((card) => (card.status !== 'finished' || card.isRecent) && matchesEventFilters(card.event, filters));
 const copy = TEXTS_GENERAL.catalog;
+const filterCopy = TEXTS_GENERAL.eventFilters;
+const countLabel = hasFilters ? (cards.length === 1 ? filterCopy.oneResult : filterCopy.results) : copy.count;
 const groups = [
     { id: 'near', ...copy.groups.near, cards: cards.filter((card) => card.isNear) },
     { id: 'upcoming', ...copy.groups.upcoming, cards: cards.filter((card) => card.status === 'upcoming' && !card.isNear) },
@@ -20,13 +26,14 @@ const groups = [
         <header class="max-w-3xl">
             <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{copy.title}</h1>
             <p class="mt-5 text-base leading-relaxed text-muted">{copy.description}</p>
-            <p class="mt-5 font-mono text-xs text-secondary">{String(cards.length).padStart(2, '0')} {copy.count}</p>
             <a href={SITE_PAGES.Archive.href} class="button-secondary mt-6">{copy.archiveAction}<ArrowIcon /></a>
         </header>
+        <EventFilters action={SITE_PAGES.Events.href} filters={filters} />
+        <p class="mt-6 font-mono text-xs text-secondary">{cards.length} {countLabel}</p>
         {groups.length > 0 && <nav aria-label={copy.navigation} class="mt-8 flex flex-wrap gap-2 border-b border-border pb-8">
             {groups.map((group) => <a class="button-secondary py-2 text-xs" href={'#' + group.id}>{group.title}<span class="text-secondary">{group.cards.length}</span></a>)}
         </nav>}
-        {cards.length === 0 && <p class="mt-8 rounded-xl border border-border bg-surface p-6 text-muted">{copy.empty}</p>}
+        {cards.length === 0 && <p class="mt-4 rounded-xl border border-border bg-surface p-6 text-muted">{hasFilters ? filterCopy.empty : copy.empty}</p>}
         <div class="space-y-14 pt-10">
             {groups.map((group) => <section id={group.id}>
                 <div class="mb-6 flex items-center gap-4">

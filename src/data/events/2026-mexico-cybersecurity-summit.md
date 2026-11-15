@@ -1,7 +1,7 @@
 ---
 title: "Mexico Cybersecurity Summit 2026"
 description: "Evento ejecutivo sobre ciberseguridad, regulación e infraestructura crítica."
-updatedAt: "2026-10-18"
+updatedAt: "2026-11-15"
 image: "/img/events/2026-mexico-cybersecurity-summit.webp"
 startDate: "2026-10-21"
 city: "Ciudad de México"
@@ -10,10 +10,11 @@ country: "MX"
 format: "in-person"
 categories: ["summit"]
 website: "https://mexicobusiness.events/cybersecurity/2026/10"
-verification: {"status":"verified","checkedAt":"2026-10-18","sources":["https://mexicobusiness.events/cybersecurity/2026/10"]}
+verification: {"status":"verified","checkedAt":"2026-11-15","sources":["https://mexicobusiness.events/cybersecurity/2026/10"]}
 draft: false
 edition: 8
 venue: "Marriott Mexico City Reforma Hotel"
+publicVenueAddress: {"street":"Av. Paseo de la Reforma 276, Juárez, Cuauhtémoc","postalCode":"06600"}
 price: {"type":"paid"}
 topics: ["grc","cloud-security","ai-security"]
 tickets: "https://mexicobusiness.events/cybersecurity/2026/10"
