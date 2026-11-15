@@ -33,9 +33,9 @@ const stats = [
             </div>
         </header>
         <dl class="grid grid-cols-1 divide-y divide-border rounded-xl border border-border bg-surface/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {stats.map((stat) => <div class="px-6 py-5">
+            {stats.map((stat) => <div class="flex flex-col px-6 py-5">
+                <dt class="order-last mt-2 text-xs text-muted">{stat.label}</dt>
                 <dd class="font-mono text-3xl font-medium text-foreground">{String(stat.value).padStart(2, '0')}</dd>
-                <dt class="mt-2 text-xs text-muted">{stat.label}</dt>
             </div>)}
         </dl>
         <section class="pt-16">

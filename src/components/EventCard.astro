@@ -9,30 +9,32 @@ const { card } = Astro.props;
 const { event, url, status, cfpStatus } = card;
 const { data } = event;
 const copy = TEXTS_GENERAL.event;
+const titleId = `event-title-${event.id}`;
+const actionId = `event-action-${event.id}`;
 ---
-<article class="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary/50 hover:bg-surface-raised/70">
-    <div class="mb-5"><EventVisual event={event} /></div>
-    <div class="flex flex-wrap items-center justify-between gap-3">
-        <span class="status-badge" data-status={status}><span class="size-1.5 rounded-full bg-current" aria-hidden="true"></span>{EVENT_STATUS_LABELS[status]}</span>
-        <span class="font-mono text-[11px] text-muted">{copy.formats[data.format]}</span>
-    </div>
-    <h3 class="mt-5 text-xl font-semibold leading-snug tracking-tight">
-        <a href={url} class="hover:text-primary">{data.title}</a>
-    </h3>
-    <p class="mt-3 text-sm font-medium text-secondary">
-        {data.startDate ? formatEventDate(data.startDate) : copy.dateUnknown}
-        {data.endDate && data.endDate !== data.startDate ? ' – ' + formatEventDate(data.endDate) : ''}
-    </p>
-    <p class="mt-2 text-sm text-muted">{[data.city, data.state].filter(Boolean).join(', ') || (data.format === 'online' ? copy.formats.online : data.venue ?? copy.locationUnknown)}</p>
-    <p class="mt-4 text-sm leading-relaxed text-muted">{data.description}</p>
-    <div class="mt-4 flex flex-wrap gap-2">
-        {data.categories.slice(0, 3).map((category) => <span class="rounded border border-border px-2 py-1 font-mono text-[10px] text-muted">{copy.categories[category]}</span>)}
-        {data.registrationOpen && (status === 'upcoming' || status === 'coming-soon') && <span class="text-xs text-primary">{copy.registrationOpen}</span>}
-        {cfpStatus === 'open' && <span class="text-xs text-secondary">{copy.cfpOpen}</span>}
-    </div>
-    <div class="mt-auto pt-6">
-        <a href={url} class="flex items-center justify-between border-t border-border pt-4 text-sm font-medium text-primary hover:text-secondary">
-            {copy.view}<ArrowIcon />
-        </a>
-    </div>
+<article class="h-full">
+    <a href={url} aria-labelledby={`${actionId} ${titleId}`} class="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 hover:border-primary/50 hover:bg-surface-raised/70">
+        <div class="mb-5"><EventVisual event={event} /></div>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+            <span class="status-badge" data-status={status}><span class="size-1.5 rounded-full bg-current" aria-hidden="true"></span>{EVENT_STATUS_LABELS[status]}</span>
+            <span class="font-mono text-[11px] text-muted">{copy.formats[data.format]}</span>
+        </div>
+        <h3 id={titleId} class="mt-5 text-xl font-semibold leading-snug tracking-tight group-hover:text-primary group-focus-visible:text-primary">{data.title}</h3>
+        <p class="mt-3 text-sm font-medium text-secondary">
+            {data.startDate ? formatEventDate(data.startDate) : copy.dateUnknown}
+            {data.endDate && data.endDate !== data.startDate ? ' – ' + formatEventDate(data.endDate) : ''}
+        </p>
+        <p class="mt-2 text-sm text-muted">{[data.city, data.state].filter(Boolean).join(', ') || (data.format === 'online' ? copy.formats.online : data.venue ?? copy.locationUnknown)}</p>
+        <p class="mt-4 text-sm leading-relaxed text-muted">{data.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+            {data.categories.slice(0, 3).map((category) => <span class="rounded border border-border px-2 py-1 font-mono text-[10px] text-muted">{copy.categories[category]}</span>)}
+            {data.registrationOpen && (status === 'upcoming' || status === 'coming-soon') && <span class="text-xs text-primary">{copy.registrationOpen}</span>}
+            {cfpStatus === 'open' && <span class="text-xs text-secondary">{copy.cfpOpen}</span>}
+        </div>
+        <div class="mt-auto pt-6">
+            <span id={actionId} class="flex items-center justify-between border-t border-border pt-4 text-sm font-medium text-primary group-hover:text-secondary group-focus-visible:text-secondary">
+                {copy.view}<ArrowIcon />
+            </span>
+        </div>
+    </a>
 </article>

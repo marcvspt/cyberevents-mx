@@ -5,11 +5,13 @@ import { SITE_DATA } from '@/lib/site.ts';
 import { MAIN_NAVIGATION, SITE_PAGES } from '@/lib/navigation.ts';
 const copy = TEXTS_GENERAL.navigation;
 const links = MAIN_NAVIGATION;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
 const activeHref = [...links].sort((a, b) => b.href.length - a.href.length).find(({ href }) => {
-    const path = href === '/' ? '/' : href.replace(/\/$/, '');
-    return Astro.url.pathname === path || Astro.url.pathname === href || (path !== '/' && Astro.url.pathname.startsWith(path + '/'));
+    const path = href.replace(/\/$/, '');
+    return currentPath === path || (path !== '' && currentPath.startsWith(path + '/'));
 })?.href;
 const isActive = (href: string) => href === activeHref;
+const isCurrentPage = (href: string) => href.replace(/\/$/, '') === currentPath;
 ---
 <header class="border-b border-border/70">
     <div class="page-shell flex items-center justify-between gap-5 py-5">
@@ -22,7 +24,7 @@ const isActive = (href: string) => href === activeHref;
             </>}
         </a>
         <nav aria-label={copy.label} class="hidden gap-4 text-sm md:flex lg:gap-7">
-            {links.map((link) => <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} class:list={['py-1 hover:text-primary', isActive(link.href) ? 'text-primary' : 'text-muted']}>{link.label}</a>)}
+            {links.map((link) => <a href={link.href} aria-current={isCurrentPage(link.href) ? 'page' : undefined} class:list={['py-1 hover:text-primary', isActive(link.href) ? 'text-primary underline underline-offset-4' : 'text-muted']}>{link.label}</a>)}
             <SupportMenu />
         </nav>
         <details data-navigation-menu class="group relative shrink-0 md:hidden">
@@ -32,7 +34,7 @@ const isActive = (href: string) => href === activeHref;
                 <svg class="hidden group-open:block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg>
             </summary>
             <nav aria-label={copy.label} class="absolute right-0 top-full z-40 mt-3 flex max-h-[calc(100dvh-6rem)] w-[min(18rem,calc(100vw-2.5rem))] flex-col gap-1 overflow-y-auto overscroll-contain rounded-xl border border-border bg-surface p-2 text-sm shadow-lg">
-                {links.map((link) => <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} class:list={['rounded-lg px-4 py-3 hover:bg-surface-raised hover:text-primary', isActive(link.href) ? 'bg-primary/8 text-primary' : 'text-muted']}>{link.label}</a>)}
+                {links.map((link) => <a href={link.href} aria-current={isCurrentPage(link.href) ? 'page' : undefined} class:list={['rounded-lg px-4 py-3 hover:bg-surface-raised hover:text-primary', isActive(link.href) ? 'bg-primary/8 text-primary underline underline-offset-4' : 'text-muted']}>{link.label}</a>)}
                 <SupportMenu />
             </nav>
         </details>

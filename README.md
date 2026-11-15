@@ -1,18 +1,18 @@
 # CyberEvents
 
-Directorio y archivo histórico de eventos de ciberseguridad en México. La intención del producto está en `DATA.md`; las fechas mencionadas allí necesitan confirmación antes de publicarse.
+Directorio y archivo histórico de eventos de ciberseguridad en México.
 
 Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para preparar contribuciones de código o fichas de eventos y seguir la convención de mensajes de commit.
 
 ## Tecnología y despliegue
 
-Astro 7.3.5, TypeScript, Tailwind CSS 4.3.3 y `@tailwindcss/typography` 0.5.20. Usa `output: 'server'` con el adaptador de Netlify 8.2.6. Inicio, Eventos, Archivo y fichas generan HTML por petición (SSR); acerca de, RSS, robots y el sitemap de fichas se generan durante el build. No requiere base de datos. El dominio se define únicamente en la propiedad `site` de `astro.config.mjs`. Las páginas lo obtienen mediante `Astro.site` y las rutas mediante `context.site`; canónicas, RSS y robots requieren esa configuración. `src/lib/texts.ts` centraliza los textos en español en `TEXTS_GENERAL`; `src/lib/site.ts` configura la marca, el logo y el idioma; `src/lib/navigation.ts` define páginas y navegación; `src/lib/links.ts` define los enlaces externos. Cada consumidor importa el módulo concreto.
+El sitio usa Astro 7, TypeScript, Tailwind CSS 4 y `@tailwindcss/typography`. Consulta las versiones exactas en [package.json](package.json). `astro.config.mjs` configura `output: 'server'` con el adaptador de Netlify. Inicio, Eventos, Archivo y fichas generan HTML por petición (SSR); acerca de, RSS, robots y el sitemap de fichas se generan durante el build. No requiere base de datos. El dominio se define únicamente en la propiedad `site` de `astro.config.mjs`. Las páginas lo obtienen mediante `Astro.site` y las rutas mediante `context.site`; canónicas, RSS y robots requieren esa configuración. `src/lib/texts.ts` centraliza los textos en español en `TEXTS_GENERAL`; `src/lib/site.ts` configura la marca, el logo y el idioma; `src/lib/navigation.ts` define páginas y navegación; `src/lib/links.ts` define los enlaces externos. Cada consumidor importa el módulo concreto.
 
 ## Estados por petición
 
 Los estados, la cercanía, el archivo y el CFP se calculan con el día de `America/Mexico_City` al atender cada petición. `src/middleware.ts` envía `Cache-Control: private, no-store` en inicio y eventos para evitar estados antiguos en caché. Al pasar los días, los eventos cambian de sección en la siguiente petición; una página ya abierta requiere recargarse o navegar de nuevo.
 
-No hace falta una tarea diaria ni un build hook. Se retiró la función programada de actualización. Si la habías activado en Netlify, elimina su hook y variable privados cuando publiques esta versión. `netlify.toml` conserva el comando de build y el directorio de publicación.
+No hace falta una tarea diaria ni un build hook. Se retiró la función programada de actualización. Si la habías activado en Netlify, elimina su hook y variable privados cuando publiques esta versión. Configura `pnpm build` como comando de compilación y `dist/` como directorio de publicación en Netlify. Consulta la [guía de Astro en Netlify](https://docs.netlify.com/build/frameworks/framework-setup-guides/astro/).
 
 La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, editar o eliminar fichas e imágenes sigue requiriendo build y despliegue. SSR actualiza su clasificación temporal, no carga archivos nuevos del repositorio en producción.
 
@@ -29,7 +29,7 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/lib/events/content.ts`: selección de publicados, datos de tarjetas y archivo por año.
 - `src/lib/events/status.ts`: estados, cercanía, ventana de eventos recientes y CFP.
 - `src/lib/events/presentation.ts`: URL de fichas, etiquetas de estado y formato de fechas.
-- `src/components/EventCard.astro`: tarjeta compartida entre inicio y catálogo.
+- `src/components/EventCard.astro`: tarjeta compartida entre inicio, Eventos y Archivo, con un solo enlace a la ficha.
 - `src/components/EventVisual.astro`: imagen oficial o ilustración SVG compartida entre tarjetas y fichas.
 - `src/components/ArrowIcon.astro`: flechas SVG compartidas para enlaces y acciones, sin emojis ni caracteres Unicode como iconos.
 - `src/layouts/EventSummaryLayout.astro`: ficha y recursos del evento.
@@ -40,20 +40,19 @@ La colección usa `glob`: los Markdown se incorporan durante el build. Añadir, 
 - `src/styles/global.css`: Tailwind y tipografía Markdown.
 - `public/`: recursos públicos.
 - `public/img/events/shared/`: identidad visual reutilizable entre ediciones.
-- `netlify.toml`: build y directorio de publicación de Netlify.
 - `src/middleware.ts`: política de caché de las páginas con estados temporales.
 - `src/pages/sitemap-events.xml.ts`: sitemap estático de fichas publicadas, incluidas las rutas SSR.
 - `src/pages/404.astro`: página para rutas inexistentes y borradores.
 
-Se mantienen las rutas existentes `/events/` y `/about`, con el archivo histórico en `/events/archive/`. La integración `@astrojs/sitemap` genera `/sitemap-index.xml` y el sitemap de páginas de ruta fija. `/sitemap-events.xml` se genera por separado y enumera las fichas publicadas, con `updatedAt` como `lastmod`; se registra en el índice mediante `customSitemaps`, usando el dominio de `site`. Robots y `BaseLayout.astro` anuncian el índice, que permite descubrir ambos sitemaps. La integración no enumera por sí sola las fichas SSR con parámetros. Consulta la [opción oficial customSitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/#customsitemaps).
+Las rutas canónicas de Eventos, Acerca de y Archivo son `/events/`, `/about/` y `/events/archive/`. La integración `@astrojs/sitemap` genera `/sitemap-index.xml` y el sitemap de páginas de ruta fija. `/sitemap-events.xml` se genera por separado y enumera las fichas publicadas, con `updatedAt` como `lastmod`; se registra en el índice mediante `customSitemaps`, usando el dominio de `site`. Robots y `BaseLayout.astro` anuncian el índice, que permite descubrir ambos sitemaps. La integración no enumera por sí sola las fichas SSR con parámetros. Consulta la [opción oficial customSitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/#customsitemaps).
 
 ## Publicar un evento
 
 La revisión editorial del 1 de noviembre de 2026 incorpora Black ESET Security Day México, CITIS 2026 y Crónica de un ataque anunciado. Confirma que TechSummit 2027 ya tiene ficha y conserva su contenido. Las tres fichas nuevas usan la ilustración predeterminada.
 
-La revisión editorial del 26 de octubre de 2026 contrasta cinco fichas existentes con los avisos recibidos: detalla programa y boletos de BugCON, amplía Cybersecurity Summit Punta Mita y añade el hashtag oficial `HTTDS26` a Hacktitud Summit. También revisa Cyber Case Challenge y el Congreso Nacional de Ciberseguridad de la Guardia Nacional. Consulta [las fuentes y decisiones de esta revisión](docs/investigacion-eventos-2026-10-26.md).
+La revisión editorial del 26 de octubre de 2026 contrasta cinco fichas existentes con los avisos recibidos: detalla programa y boletos de BugCON, amplía Cybersecurity Summit Punta Mita y añade el hashtag oficial `HTTDS26` a Hacktitud Summit. También revisa Cyber Case Challenge y el Congreso Nacional de Ciberseguridad de la Guardia Nacional.
 
-La colección contiene 59 fichas habilitadas para publicación. La revisión editorial del 18 de octubre de 2026 añade cinco encuentros de CISOCLUB, incluido TechSummit 2027, y corrige el inicio de MCyRA 2026 al 10 de noviembre. También revisa Hacktitud Summit, OEA Cyber Challenge México, Cybersecurity Week, Mexico Cybersecurity Summit y BSides Querétaro. Consulta [las fuentes y los enlaces de imágenes de esta revisión](docs/investigacion-eventos-2026-10-18.md). Las cinco fichas nuevas omiten `image` y usan la ilustración predeterminada; las imágenes existentes se conservan. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
+La colección contiene 60 fichas habilitadas para publicación. La revisión editorial del 18 de octubre de 2026 añade cinco encuentros de CISOCLUB, incluido TechSummit 2027, y corrige el inicio de MCyRA 2026 al 10 de noviembre. También revisa Hacktitud Summit, OEA Cyber Challenge México, Cybersecurity Week, Mexico Cybersecurity Summit y BSides Querétaro. Las cinco fichas nuevas omiten `image` y usan la ilustración predeterminada; las imágenes existentes se conservan. Las fuentes y la fecha de revisión están en el frontmatter de cada ficha. HACKMEX tiene fichas separadas para clasificatoria y final; 8.8 tiene una por ciudad.
 
 El archivo incluye HackGDL e Infosecurity Mexico de 2024; HackGDL, Infosecurity Mexico, FIRST MX y Security BSides CDMX de 2025. Es una selección inicial, no un registro exhaustivo. Las fechas de cada ficha se contrastaron con sitios o documentos oficiales.
 
@@ -148,6 +147,8 @@ Para sustituir el logo horizontal, guarda el archivo en `public/img/` y asigna s
 
 `Header.astro`, `Footer.astro` y `EventCard.astro` comparten el estilo entre vistas. El catálogo incluye enlaces a cada sección; son navegación por anclas, no filtros interactivos. Se incluye foco visible, enlace para saltar al contenido y respeto a la preferencia de movimiento reducido.
 
+Tailwind busca clases dentro de `src/`. El alcance se define con `source("..")` en `src/styles/global.css`.
+
 La cabecera agrupa los enlaces en un menú de hamburguesa por debajo de `md` (768 px), con apertura nativa mediante `details` y `summary`. Con JavaScript se cierra al elegir un enlace, pulsar Escape, hacer clic fuera o navegar con `ClientRouter`. El pie apila y centra todos sus bloques por debajo de `lg` (1024 px); desde ese ancho conserva las tres columnas alineadas a la izquierda. Revisa ambos componentes en inicio, Eventos, Archivo, acerca de y una ficha, incluyendo teclado y navegación entre páginas.
 
 Se eliminaron los textos decorativos de entrada (eyebrows). Cada ficha comienza con Inicio / Eventos o Archivo / título, seguido de su estado y categorías. El texto es blanco puro; tamaños y pesos distinguen títulos, descripciones y metadata. Los enlaces y etiquetas mantienen los acentos azul y turquesa.
@@ -177,10 +178,11 @@ El propietario ejecuta todos los comandos de pnpm desde `C:\Users\marco\Desktop\
 | `pnpm install` | Instalar las dependencias del proyecto cuando sea necesario. |
 | `pnpm dev` | Abrir el servidor de desarrollo para revisar las vistas. |
 | `pnpm build` | Validar contenido, salida del servidor, páginas prerenderizadas, RSS y sitemaps y producir `dist/`. |
-| `pnpm preview` | Revisar localmente el resultado del build. |
+
+El adaptador de Netlify actual no admite `astro preview` para la salida SSR. Usa `pnpm dev` para revisar la interfaz localmente y un Deploy Preview de Netlify para validar el resultado desplegado.
 
 Revisa inicio, Eventos, Archivo, acerca de y una ficha en móvil y escritorio, incluyendo navegación por teclado, botones y contraste. Comprueba que un evento en curso o a 30 días aparezca en la primera sección y uno a 31 días en «Próximos», sin duplicados. Todos los finalizados deben aparecer en el archivo por año de inicio, incluidos 2024 y 2025. Los que terminaron hace menos de dos meses deben aparecer también en «Descubre cómo fue»; los de la fecha de corte exacta y anteriores, solo en el archivo. Revisa imágenes, alternativa SVG y búsquedas de conversación, incluido LinkedIn. Comprueba una ficha pasada con recursos, BSides CDMX 2027 con su CFP y León Cybersecurity Conference sin fecha. Para probar otros estados con el ejemplo, modifica una copia de forma local, publícala temporalmente y revisa rango de fechas, cancelación y recursos. Retira el contenido ficticio antes de desplegar.
 
 Comprueba también breadcrumbs, estado y categorías sobre el título, el texto blanco en tarjetas y Markdown, 404 para IDs desconocidos y borradores, y ambos sitemaps: `/sitemap-index.xml` debe incluir el sitemap de páginas de ruta fija y la URL absoluta de `/sitemap-events.xml`; este último debe enumerar fichas sin borradores y usar `updatedAt` como `lastmod`. `/robots.txt` debe anunciar el índice. En un despliegue de Netlify, verifica la cabecera `Cache-Control` de inicio y eventos.
 
-El build y la revisión visual de esta adaptación están pendientes de ejecución por el propietario. No hay script de pruebas ni `@astrojs/check` configurado en `package.json`. No edites `dist/`, `.astro/` ni `node_modules/`.
+No hay script de pruebas ni `@astrojs/check` configurado en `package.json`. No edites `dist/`, `.astro/` ni `node_modules/`.
